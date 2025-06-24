@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成AIスライド作成プロンプト</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-gradient {
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,0.7) 0%, 
+          rgba(255,154,0,0.7) 10%, 
+          rgba(208,222,33,0.7) 20%, 
+          rgba(79,220,74,0.7) 30%, 
+          rgba(63,218,216,0.7) 40%, 
+          rgba(47,201,226,0.7) 50%, 
+          rgba(28,127,238,0.7) 60%, 
+          rgba(95,21,242,0.7) 70%, 
+          rgba(186,12,248,0.7) 80%, 
+          rgba(251,7,217,0.7) 90%, 
+          rgba(255,0,0,0.7) 100%);
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.1) 0%, 
+          rgba(255,154,0,0.1) 10%, 
+          rgba(208,222,33,0.1) 20%, 
+          rgba(79,220,74,0.1) 30%, 
+          rgba(63,218,216,0.1) 40%, 
+          rgba(47,201,226,0.1) 50%, 
+          rgba(28,127,238,0.1) 60%, 
+          rgba(95,21,242,0.1) 70%, 
+          rgba(186,12,248,0.1) 80%, 
+          rgba(251,7,217,0.1) 90%, 
+          rgba(255,0,0,0.1) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .markdown-container {
+        background: #1e1e1e;
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      
+      .markdown-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #333;
+      }
+      
+      .markdown-dots {
+        display: flex;
+        gap: 8px;
+        margin-right: 1rem;
+      }
+      
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      
+      .dot-red { background: #ff5f56; }
+      .dot-yellow { background: #ffbd2e; }
+      .dot-green { background: #27ca3f; }
+      
+      .markdown-title {
+        color: #e0e0e0;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      
+      .markdown-content {
+        color: #e0e0e0;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+      
+      .markdown-content h1,
+      .markdown-content h2,
+      .markdown-content h3 {
+        color: #61dafb;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .markdown-content h1 {
+        font-size: 1.5rem;
+        border-bottom: 1px solid #444;
+        padding-bottom: 0.5rem;
+      }
+      
+      .markdown-content h2 {
+        font-size: 1.3rem;
+      }
+      
+      .markdown-content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .markdown-content code {
+        background: #2d2d2d;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #f8f8f2;
+      }
+      
+      .markdown-content pre {
+        background: #2d2d2d;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        border-left: 4px solid #61dafb;
+      }
+      
+      .markdown-content blockquote {
+        border-left: 4px solid #ff6b6b;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        color: #b0b0b0;
+      }
+      
+      .markdown-content table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1rem 0;
+      }
+      
+      .markdown-content th,
+      .markdown-content td {
+        border: 1px solid #444;
+        padding: 0.5rem;
+        text-align: left;
+      }
+      
+      .markdown-content th {
+        background: #2d2d2d;
+        color: #61dafb;
+      }
+      
+      .attachment-section {
+        background: #2d2d2d;
+        border: 2px dashed #61dafb;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .attachment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: #61dafb;
+        font-weight: 600;
+      }
+      
+      .attachment-icon {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+      }
+      
+      .attachment-content {
+        background: #1e1e1e;
+        border-radius: 8px;
+        padding: 1rem;
+        color: #e0e0e0;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+      
+      .description-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .description-icon {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rainbow-circle"></div>
+      
+      <div class="text-center mb-8">
+        <h1 class="text-5xl font-bold mb-4 rainbow-border inline-block">生成AIスライド作成プロンプト</h1>
+        <p class="text-xl text-gray-600">AIによるスライド生成能力検証で使用したプロンプト</p>
+      </div>
+      
+      <div class="description-box">
+        <div class="flex items-center">
+          <i class="fas fa-info-circle description-icon"></i>
+          <div>
+            <h2 class="text-xl font-semibold mb-2">このマークダウンについて</h2>
+            <p class="text-lg">このマークダウンは発表スライドを作成するようで使用しました。</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="markdown-container">
+        <div class="markdown-header">
+          <div class="markdown-dots">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+          </div>
+          <div class="markdown-title">slide-all.md</div>
+        </div>
+        <div class="markdown-content" id="markdown-content">
+          <!-- マークダウンコンテンツがここに読み込まれます -->
+        </div>
+      </div>
+      
+      <div class="attachment-section">
+        <div class="attachment-header">
+          <i class="fas fa-paperclip attachment-icon"></i>
+          <span>添付ファイル</span>
+        </div>
+        <div class="attachment-content" id="csv-content">
+          <!-- CSVコンテンツがここに読み込まれます -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // マークダウンコンテンツ
+      const markdownContent = `## 概要
+
+### 背景
+
+今回あなたには、ある検証のまとめスライドを作成してもらいます。
+
+ある検証の内容は下記に示します。
+
+スライドは10人程度のエンジニアと非エンジニアに向けて行います。
+
+社内での発表です。
+
+### ゴール
+
+- スライド内容を満たすスライドの作成完了
+- 無駄な補足や情報の欠落はなるべく避けてください
+    - ただし、あなたがスライドをより良くするために下であれば判断はOKです
+- スライド生成を始める前に最初に3問私に質問を行い出力の精度を最高に高めてください
+- デザインとコンサルのスペシャリストとしてスライドを作成してください
+
+## スライド内容
+
+### 検証内容
+
+- 今回の検証について説明
+    - 1枚スライドの出力
+    
+    - 学習用の資料集スライドの出力
+- 検証の対象
+    - 本：説明の一流、二流、三流
+    - 画像リンク：https://m.media-amazon.com/images/I/41ujTcN8qML._SY445_SX342_.jpg
+- 検証対象
+    - 一枚スライド
+        - ChatGPT o3
+        - ChatGPT o4-mini-high
+        - Claude
+        - Gemini
+        - Manus
+        - Genspark
+    - 学習用の資料集
+        - ChatGPT o4-mini-high
+        - Claude
+        - Gemini
+        - Manus
+        - skywork
+- 検証内容
+    - 検証対象の生成AIが生成するスライドの質の差を見比べる
+- 検証詳細
+    - 一枚スライド
+        1. 下記プロンプトをAIに投げる
+            
+            プロンプト
+            
+            \`\`\`
+            """
+            - Amazonリンク：https://amzn.asia/d/h7GMDr2
+            - 表紙：（添付画像）
+                
+            - 著者：桐生 稔（きりゅう みのる）
+            - 紹介：
+                
+                **あなたの思いや考えは、ちゃんと伝わっていますか?**
+                
+                話したことがきちんと伝わらない、プレゼンがウマくいかない、論理的に話せないなどの悩みを持っているビジネスパーソンは多いかと思います。そのままにしていたらもったいない。**説明することが上手くなれば、あなたのコミュニケーション力は確実に高まります。**変に空気に支配されることなく、自分の言いたいことをちゃんと言葉にできます。何より仕事で結果がでます。
+                
+                **すごく伝わる説明には、具体的な法則があります。しかも意外と簡単です。本書ではそれを45項目で学ぶことができます。**一つの項目に対して、**ダメレベル(三流レベル)、普通レベル(二流レベル)、優秀なレベル(一流レベル)**の3つの段階で解説しているので、自分がどのレベルかわかり、どのように改善すれば良いのかがよくわかります。
+                
+                **説明が苦手で苦戦している人、自分でも何を言っているかわからなくなる人、「結論は何?」って突っ込まれる人。安心してください。**
+                
+                **本書を実践していただければ、きっと人に教えられるレベルにまで上達します。**
+                
+            - Chapter
+                1. すごく伝わる説明
+                2. 説明の組み立て方
+                3. 説得力が増す説明
+                4. プレゼンや人前での説明
+                5. リモート・メールでの説明
+                6. 説明上手になる心得
+            - 具体例ひとつだけ
+                - 話の説明
+                - 二流：モレなく、ダブりなく話す
+                - 一流：大胆に削り、真芯にフォーカスして話す
+            - その他著書
+                - **雑談の一流、二流、三流：**https://amzn.asia/d/52IwSCt
+                - **質問の一流、二流、三流：**https://amzn.asia/d/2HT3Vt2
+            """
+            
+            本の説明をスライドにしたいです スライドの目的は 本の魅力づけであったり 本の内容がどんな感じか 概要で説明することで 本がどういう内容かを知るかつ それより魅力的に感じてもらうというところです 一番は魅力づけもなんですけど ちゃんとどういう本なのかを ちゃんと説明できていること っていうのをスライドでまとめたいです スライドの内容としては まず本の画像を埋め込みたいのと あとAmazonのリンクとタイトル タイトルにAmazonリンクを ハイパーリンクしてもらいたいです あと 著者の説明 キリュウ・ミノデさんという方なんですけど 著者の名前と あとその他の その人の他の著書を2つ これもAmazonのハイパーリンクを タイトルにかぶせて ちょっと微行で説明しようと思ってます あとはチャプター 本の6個 チャプターがあるんですけど その6個を見せたほうがいいなと思っているのと あと本の内容で具体的な例を 1つだけ見せると 分かりやすいかなと思ってます あとは本の紹介文も 書こうかなと思ってます 本の紹介がとても長いので 正直1枚に収まらない気がしています なので紹介に関しては削るか 本当に超概要だけ文字で 起こしておこうかなと思ってます みたいな感じです 優先順位としては タイトルとそれにハイパーリンクをかぶせるのはマスト 表紙ですね 表紙の画像の埋め込みもマスト 著者の名前もマスト 著者のその他の著書に関しては 優先順位は中間ぐらい チャプターに関してはマスト 具体例に関しては中間ぐらい 紹介に関しては内容を 1文だけは絶対欲しいなと思ってます それ以外は優先順位はかなり低いです。
+            
+            まずは私に3つ質問をしてください。
+            質問してもらう理由は、スライドの精度を上げるためです。
+            \`\`\`
+            
+        2. AIに質問されるのでそれに回答するとAIがスライドを生成する
+    - 学習用の資料集
+        1. 下記プロンプトとCSVファイルをAIに投げる
+            
+            **プロンプト**
+            
+            \`\`\`
+            ## 概要
+            本の内容をスライドにしてもらいます。
+            目的はスライドにすることで、今後その本の理解を早めたいからです。
+            
+            ## スライド構成
+            ### 1. 概要部分（約2ページ）
+            a. 本のタイトルや画像、著者、概要
+            b. チャプター一覧
+            
+            ### 2. メインコンテンツ
+            - チャプターを1枚のスライドで出力（コンテンツの途中に挟む）
+              - スライドの分類目的
+            - 比較項目（一流、二流）を1比較1枚、もしくは複数比較を1枚で表現
+            	- わかりやすい方法でOK
+            	- ここの比較の見やすさ、理解のしやすさが今回のスライドでキーポイントです
+            	
+            ### 3. クロージング
+            - 関連著書
+            - その他いい感じに
+            
+            ### デザイン
+            - Dia（https://www.diabrowser.com/）というWebサイトのデザインが好きなのでこのWebサイトを参考にデザインを行って。
+            	- もしこのサイトのデザインの理解があまりできていないのなら正直に言って、その場合は私がイメージ画像を添付します。
+            
+            ## スライド内容
+            
+            ### 本の概要
+            - Amazonの「説明の一流、二流、三流」リンク：https://amzn.asia/d/h7GMDr2
+            - 表紙の画像リンク：https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg
+            - 著者：桐生 稔（きりゅう みのる）
+            - 著者のその他著書：
+            	- 雑談の一流、二流、三流：https://amzn.asia/d/52IwSCt
+            	- 質問の一流、二流、三流：https://amzn.asia/d/2HT3Vt2
+            - Chapter
+              1. すごく伝わる説明
+              2. 説明の組み立て方
+              3. 説得力が増す説明
+              4. プレゼンや人前での説明
+              5. リモート・メールでの説明
+              6. 説明上手になる心得
+            - 紹介：
+              - **すごく伝わる説明には、具体的な法則があります。しかも意外と簡単です。本書ではそれを45項目で学ぶことができます。**一つの項目に対して、**ダメレベル(三流レベル)、普通レベル(二流レベル)、優秀なレベル(一流レベル)**の3つの段階で解説しているので、自分がどのレベルかわかり、どのように改善すれば良いのかがよくわかります。
+            
+            ### 本の内容
+            添付したCSVを参考にしてください
+            - IDは無視してください
+            - ページは著書の掲載ページです
+            - 表示レベルは、個人的な（私的な）重要度です
+            
+            ## 指示
+            ゴール：書籍「説明の一流、二流、三流」の内容を説明するスライドを作成する
+            想定読者：20代 ~ 30代のビジネスパーソン。作成したスライドを資料集のように利用してもらい本の理解を促進する。
+            
+            ### あなたのアクション
+            以下の実行は一つずつ行ってください。一回でまとめて行わないようにして。
+            1. 私に3つ質問を行って
+            2. 比較項目を1スライドに1つにするか、1スライドに複数個出力するか考えたいのでサンプルスライドを各2パターン、合計4パターン（4枚）出力して
+            
+            ### 注意
+            - 最終的なスライドの出力は、私が「完璧なスライドを作成して」と言うまで行わないでください
+            	- 最終的なスライドを出力する前にいくつかすり合わせを行うので
+            \`\`\`
+            
+            **CSVファイル（資料にも埋め込みたい）**
+            
+            - 添付の\`説明の一流、二流、三流 db.csv\`
+        2. AIに質問されるのでそれに回答する（上記プロンプトで制御している）
+        3. スライドの生成イメージを出力してもらう（上記プロンプトで制御している）
+        4. スライドを生成してもらう
+- 検証結果
+    
+    **評価基準**
+    
+    | 評価 | ランク名 | 典型的な印象 |
+    | --- | --- | --- |
+    | **5** | **卓越** | 「このまま公開資料に採用したい」レベルの完成度 |
+    | **4** | **優秀** | 「社内外で十分に使える。もう一歩で傑作」 |
+    | **3** | **良好** | 「普通に使えるが、比較すると埋もれがち」 |
+    | **2** | **弱い** | 「会議で使う前に大幅なブラッシュアップ必須」 |
+    | **1** | **不適** | 「最初から作り直した方が早い」 |
+    | 0 | **エラー** | 「生成中にエラーが起こる」 |
+    - 一枚スライド
+        
+        
+        | AI モデル・プラットフォーム | 評価 | 生成されたスライド（後から複数のHTMLファイルを手動で資料に添付したい、添付のための構成は任せる） | 生成時の会話リンク | 一言 |
+        | --- | --- | --- | --- | --- |
+        | ChatGPT o3 | 1 |  | https://chatgpt.com/share/68592b67-2618-8002-9bed-1c220a90fe9b | - 一部バグがあった
+        - UIもひどい |
+        | ChatGPT o4-mini-high | 2 |  | https://chatgpt.com/share/68592c37-d42c-8002-b610-3caa8fff6b56 | - 最低限の要件は満たした
+        - デザイン性に乏しい |
+        | Claude | 3 |  | https://claude.ai/public/artifacts/758f466c-162d-4fa9-8289-7444575378b5 | - 最低限の要件 - いい感じのデザイン |
+        | Gemini | 3 |  | リンクなし | - 最低限の要件
+        - シンプルなデザイン |
+        | Manus | 5 |  | https://manus.im/share/IdIVMoYWXQRlAriDIDFu1E?replay=1 | - 要件を満たしている
+        - いけてて見やすいデザイン（JavaScriptで動的） |
+        | Genspark | 4 |  | https://www.genspark.ai/agents?id=e235d75f-9a34-49f0-9427-66ee27dd4e34 | - 要件満たしている
+        - シンプルだがかなりみやすいデザイン |
+    - 学習用の資料集
+        
+        
+        | AI モデル・プラットフォーム | 評価 | 生成されたスライド（後から複数のHTMLファイルを手動で資料に添付したい、添付のための構成は任せる） | 生成時の会話リンク | 一言 |
+        | --- | --- | --- | --- | --- |
+        | ChatGPT o4-mini-high | 1 |  | https://chatgpt.com/share/68593a50-ee44-8002-8ef3-63abb62a128c | - 要件を満たさない
+        - スライドの作成枚数に限界がありそう（6枚程度）
+        - デザインも悪い |
+        | Claude | 2 |  | https://claude.ai/share/d24db98d-8d6a-4d27-bdfe-18eb8adb9487 | - 要件を満たさない
+            - 付け加えてるとかじゃなくて、勝手に編集された（何回も生成させたからかも）
+        - デザインはかなり良さそう |
+        | Gemini | 0 |  | リンクなし | - 生成エラーが起きる |
+        | Manus | 3 |  | https://manus.im/share/a3beLVb6TRB5Q9bso3PSdR?replay=1 | - 最低限の要件を満たす
+        - デザインがシンプルすぎる
+            - プロンプトが原因ではある
+        - 評価低いが、私のプロンプトのせい |
+        | skywork | 4 |  | https://skywork.ai/share/project/1937022545708371968?sid=-O2NeHJNU6&t= | - 良くも悪くも情報を勝手に付け足してくれた
+        - デザインはシンプルだがかなり見やすい |
+- まとめ
+    
+    
+    | AI モデル・プラットフォーム | まとめ |
+    | --- | --- |
+    | ChatGPT o3 | - スライド作成には向いていない |
+    | ChatGPT o4-mini-high | - 非推奨 |
+    | Claude | - 出力が長くなると要件を満たしにくくなる
+    - デザインがイケてる |
+    | Gemini | - 最低限の資料はできる |
+    | Manus | - 要件をしっかり満たす
+    - デザインも良い |
+    | Genspark | - 要件満たしている
+    - シンプルだがかなりみやすいデザイン |
+    | skywork | - 付加情報をかなり付けてくれる（良くも悪くも）
+    - デザインはシンプル系 |
+
+### デザイン要件
+
+- Diaブラウザのホームページ（https://www.diabrowser.com/）のようなUIにして
+    - シンプルだが洗練された、白背景がベースでところどころ虹色のアクセントとJavaScriptの適応が行われています`;
+
+      // CSVコンテンツ
+      const csvContent = `名前	Chapter	二流	一流	ページ	表示レベル
+話の説明	1. すごく伝わる説明	モレなく、ダブりなく話す	大胆に削り、真芯にフォーカスして話す	20	○○○○○
+イメージできない人に	1. すごく伝わる説明	詳しく長く説明する	対比で説明する	24	○○○○○
+知識がない人に	1. すごく伝わる説明	細かく説明する	類比で説明する	28	○○○○○
+情報の伝え方	1. すごく伝わる説明	一象限で説明する	四象限で説明する	32	○○○○
+説明の詳細さ	1. すごく伝わる説明	説明しすぎてくどくなる	共通体験のレベルに合わせて説明する	36	○○○
+数字で説明する	1. すごく伝わる説明	具体的な数値で説明する	数字を2つ使って説明する	40	○○○○○
+ひと言でまとめる	1. すごく伝わる説明	なんとなくまとめる	抽象化してまとめる	44	○○○○
+手順を説明するとき	1. すごく伝わる説明	分厚い資料で説明する	図解で説明する	48	○○○○○
+説明の適正時間	2. 説明の組み立て方	説明のボリュームで設定する	相手の許容時間で設定する	54	○○○○○
+説明の準備	2. 説明の組み立て方	結論から考える	相手の頭の中から考えはじめる	58	○○○○○
+演繹法	2. 説明の組み立て方	事実を重視して結論を導く	前提を重視する	62	○○
+帰納法	2. 説明の組み立て方	事実を並べて語る	複数の事実を並べたあとに、仮説で語る	66	○○○○
+問題解決	2. 説明の組み立て方	問題を分解して考える	3種のツリーを駆使して考える	70	○○○○○
+体系的にまとめる	2. 説明の組み立て方	なんとなくまとめようとする	「総論→各論→具体論」の型でまとめる	74	○○○○○
+急な報告	2. 説明の組み立て方	「所感」を語る	「事実」から「所感」を語る	78	○○○○○
+道を聞かれたら	2. 説明の組み立て方	現在地から説明する	目的地から説明する	82	○○○
+説得する	3. 説得力が増す説明	PREP法を使って説明する	PREP法の順番を変えて説明する	88	○○○○○
+協力を仰ぎたい時	3. 説得力が増す説明	目的を説明する	目的と個人の関係を説明する	92	○○○○○
+意見が対立したら	3. 説得力が増す説明	相手に合わせて妥協する	ファクトを積み上げる	96	○○○○
+説得材料	3. 説得力が増す説明	主張と根拠を明確にする	複数のピラミッドを用意する	100	○○○
+言いづらいこと	3. 説得力が増す説明	正論をぶつける	アサーティブに説明する	104	○○○
+議論が進まないとき	3. 説得力が増す説明	何度も持論を説明する	論点を設定し直す	108	○○○
+話が噛み合わない	3. 説得力が増す説明	相手の理解が足りないと思う	階層を合わせにいく	112	○○○
+データを分析して説明する	3. 説得力が増す説明	相関関係をもとに説明する	因果関係をもとに説明する	116	○○○○○
+説明しづらい相手	3. 説得力が増す説明	強引に説明しようとする	聞いてもらえない理由を見極める	120	○○○○
+説明の流れ	4. プレゼンや人前での説明	得意なパターンで説明する	結論型・展開型を使い分ける	126	○○○○○
+話しはじめにやること	4. プレゼンや人前での説明	いきなり説明しはじめる	聞いてもらう態勢を作る	130	○○○○○
+パワーポイント	4. プレゼンや人前での説明	構成を考えて作りはじめる	聞き手におこしてほしい行動を考えて作り始める	134	○○○○
+調査結果を説明する	4. プレゼンや人前での説明	調査結果を考察する	調査結果から行動を起こす	138	○○○○○
+惹きつける説明	4. プレゼンや人前での説明	ポイントを説明する	事件を起こして説明する	142	○○○○○
+専門用語の使い方	4. プレゼンや人前での説明	共通の専門用語を使い	聞き手のレベルに合わせた言葉を使う	146	○○
+抑揚をつけて説明する	4. プレゼンや人前での説明	抑揚を意識して説明する	感情を込めて説明する	150	○○○○○
+説明の届け方	4. プレゼンや人前での説明	聞き手の耳に届ける	聞き手の脳内に届ける	154	○○○○○
+商品説明	4. プレゼンや人前での説明	商品の機能を説明する	商品購入後の未来を説明する	158	○○○○○
+質疑応答	4. プレゼンや人前での説明	その場で必死に取り繕う	用意していた答えを伝える	162	○○○○
+メールで説明する	5. リモート・メールでの説明	短くまとめたメールを送る	相手の負荷を減らすメールを送る	184	○○○○○
+箇条書きで説明する	5. リモート・メールでの説明	ただの箇条書きで説明する	読ませる箇条書きで説明する	188	○○○○○
+これからの説明	6. 説明上手になる心得	AIでもできることを説明する	相手の感情を汲み取った説明をする	194	○○○○○
+説明が伝わらないとき	6. 説明上手になる心得	とことん説明し続け	一旦説明を放棄する	198	○○○○○
+自分の説明	6. 説明上手になる心得	どんな人間かを説明する	どう在りたいかを説明する	206	○○○○○`;
+
+      // コンテンツを表示
+      document.getElementById('markdown-content').textContent = markdownContent;
+      document.getElementById('csv-content').textContent = csvContent;
+    </script>
+  </body>
+</html>
