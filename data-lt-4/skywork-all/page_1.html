@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明が伝わる一流のテクニック</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 920px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-gradient {
+            background: linear-gradient(135deg, #0047AB, #2C75FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .comparison-item {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .comparison-item:hover {
+            transform: translateY(-5px);
+        }
+        .accent-bar {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .second-class .accent-bar {
+            background-color: #FF6B35;
+        }
+        .first-class .accent-bar {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container bg-white shadow-xl mx-auto">
+<!-- Geometric background shapes for visual interest -->
+<div class="geometric-shape w-[600px] h-[600px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[500px] h-[500px] -left-[200px] -bottom-[200px]"></div>
+<!-- Main content -->
+<div class="absolute inset-0 flex flex-col p-16">
+<!-- Header section -->
+<div class="mb-10">
+<h1 class="text-6xl font-bold title-gradient mb-4">説明が伝わる一流のテクニック</h1>
+<h2 class="text-3xl text-gray-600 font-medium">効果的コミュニケーションの秘訣</h2>
+</div>
+<!-- Divider -->
+<div class="flex items-center mb-10">
+<div class="h-1 w-24 bg-blue-800"></div>
+<div class="h-1 w-full bg-gray-200"></div>
+</div>
+<!-- Content comparison section -->
+<div class="flex justify-between">
+<!-- Second-class techniques column -->
+<div class="w-5/12 comparison-item second-class p-6 bg-gray-50 rounded-lg shadow-md relative">
+<div class="accent-bar"></div>
+<h3 class="text-2xl font-bold text-gray-700 mb-4">
+<i class="fas fa-arrow-down text-orange-500 mr-2"></i>二流の説明
+                    </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>モレなく、ダブりなく話す</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>詳しく長く説明する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>説明のボリュームで時間を設定する</span>
+</li>
+</ul>
+</div>
+<!-- Arrow between columns -->
+<div class="flex items-center justify-center w-2/12">
+<i class="fas fa-arrow-right text-4xl text-blue-800"></i>
+</div>
+<!-- First-class techniques column -->
+<div class="w-5/12 comparison-item first-class p-6 bg-gray-50 rounded-lg shadow-md relative">
+<div class="accent-bar"></div>
+<h3 class="text-2xl font-bold text-gray-700 mb-4">
+<i class="fas fa-arrow-up text-green-500 mr-2"></i>一流の説明
+                    </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>大胆に削り、真芯にフォーカスして話す</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>対比や類比で簡潔に説明する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>相手の許容時間で説明を設定する</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Footer section -->
+<div class="mt-auto">
+<p class="text-xl text-gray-600">
+<i class="fas fa-book text-blue-800 mr-2"></i>
+                    「説明の一流、二流、三流」より
+                </p>
+</div>
+</div>
+</div>
+
+</body></html>

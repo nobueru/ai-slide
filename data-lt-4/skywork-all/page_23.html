@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>協力を仰ぐ際の説明法</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 926px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 926px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+            border-left: 4px solid;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .motivation-gauge {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+            
+        }
+        .motivation-level {
+            height: 100%;
+            border-radius: 4px;
+        }
+        .importance-badge {
+            background-color: rgba(0, 71, 171, 0.1);
+            color: #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10 justify-between">
+<h1 class="text-3xl font-bold text-white">協力を仰ぐ際の説明法</h1>
+<div class="importance-badge px-3 py-1 rounded-full text-sm font-medium bg-white">
+                重要度: ○○○○○
+            </div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Top Section: Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-600">
+                    他者の協力を得るには、単に目的を伝えるだけでは不十分です。目的と個人との関係性を明確にすることで、モチベーションを高め、積極的な協力を引き出せます。
+                </p>
+</div>
+<!-- Middle Section: Comparison -->
+<div class="flex space-x-6 mb-8">
+<!-- Second Class Approach -->
+<div class="w-1/2 comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white text-lg"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：目的を説明する</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<i class="fas fa-bullseye text-orange-500 mt-1 mr-3"></i>
+<p class="text-gray-600">プロジェクトやタスクの目的だけを説明</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-chart-line text-orange-500 mt-1 mr-3"></i>
+<p class="text-gray-600">組織目標や数値目標のみに焦点を当てる</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-users text-orange-500 mt-1 mr-3"></i>
+<p class="text-gray-600">「チームのため」という抽象的な理由で協力を求める</p>
+</div>
+<!-- Motivation Gauge -->
+<div class="mt-6">
+<p class="text-sm text-gray-500 mb-2">モチベーション効果</p>
+<div class="motivation-gauge">
+<div class="motivation-level bg-orange-400" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- First Class Approach -->
+<div class="w-1/2 comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white text-lg"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：目的と個人の関係を説明する</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<i class="fas fa-link text-green-500 mt-1 mr-3"></i>
+<p class="text-gray-600">目的と個人のメリットの接点を明確に示す</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-star text-green-500 mt-1 mr-3"></i>
+<p class="text-gray-600">個人の成長機会や価値観との結びつきを説明</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-thumbs-up text-green-500 mt-1 mr-3"></i>
+<p class="text-gray-600">協力によって得られる具体的な個人的利益を提示</p>
+</div>
+<!-- Motivation Gauge -->
+<div class="mt-6">
+<p class="text-sm text-gray-500 mb-2">モチベーション効果</p>
+<div class="motivation-gauge">
+<div class="motivation-level bg-green-500" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Techniques for Motivation -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>モチベーション喚起の技術
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<i class="fas fa-search text-blue-600"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800">個人の価値観を理解する</h4>
+<p class="text-gray-600">相手が何を大切にしているかを事前に把握しておく</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<i class="fas fa-puzzle-piece text-blue-600"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800">貢献の形を明確にする</h4>
+<p class="text-gray-600">具体的に何をすれば良いかをわかりやすく伝える</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<i class="fas fa-comments text-blue-600"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800">対話型で伝える</h4>
+<p class="text-gray-600">一方的な説明ではなく、質問を交えて関心を引き出す</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<i class="fas fa-route text-blue-600"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-800">長期的な視点を提示</h4>
+<p class="text-gray-600">協力がもたらす将来的なキャリアや成長への影響を示す</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            23 / 50
+        </div>
+</div>
+
+</body></html>

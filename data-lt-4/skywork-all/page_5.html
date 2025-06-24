@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>話の説明: 真髄にフォーカスする</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 1108px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1108px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+            z-index: 1;
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .content-bubble {
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .second-class-bubble {
+            background-color: rgba(255, 107, 53, 0.1);
+            border: 2px dashed #FF6B35;
+        }
+        .first-class-bubble {
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4CAF50;
+        }
+        .core-bubble {
+            background-color: #4CAF50;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -top-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">話の説明: 真髄にフォーカスする</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-xl text-gray-700">
+                    説明する際、情報量のバランスが重要です。二流と一流の説明者では、<span class="font-semibold">情報の取捨選択</span>に大きな違いがあります。
+                </p>
+</div>
+<!-- Comparison Section -->
+<div class="flex justify-between">
+<!-- Second Class Approach -->
+<div class="w-5/12 comparison-card bg-white p-6 rounded-lg shadow-md border-t-4 second-class">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center mr-3 text-sm">二流</span>
+                        モレなく、ダブりなく話す
+                    </h2>
+<div class="content-bubble second-class-bubble">
+<div class="relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="core-bubble z-10">
+<span>核心</span>
+</div>
+</div>
+<!-- Content circles representing too much information -->
+<i class="fas fa-circle text-orange-300 text-lg absolute top-0 left-5"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute top-10 left-20"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute top-20 right-5"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute bottom-5 left-10"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute bottom-15 right-15"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute bottom-0 right-0"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute top-5 right-25"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute bottom-20 left-25"></i>
+<i class="fas fa-circle text-orange-300 text-lg absolute top-30 left-30"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-700 mb-3">特徴:</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-3"></i>
+<span>全ての情報を盛り込もうとする</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-3"></i>
+<span>情報量が多く、聞き手が消化しきれない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-3"></i>
+<span>本当に重要なポイントが埋もれる</span>
+</li>
+</ul>
+<div class="mt-5 bg-orange-50 p-4 rounded-md">
+<p class="text-orange-700">
+<i class="fas fa-lightbulb mr-2"></i>
+<span class="font-medium">結果:</span> 伝えたいことが明確に伝わらず、聞き手の記憶に残りにくい
+                        </p>
+</div>
+</div>
+<!-- Arrow between columns -->
+<div class="flex items-center justify-center w-2/12">
+<i class="fas fa-arrow-right text-4xl text-blue-800"></i>
+</div>
+<!-- First Class Approach -->
+<div class="w-5/12 comparison-card bg-white p-6 rounded-lg shadow-md border-t-4 first-class">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+<span class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center mr-3 text-sm">一流</span>
+                        大胆に削り、真芯にフォーカスして話す
+                    </h2>
+<div class="content-bubble first-class-bubble">
+<div class="core-bubble" style="width: 120px; height: 120px;">
+<span class="text-xl">核心</span>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-700 mb-3">特徴:</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<span>本質的な情報だけを厳選する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<span>聞き手が理解しやすい量に調整する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<span>重要なポイントが明確に伝わる</span>
+</li>
+</ul>
+<div class="mt-5 bg-green-50 p-4 rounded-md">
+<p class="text-green-700">
+<i class="fas fa-lightbulb mr-2"></i>
+<span class="font-medium">結果:</span> 核心が明確に伝わり、聞き手の記憶に残りやすい
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom tip section -->
+<div class="mt-8 bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+<h3 class="text-lg font-bold text-blue-800 mb-2">
+<i class="fas fa-star mr-2"></i>実践のポイント
+                </h3>
+<p class="text-blue-700">
+                    説明前に「最も伝えたい1点」を明確にし、それを中心に据えて情報を整理しましょう。伝えたいことが複数ある場合は、優先順位をつけて最重要点を強調することが大切です。
+                </p>
+</div>
+</div>
+<!-- Page number and importance indicator -->
+<div class="absolute bottom-4 right-6 flex items-center">
+<div class="mr-4 text-green-600">
+<i class="fas fa-circle text-xs mr-0.5"></i>
+<i class="fas fa-circle text-xs mr-0.5"></i>
+<i class="fas fa-circle text-xs mr-0.5"></i>
+<i class="fas fa-circle text-xs mr-0.5"></i>
+<i class="fas fa-circle text-xs mr-0.5"></i>
+</div>
+<span class="text-gray-400">5 / 50</span>
+</div>
+</div>
+
+</body></html>

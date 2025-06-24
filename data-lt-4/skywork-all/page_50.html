@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>参考資料と関連書籍</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 940px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 940px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .resource-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        .book-card {
+            border-color: #0047AB;
+        }
+        .online-card {
+            border-color: #FF6B35;
+        }
+        .contact-card {
+            border-color: #4CAF50;
+        }
+        .rating {
+            display: inline-flex;
+            align-items: center;
+        }
+        .rating-circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #0047AB;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[500px] h-[500px] -left-[200px] -bottom-[200px]"></div>
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -top-[150px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">参考資料と関連書籍</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Author's Other Works -->
+<div class="mb-10">
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-book-open text-blue-800 mr-2"></i>著者のシリーズ作品
+                </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- Book 1 -->
+<div class="resource-card book-card bg-gray-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-2">雑談の一流、二流、三流</h3>
+<p class="text-gray-600 mb-3">
+                            ビジネスシーンでの雑談力を高めるための実用的なテクニックを解説。人間関係構築のための会話術の決定版。
+                        </p>
+<div class="rating">
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<span class="ml-2 text-sm text-gray-500">高評価</span>
+</div>
+</div>
+<!-- Book 2 -->
+<div class="resource-card book-card bg-gray-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-2">質問の一流、二流、三流</h3>
+<p class="text-gray-600 mb-3">
+                            相手の本音を引き出し、議論を深める質問力を磨くためのガイド。ビジネス会話を次のレベルに引き上げる。
+                        </p>
+<div class="rating">
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<span class="ml-2 text-sm text-gray-500">高評価</span>
+</div>
+</div>
+<!-- Book 3 -->
+<div class="resource-card book-card bg-gray-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-2">プレゼンの一流、二流、三流</h3>
+<p class="text-gray-600 mb-3">
+                            聴衆を魅了し、行動を促すプレゼンテーション技術。資料作成から話し方まで総合的に解説。
+                        </p>
+<div class="rating">
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<span class="ml-2 text-sm text-gray-500">好評発売中</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Learning Resources -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-graduation-cap text-blue-800 mr-2"></i>追加学習リソース
+                </h2>
+<div class="grid grid-cols-2 gap-6">
+<!-- Online Resources -->
+<div class="resource-card online-card bg-gray-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-laptop text-orange-500 mr-2"></i>オンラインリソース
+                        </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-video text-blue-600 mt-1 mr-2 w-5"></i>
+<span>「伝わる説明の技術」オンラインコース</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-podcast text-blue-600 mt-1 mr-2 w-5"></i>
+<span>コミュニケーション力向上ポッドキャスト</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-file-alt text-blue-600 mt-1 mr-2 w-5"></i>
+<span>説明力診断テスト（無料ダウンロード）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-users text-blue-600 mt-1 mr-2 w-5"></i>
+<span>説明スキル向上コミュニティ</span>
+</li>
+</ul>
+</div>
+<!-- Workshop Information -->
+<div class="resource-card contact-card bg-gray-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-chalkboard-teacher text-green-500 mr-2"></i>ワークショップ＆セミナー
+                        </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-calendar-alt text-blue-600 mt-1 mr-2 w-5"></i>
+<span>月例「説明力向上」ワークショップ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-building text-blue-600 mt-1 mr-2 w-5"></i>
+<span>企業向けカスタム研修プログラム</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-user-tie text-blue-600 mt-1 mr-2 w-5"></i>
+<span>パーソナルコーチングセッション</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-certificate text-blue-600 mt-1 mr-2 w-5"></i>
+<span>説明力マスター認定プログラム</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer with contact information -->
+<div class="absolute bottom-12 left-0 right-0 flex justify-center">
+<div class="bg-gray-50 py-3 px-8 rounded-full shadow-md flex items-center">
+<i class="fas fa-globe text-blue-800 mr-3"></i>
+<span class="text-gray-700 font-medium">詳細は公式ウェブサイトをご覧ください：www.ichiryu-explanation.jp</span>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            50 / 50
+        </div>
+</div>
+
+</body></html>

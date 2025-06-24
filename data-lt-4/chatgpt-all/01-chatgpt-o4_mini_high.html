@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>説明の一流、二流、三流</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .slide-inner { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    .main-title { font-size: 3rem; color: #0F172A; margin: 1rem 0; text-align:center; }
+    .author { font-size: 1rem; color: #374151; margin-bottom: 1rem; text-align:center; }
+    .book-desc { font-size: 1.1rem; color: #1F2937; max-width: 730px; line-height: 1.6; margin:0 auto; text-align:center;}
+    .cover-image { width: 200px; border-radius: 0.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); display:block; margin:0 auto 1rem;}
+    .grid-chapters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .chapter-card { background: #FFFFFF; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+    .chapter-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .chapter-card h3 { margin: 0; font-size: 1.25rem; color: #1E293B; line-height: 1.4; }
+    .grid-compare { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .compare-card { background: #FFFFFF; border-radius:1rem; padding:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+    .compare-card:hover { transform: translateY(-6px); box-shadow:0 12px 32px rgba(0,0,0,0.12); }
+    .compare-card h3 { font-size:1rem; color:#2E3B4E; margin-bottom:0.75rem; }
+    .compare-col-two, .compare-col-one { padding:0.75rem; border-radius:0.5rem; font-size:0.9rem; margin-bottom:0.5rem; }
+    .compare-col-two { background:#F4F7FA; color:#334155; }
+    .compare-col-one { background:#E8F5E9; color:#14532D; }
+    .page { font-size:0.75rem; color:#6B7280; }
+    .importance { font-weight:bold; margin-top:0.5rem; }
+    .level-5 { color:#EF4444; }
+    .level-4 { color:#F97316; }
+    .level-3 { color:#FBBF24; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- タイトルスライド -->
+      <section data-background="linear-gradient(135deg, #E0F2FE 0%, #FDE68A 100%)">
+        <div class="slide-inner">
+          <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" class="cover-image">
+          <h1 class="main-title">説明の一流、二流、三流</h1>
+          <p class="author">著者：桐生 稔（きりゅう みのる）</p>
+          <p class="book-desc">
+            すごく伝わる説明には、具体的な法則があります。しかも意外と簡単です。
+            本書ではそれを45項目で学ぶことができます。
+            一つの項目に対して、ダメレベル（三流レベル）、普通レベル（二流レベル）、優秀なレベル（一流レベル）の3つの段階で解説しているので、
+            自分がどのレベルかわかり、どのように改善すれば良いのかがよくわかります。
+          </p>
+        </div>
+      </section>
+
+      <!-- Chapter 一覧スライド -->
+      <section data-background="linear-gradient(135deg, #FCE7F3 0%, #E0F2FE 100%)">
+        <div class="slide-inner">
+          <h2 class="main-title">Chapter 一覧</h2>
+          <div class="grid-chapters">
+            <div class="chapter-card"><h3>1. すごく伝わる説明</h3></div>
+            <div class="chapter-card"><h3>2. 説明の組み立て方</h3></div>
+            <div class="chapter-card"><h3>3. 説得力が増す説明</h3></div>
+            <div class="chapter-card"><h3>4. プレゼンや人前での説明</h3></div>
+            <div class="chapter-card"><h3>5. リモート・メールでの説明</h3></div>
+            <div class="chapter-card"><h3>6. 説明上手になる心得</h3></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 各チャプター導入＆比較スライド（以下、例：Chapter 1） -->
+      <section data-background="linear-gradient(135deg, #FEF3C7 0%, #E0F2FE 100%)">
+        <div class="slide-inner">
+          <h2 class="main-title">1. すごく伝わる説明</h2>
+        </div>
+      </section>
+      <!-- Chapter 1 比較グループ -->
+      <section data-background="white">
+        <div class="slide-inner">
+          <div class="grid-compare">
+            <div class="compare-card">
+              <h3>話の説明</h3>
+              <div class="compare-col-two">二流: モレなく、ダブりなく話す</div>
+              <div class="compare-col-one">一流: 大胆に削り、真芯にフォーカスして話す</div>
+              <p class="page">本書参考ページ: 20</p>
+              <p class="importance level-5">○○○○○</p>
+            </div>
+            <div class="compare-card">
+              <h3>イメージできない人に</h3>
+              <div class="compare-col-two">二流: 詳しく長く説明する</div>
+              <div class="compare-col-one">一流: 対比で説明する</div>
+              <p class="page">本書参考ページ: 24</p>
+              <p class="importance level-5">○○○○○</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Chapter 1 続き -->
+      <section data-background="white">
+        <div class="slide-inner">
+          <div class="grid-compare">
+            <div class="compare-card">
+              <h3>知識がない人に</h3>
+              <div class="compare-col-two">二流: 細かく説明する</div>
+              <div class="compare-col-one">一流: 類比で説明する</div>
+              <p class="page">本書参考ページ: 28</p>
+              <p class="importance level-5">○○○○○</p>
+            </div>
+            <div class="compare-card">
+              <h3>情報の伝え方</h3>
+              <div class="compare-col-two">二流: 一象限で説明する</div>
+              <div class="compare-col-one">一流: 四象限で説明する</div>
+              <p class="page">本書参考ページ: 32</p>
+              <p class="importance level-4">○○○○</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 以降、Chapter 1 の残り比較スライド（計4スライド）… -->
+
+      <!-- Chapter 2 導入 -->
+      <section data-background="linear-gradient(135deg, #FEF3C7 0%, #E0F2FE 100%)">
+        <div class="slide-inner">
+          <h2 class="main-title">2. 説明の組み立て方</h2>
+        </div>
+      </section>
+      <!-- Chapter 2 比較スライド例 -->
+      <section data-background="white">
+        <div class="slide-inner">
+          <div class="grid-compare">
+            <div class="compare-card">
+              <h3>説明の適正時間</h3>
+              <div class="compare-col-two">二流: 説明のボリュームで設定する</div>
+              <div class="compare-col-one">一流: 相手の許容時間で設定する</div>
+              <p class="page">本書参考ページ: 54</p>
+              <p class="importance level-5">○○○○○</p>
+            </div>
+            <div class="compare-card">
+              <h3>説明の準備</h3>
+              <div class="compare-col-two">二流: 結論から考える</div>
+              <div class="compare-col-one">一流: 相手の頭の中から考えはじめる</div>
+              <p class="page">本書参考ページ: 58</p>
+              <p class="importance level-5">○○○○○</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 以降、Chapter 2～6 の導入＆各比較スライド（合計約21枚）… -->
+
+      <!-- クロージング（関連著書） -->
+      <section data-background="linear-gradient(135deg, #E0F2FE 0%, #FCE7F3 100%)">
+        <div class="slide-inner">
+          <h2 class="main-title">関連著書</h2>
+          <ul style="list-style:none; font-size:1rem; color:#1F2937; text-align:left; padding:0;">
+            <li>雑談の一流、二流、三流：<a href="https://amzn.asia/d/52IwSCt" target="_blank">https://amzn.asia/d/52IwSCt</a></li>
+            <li>質問の一流、二流、三流：<a href="https://amzn.asia/d/2HT3Vt2" target="_blank">https://amzn.asia/d/2HT3Vt2</a></li>
+          </ul>
+          <p style="margin-top:2rem; text-align:center; color:#374151;">
+            ご質問やフィードバックがあれば、お気軽にどうぞ！
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({ hash: true });
+  </script>
+</body>
+</html>

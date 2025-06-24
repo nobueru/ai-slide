@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>道案内の説明スキル</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 928px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 928px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            transition: transform 0.3s ease;
+            border-left: 4px solid;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .path-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 2px;
+        }
+        .direction-map {
+            position: relative;
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">道案内の説明スキル</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-xl text-gray-700">
+                    道を尋ねられたとき、どのように案内すると相手に伝わりやすいでしょうか？
+                    案内の仕方には「二流」と「一流」の大きな違いがあります。
+                </p>
+</div>
+<!-- Two approaches comparison -->
+<div class="grid grid-cols-2 gap-10">
+<!-- Second Class Approach -->
+<div class="approach-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-4">
+<i class="fas fa-map-marker-alt text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流：現在地から説明する</h2>
+</div>
+<!-- Visual representation -->
+<div class="direction-map mb-5 border border-gray-200 rounded-lg p-4 bg-white">
+<div class="flex items-center mb-4">
+<div class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">スタート</div>
+<div class="flex-1 flex items-center px-2">
+<div class="flex-1 h-0.5 bg-orange-300"></div>
+<div class="path-dot bg-orange-400"></div>
+<div class="path-dot bg-orange-400"></div>
+<div class="path-dot bg-orange-400"></div>
+<div class="flex-1 h-0.5 bg-orange-300"></div>
+</div>
+<div class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-sm font-bold">ゴール</div>
+</div>
+<div class="flex items-start text-gray-600 text-sm">
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-street-view text-orange-500 text-2xl mb-2"></i>
+<p class="text-center">「ここを右に曲がって...」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-traffic-light text-orange-500 text-2xl mb-2"></i>
+<p class="text-center">「信号を渡って...」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-store text-orange-500 text-2xl mb-2"></i>
+<p class="text-center">「コンビニの前を...」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-question text-gray-400 text-2xl mb-2"></i>
+<p class="text-center">「...どこだっけ？」</p>
+</div>
+</div>
+</div>
+<ul class="text-gray-600 space-y-2">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>今いる場所から順番に説明するため、途中で迷いやすい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>目的地が明確でないと、説明が冗長になりがち</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>細かい分岐点が多いと、聞き手は記憶しきれない</span>
+</li>
+</ul>
+</div>
+<!-- First Class Approach -->
+<div class="approach-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-4">
+<i class="fas fa-flag-checkered text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流：目的地から説明する</h2>
+</div>
+<!-- Visual representation -->
+<div class="direction-map mb-5 border border-gray-200 rounded-lg p-4 bg-white">
+<div class="flex items-center mb-4">
+<div class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-sm font-bold">スタート</div>
+<div class="flex-1 flex items-center px-2">
+<div class="flex-1 h-0.5 bg-green-300"></div>
+<div class="path-dot bg-green-400"></div>
+<div class="path-dot bg-green-400"></div>
+<div class="path-dot bg-green-400"></div>
+<div class="flex-1 h-0.5 bg-green-300"></div>
+</div>
+<div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">ゴール</div>
+</div>
+<div class="flex items-start text-gray-600 text-sm">
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-building text-green-500 text-2xl mb-2"></i>
+<p class="text-center">「目的地は大きな赤いビルです」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-park text-green-500 text-2xl mb-2"></i>
+<p class="text-center">「その前に公園があります」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-crosshairs text-green-500 text-2xl mb-2"></i>
+<p class="text-center">「公園に向かって進むと...」</p>
+</div>
+<div class="w-1/4 flex flex-col items-center">
+<i class="fas fa-street-view text-green-500 text-2xl mb-2"></i>
+<p class="text-center">「ここを右に曲がって」</p>
+</div>
+</div>
+</div>
+<ul class="text-gray-600 space-y-2">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>目的地の特徴から説明することで、ゴールが明確になる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>道に迷っても、目的地の特徴を覚えていれば修正できる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>聞き手の記憶に残りやすく、理解しやすい説明になる</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Key takeaway -->
+<div class="mt-8 p-5 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+<h3 class="text-xl font-bold text-gray-800 mb-2">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>ゴール視点の重要性
+                </h3>
+<p class="text-gray-700">
+                    説明において「ゴール」を先に示すことは、単なる道案内だけでなく、ビジネスでのプレゼンや日常会話でも効果的です。
+                    相手が「どこに向かっているのか」を理解できれば、途中の説明も理解しやすくなります。
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            20 / 50
+        </div>
+</div>
+
+</body></html>

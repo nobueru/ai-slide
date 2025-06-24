@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説明の一流、二流、三流｜シンプル＆見やすい書籍紹介</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #ffffff;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .book-cover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        .chapter-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .chapter-item:last-child {
+            border-bottom: none;
+        }
+        .level-compare {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2c3e50;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .book-link {
+            text-decoration: none;
+            color: #2c3e50;
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            margin-right: 12px;
+        }
+        .book-link:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="flex h-full">
+            <!-- 左側：表紙 -->
+            <div class="w-2/5 p-12 flex flex-col justify-center items-center bg-gray-50">
+                <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙" class="book-cover" style="height: 500px;">
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 text-lg mb-2">著者</p>
+                    <h3 class="text-2xl font-bold">桐生 稔</h3>
+                </div>
+            </div>
+            
+            <!-- 右側：情報 -->
+            <div class="w-3/5 p-12 flex flex-col">
+                <div class="mb-8">
+                    <a href="https://amzn.asia/d/h7GMDr2" target="_blank" class="no-underline">
+                        <h1 class="text-4xl font-bold text-gray-800 hover:text-blue-600 transition duration-300">説明の一流、二流、三流</h1>
+                    </a>
+                    <p class="text-xl text-gray-700 mt-4 leading-relaxed">
+                        説明力が伸びれば、成果も会話も変わる。3レベル分けで着実に説明スキルUP。
+                    </p>
+                </div>
+                
+                <div class="mb-8">
+                    <h2 class="section-title">チャプター</h2>
+                    <ul class="list-none p-0">
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">1.</span>
+                            <span class="text-lg">すごく伝わる説明</span>
+                        </li>
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">2.</span>
+                            <span class="text-lg">説明の組み立て方</span>
+                        </li>
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">3.</span>
+                            <span class="text-lg">説得力が増す説明</span>
+                        </li>
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">4.</span>
+                            <span class="text-lg">プレゼンや人前での説明</span>
+                        </li>
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">5.</span>
+                            <span class="text-lg">リモート・メールでの説明</span>
+                        </li>
+                        <li class="chapter-item flex items-center">
+                            <span class="mr-3 text-blue-600 font-bold">6.</span>
+                            <span class="text-lg">説明上手になる心得</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-8">
+                    <h2 class="section-title">具体例</h2>
+                    <div class="level-compare">
+                        <div class="mb-3">
+                            <span class="font-semibold text-yellow-600 text-lg">二流：</span>
+                            <span class="text-lg">モレなく、ダブりなく話す</span>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-blue-600 text-lg">一流：</span>
+                            <span class="text-lg">大胆に削り、真芯にフォーカスして話す</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 class="section-title">その他著書</h2>
+                    <div class="flex flex-wrap">
+                        <a href="https://amzn.asia/d/52IwSCt" class="book-link mb-2">
+                            <i class="fas fa-book mr-2 text-blue-500"></i>
+                            <span class="text-lg">雑談の一流、二流、三流</span>
+                        </a>
+                        <a href="https://amzn.asia/d/2HT3Vt2" class="book-link mb-2">
+                            <i class="fas fa-book mr-2 text-blue-500"></i>
+                            <span class="text-lg">質問の一流、二流、三流</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

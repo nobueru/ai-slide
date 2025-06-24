@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明の準備：相手目線で考える</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 918px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 918px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            border-top: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .thought-bubble {
+            position: relative;
+            border-radius: 20px;
+        }
+        .thought-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: inherit;
+            transform: rotate(0deg);
+        }
+        .second-class-bubble {
+            background-color: rgba(255, 107, 53, 0.1);
+            border-color: rgba(255, 107, 53, 0.1) transparent transparent;
+        }
+        .first-class-bubble {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.1) transparent transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説明の準備：相手目線で考える</h1>
+<div class="ml-auto bg-white text-blue-800 px-3 py-1 rounded-full text-sm font-bold">
+                重要度：○○○○○
+            </div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Two approaches comparison -->
+<div class="flex space-x-8 mb-10">
+<!-- Second-class approach -->
+<div class="w-1/2 approach-card second-class bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white text-xl"></i>
+</div>
+<div>
+<span class="text-orange-500 font-bold">二流の準備</span>
+<h3 class="text-2xl font-bold text-gray-800">結論から考える</h3>
+</div>
+</div>
+<div class="thought-bubble second-class-bubble p-4 mb-6">
+<div class="flex items-start mb-2">
+<i class="fas fa-lightbulb text-orange-500 mt-1 mr-2"></i>
+<span class="text-gray-700">「何を伝えたいのか」を最初に考える</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-comment text-orange-500 mt-1 mr-2"></i>
+<span class="text-gray-700">自分の伝えたい内容を中心に組み立てる</span>
+</div>
+</div>
+<div class="mt-4">
+<h4 class="font-bold text-gray-700 mb-2">問題点</h4>
+<ul class="space-y-2">
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-2"></i>
+<span class="text-gray-600">相手の知識レベルや関心を考慮していない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-2"></i>
+<span class="text-gray-600">一方的な説明になりがち</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-2"></i>
+<span class="text-gray-600">伝わらなくても気づきにくい</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- First-class approach -->
+<div class="w-1/2 approach-card first-class bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white text-xl"></i>
+</div>
+<div>
+<span class="text-green-500 font-bold">一流の準備</span>
+<h3 class="text-2xl font-bold text-gray-800">相手の頭の中から考えはじめる</h3>
+</div>
+</div>
+<div class="thought-bubble first-class-bubble p-4 mb-6">
+<div class="flex items-start mb-2">
+<i class="fas fa-brain text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">「相手が何を知っているか」を最初に考える</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-sync-alt text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">相手の知識状態から自分の結論への最短経路を設計する</span>
+</div>
+</div>
+<div class="mt-4">
+<h4 class="font-bold text-gray-700 mb-2">メリット</h4>
+<ul class="space-y-2">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-600">相手の理解度に合わせた説明ができる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-600">無駄な説明を省き、効率的に伝えられる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-600">相手の「なるほど」を引き出しやすい</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Key takeaway section -->
+<div class="bg-blue-50 border-l-4 border-blue-800 p-6 rounded-r-lg">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-key text-blue-800 mr-2"></i>相手視点の重要性
+                </h3>
+<p class="text-gray-700 mb-3">
+                    一流の説明者は、常に「相手の頭の中」をスタート地点にします。相手がどんな知識を持っていて、何に関心があるかを理解することで、より効果的な説明が可能になります。
+                </p>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center mr-3">
+<i class="fas fa-lightbulb text-white"></i>
+</div>
+<p class="text-gray-700 font-medium">
+                        説明の準備は「自分が何を伝えたいか」ではなく、「相手が何を知りたいか」から始めましょう。
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            15 / 50
+        </div>
+</div>
+
+</body></html>

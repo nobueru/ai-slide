@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説明の一流、二流、三流｜虹色Dia風カラフル書籍紹介</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #f0f4ff;
+            overflow: hidden;
+            position: relative;
+        }
+        .rainbow-border {
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 16px;
+        }
+        .r1 { border-color: #ff6b6b; }
+        .r2 { border-color: #feca57; }
+        .r3 { border-color: #5ced73; }
+        .r4 { border-color: #48dbfb; }
+        .r5 { border-color: #c678dd; }
+        
+        .book-cover {
+            border-radius: 12px;
+        }
+        .rainbow-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .rainbow-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .rainbow-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background-color: #ff6b6b;
+            border-radius: 2px;
+        }
+        .chapter-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        .book-link {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .book-link:hover {
+            transform: translateY(-3px);
+        }
+        .rainbow-tabs {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+        }
+        .tab {
+            flex: 1;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Rainbow tabs at the top -->
+        <div class="rainbow-tabs">
+            <div class="tab" style="background-color: #ff6b6b;"></div>
+            <div class="tab" style="background-color: #feca57;"></div>
+            <div class="tab" style="background-color: #5ced73;"></div>
+            <div class="tab" style="background-color: #48dbfb;"></div>
+            <div class="tab" style="background-color: #c678dd;"></div>
+        </div>
+        
+        <div class="p-10 pt-14">
+            <!-- タイトルエリア -->
+            <div class="text-center mb-6">
+                <a href="https://amzn.asia/d/h7GMDr2" target="_blank" class="no-underline">
+                    <h1 class="text-4xl font-bold text-gray-800 hover:text-purple-600 transition duration-300">説明の一流、二流、三流</h1>
+                </a>
+                <p class="text-lg text-gray-700 mt-2">具体的でやさしい"伝わる説明"のコツ、45項目ですぐ実践！</p>
+            </div>
+            
+            <div class="flex">
+                <!-- 左側：表紙 -->
+                <div class="w-1/3 px-6">
+                    <div class="rainbow-border r1 p-3 inline-block">
+                        <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙" class="book-cover" style="height: 400px;">
+                    </div>
+                    <div class="mt-6 text-center bg-white p-4 rounded-xl shadow-md">
+                        <p class="text-gray-600 mb-1">著者</p>
+                        <h3 class="text-2xl font-bold text-gray-800">桐生 稔</h3>
+                    </div>
+                </div>
+                
+                <!-- 右側：情報 -->
+                <div class="w-2/3 px-4">
+                    <div class="grid grid-cols-2 gap-5">
+                        <!-- チャプター一覧 -->
+                        <div class="rainbow-card rainbow-border r3">
+                            <h2 class="text-xl font-bold rainbow-title" style="color: #219653;">チャプター</h2>
+                            <ul class="list-none pl-0">
+                                <li class="mb-3 flex items-center"><div class="chapter-dot" style="background-color: #ff6b6b;">1</div>すごく伝わる説明</li>
+                                <li class="mb-3 flex items-center"><div class="chapter-dot" style="background-color: #feca57;">2</div>説明の組み立て方</li>
+                                <li class="mb-3 flex items-center"><div class="chapter-dot" style="background-color: #5ced73;">3</div>説得力が増す説明</li>
+                                <li class="mb-3 flex items-center"><div class="chapter-dot" style="background-color: #48dbfb;">4</div>プレゼン・人前での説明</li>
+                                <li class="mb-3 flex items-center"><div class="chapter-dot" style="background-color: #c678dd;">5</div>リモート・メールでの説明</li>
+                                <li class="flex items-center"><div class="chapter-dot" style="background-color: #ff7979;">6</div>説明上手になる心得</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 具体例 -->
+                        <div class="rainbow-card rainbow-border r4">
+                            <h2 class="text-xl font-bold rainbow-title" style="color: #2F80ED;">具体例</h2>
+                            <p class="text-gray-700 mb-3 font-medium">話の説明</p>
+                            <div class="mb-4 p-3 rounded-lg" style="background-color: #FFF9C4;">
+                                <p class="font-bold text-yellow-700 mb-1">二流：</p>
+                                <p>モレなく、ダブりなく話す</p>
+                            </div>
+                            <div class="p-3 rounded-lg" style="background-color: #BBDEFB;">
+                                <p class="font-bold text-blue-700 mb-1">一流：</p>
+                                <p>大胆に削り、真芯にフォーカスして話す</p>
+                            </div>
+                        </div>
+                        
+                        <!-- その他著書 -->
+                        <div class="rainbow-card rainbow-border r5 col-span-2">
+                            <h2 class="text-xl font-bold rainbow-title" style="color: #9B51E0;">その他著作</h2>
+                            <div class="flex justify-around">
+                                <a href="https://amzn.asia/d/52IwSCt" class="no-underline book-link">
+                                    <div class="text-center">
+                                        <div class="bg-purple-100 p-3 rounded-full mx-auto mb-2 w-14 h-14 flex items-center justify-center">
+                                            <i class="fas fa-comments text-2xl text-purple-600"></i>
+                                        </div>
+                                        <p class="text-gray-800 font-medium">雑談の一流、二流、三流</p>
+                                    </div>
+                                </a>
+                                <a href="https://amzn.asia/d/2HT3Vt2" class="no-underline book-link">
+                                    <div class="text-center">
+                                        <div class="bg-blue-100 p-3 rounded-full mx-auto mb-2 w-14 h-14 flex items-center justify-center">
+                                            <i class="fas fa-question text-2xl text-blue-600"></i>
+                                        </div>
+                                        <p class="text-gray-800 font-medium">質問の一流、二流、三流</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

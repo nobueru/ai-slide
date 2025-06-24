@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説明の一流、二流、三流 - 書籍紹介</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        /* 案1: モダンテック風 */
+        #slide1 {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ffffff;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        #slide1 .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        #slide1 .book-cover {
+            width: 300px;
+            height: 420px;
+            background: #ccc;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        #slide1 .content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        #slide1 h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        #slide1 h1:hover {
+            transform: translateX(10px);
+        }
+        
+        #slide1 .tagline {
+            font-size: 20px;
+            color: #00d4ff;
+            font-weight: 300;
+            margin: -10px 0 0 0;
+        }
+        
+        #slide1 .author-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        #slide1 .author-name {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        #slide1 .other-books {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        #slide1 .other-book {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        #slide1 .other-book:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+        }
+        
+        #slide1 .chapters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        #slide1 .chapter {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        #slide1 .example {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(0,153,255,0.1) 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+        
+        #slide1 .example h3 {
+            color: #00d4ff;
+            margin-top: 0;
+        }
+        
+        #slide1 .level {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        /* 案2: 虹色グラデーション風 */
+        #slide2 {
+            background: linear-gradient(45deg, 
+                #ff6b6b 0%, 
+                #ffa500 14%, 
+                #ffd93d 28%, 
+                #6bcf7f 42%, 
+                #4ecdc4 56%, 
+                #5b86e5 70%, 
+                #9b59b6 84%, 
+                #ff6b6b 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        #slide2 .overlay {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 1100px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        #slide2 .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        #slide2 .book-cover {
+            width: 250px;
+            height: 350px;
+            background: #ccc;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        #slide2 h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-decoration: none;
+            color: #ffffff;
+            display: inline-block;
+        }
+        
+        #slide2 .highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        #slide2 .author-info {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        #slide2 .books-grid {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        #slide2 .book-link {
+            background: rgba(255,255,255,0.3);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        #slide2 .book-link:hover {
+            background: rgba(255,255,255,0.5);
+            transform: scale(1.05);
+        }
+        
+        #slide2 .chapters-example {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        #slide2 .chapters-list {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        #slide2 .chapters-list h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        
+        #slide2 .chapter-item {
+            padding: 5px 0;
+            font-size: 14px;
+        }
+        
+        #slide2 .example-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        #slide2 .example-box h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        
+        /* 案3: 見やすさ重視 */
+        #slide3 {
+            background: #f8f9fa;
+            color: #333333;
+            flex-direction: column;
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        
+        #slide3 .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        #slide3 h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin: 0;
+            text-decoration: none;
+            display: inline-block;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        #slide3 h1:hover {
+            color: #3498db;
+        }
+        
+        #slide3 .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        #slide3 .book-section {
+            text-align: center;
+        }
+        
+        #slide3 .book-cover {
+            width: 280px;
+            height: 400px;
+            background: #ddd;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        #slide3 .author-block {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        #slide3 .author-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        #slide3 .other-works {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        #slide3 .book-links a {
+            display: block;
+            color: #3498db;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        #slide3 .book-links a:hover {
+            color: #2980b9;
+            padding-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        #slide3 .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        #slide3 .description {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        #slide3 .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        #slide3 .chapters-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        #slide3 .chapters-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        #slide3 .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #slide3 .chapter-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        #slide3 .chapter-list li:before {
+            content: "▸ ";
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        #slide3 .example-card {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        #slide3 .example-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        #slide3 .level-item {
+            margin: 12px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        #slide3 .level-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        /* ナビゲーション */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 30px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .nav-btn.active {
+            background: white;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- 案1: モダンテック風 -->
+    <div class="slide active" id="slide1">
+        <div class="container">
+            <div class="book-cover">
+                <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙" class="book-cover" style="height: 400px;">
+            </div>
+            <div class="content">
+                <div>
+                    <a href="https://amzn.asia/d/h7GMDr2" target="_blank" style="text-decoration: none;">
+                        <h1>説明の一流、二流、三流</h1>
+                    </a>
+                    <p class="tagline">伝わる説明には、法則がある。</p>
+                </div>
+                
+                <div class="author-section">
+                    <div class="author-name">著者: 桐生 稔（きりゅう みのる）</div>
+                    <div class="other-books">
+                        <a href="https://amzn.asia/d/52IwSCt" target="_blank" class="other-book">雑談の一流、二流、三流</a>
+                        <a href="https://amzn.asia/d/2HT3Vt2" target="_blank" class="other-book">質問の一流、二流、三流</a>
+                    </div>
+                </div>
+                
+                <div class="chapters">
+                    <div class="chapter">1. すごく伝わる説明</div>
+                    <div class="chapter">2. 説明の組み立て方</div>
+                    <div class="chapter">3. 説得力が増す説明</div>
+                    <div class="chapter">4. プレゼンや人前での説明</div>
+                    <div class="chapter">5. リモート・メールでの説明</div>
+                    <div class="chapter">6. 説明上手になる心得</div>
+                </div>
+                
+                <div class="example">
+                    <h3>具体例: 話の説明</h3>
+                    <div class="level">三流: （内容不明）</div>
+                    <div class="level">二流: モレなく、ダブりなく話す</div>
+                    <div class="level">一流: 大胆に削り、真芯にフォーカスして話す</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 案2: 虹色グラデーション風 -->
+    <div class="slide" id="slide2">
+        <div class="overlay">
+            <div class="main-content">
+                <div class="book-cover">
+                    <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙" class="book-cover" style="height: 400px;">
+                </div>
+                <div>
+                    <a href="https://amzn.asia/d/h7GMDr2" target="_blank" style="text-decoration: none;">
+                        <h1>説明の一流、二流、三流</h1>
+                    </a>
+                    
+                    <div class="highlight">
+                        <div class="author-info">著者: 桐生 稔（きりゅう みのる）</div>
+                        <div class="books-grid">
+                            <a href="https://amzn.asia/d/52IwSCt" target="_blank" class="book-link">雑談の一流、二流、三流</a>
+                            <a href="https://amzn.asia/d/2HT3Vt2" target="_blank" class="book-link">質問の一流、二流、三流</a>
+                        </div>
+                    </div>
+                    
+                    <div class="chapters-example">
+                        <div class="chapters-list">
+                            <h3>📚 チャプター</h3>
+                            <div class="chapter-item">1. すごく伝わる説明</div>
+                            <div class="chapter-item">2. 説明の組み立て方</div>
+                            <div class="chapter-item">3. 説得力が増す説明</div>
+                            <div class="chapter-item">4. プレゼンや人前での説明</div>
+                            <div class="chapter-item">5. リモート・メールでの説明</div>
+                            <div class="chapter-item">6. 説明上手になる心得</div>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>💡 具体例: 話の説明</h3>
+                            <div style="font-size: 14px; line-height: 1.8;">
+                                <div>👎 三流: （内容不明）</div>
+                                <div>👍 二流: モレなく、ダブりなく話す</div>
+                                <div>🌟 一流: 大胆に削り、真芯にフォーカスして話す</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 案3: 見やすさ重視 -->
+    <div class="slide" id="slide3">
+        <div class="header">
+            <a href="https://amzn.asia/d/h7GMDr2" target="_blank" style="text-decoration: none;">
+                <h1>説明の一流、二流、三流</h1>
+            </a>
+        </div>
+        
+        <div class="main-grid">
+            <div class="book-section">
+                <div class="book-cover">
+                    <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙" class="book-cover" style="height: 400px;">
+                </div>
+                <div class="author-block">
+                    <div class="author-name">桐生 稔</div>
+                    <div class="other-works">その他の著書</div>
+                    <div class="book-links">
+                        <a href="https://amzn.asia/d/52IwSCt" target="_blank">雑談の一流、二流、三流</a>
+                        <a href="https://amzn.asia/d/2HT3Vt2" target="_blank">質問の一流、二流、三流</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="description">
+                    すごく伝わる説明には、具体的な法則があります。<br>
+                    本書では45項目で、説明力を確実に高める方法を学べます。
+                </div>
+                
+                <div class="bottom-grid">
+                    <div class="chapters-card">
+                        <h3>チャプター構成</h3>
+                        <ul class="chapter-list">
+                            <li>すごく伝わる説明</li>
+                            <li>説明の組み立て方</li>
+                            <li>説得力が増す説明</li>
+                            <li>プレゼンや人前での説明</li>
+                            <li>リモート・メールでの説明</li>
+                            <li>説明上手になる心得</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>具体例: 話の説明</h3>
+                        <div class="level-item">
+                            <span class="level-label">三流:</span> （内容不明）
+                        </div>
+                        <div class="level-item">
+                            <span class="level-label">二流:</span> モレなく、ダブりなく話す
+                        </div>
+                        <div class="level-item">
+                            <span class="level-label">一流:</span> 大胆に削り、真芯にフォーカスして話す
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ナビゲーション -->
+    <div class="navigation">
+        <button class="nav-btn active" onclick="showSlide(1)">案1: テック風</button>
+        <button class="nav-btn" onclick="showSlide(2)">案2: 虹色風</button>
+        <button class="nav-btn" onclick="showSlide(3)">案3: 見やすさ重視</button>
+    </div>
+    
+    <script>
+        function showSlide(num) {
+            // すべてのスライドを非表示
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            // すべてのボタンの選択状態を解除
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 指定されたスライドを表示
+            document.getElementById('slide' + num).classList.add('active');
+            // 対応するボタンを選択状態に
+            document.querySelectorAll('.nav-btn')[num - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>

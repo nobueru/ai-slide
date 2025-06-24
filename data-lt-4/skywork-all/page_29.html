@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>データ分析の説明技術</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 1186px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1186px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">データ分析の説明技術</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    データ分析を説明する際、単なる数字の羅列ではなく、説得力のある洞察を提供することが重要です。
+                    二流と一流の説明者では、データをどう解釈し伝えるかに大きな差があります。
+                </p>
+</div>
+<!-- Comparison section -->
+<div class="grid grid-cols-2 gap-8 mb-10">
+<!-- Second-class technique -->
+<div class="comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-chart-line text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">相関関係をもとに説明する</h3>
+</div>
+<p class="text-gray-600 mb-4">
+                        二流の説明者は、単に「AとBには関係がある」という相関関係だけを示し、
+                        その関係の原因や意味について深く掘り下げません。
+                    </p>
+<div class="bg-white p-4 rounded mb-4">
+<h4 class="font-bold text-orange-600 mb-2">相関関係の例</h4>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-2"></i>
+<span>「販売数と広告費には相関関係があります」</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-orange-500 mt-1 mr-2"></i>
+<span>「この2つのグラフは似た動きをしています」</span>
+</li>
+</ul>
+</div>
+<div class="w-full h-32 mb-4" id="correlation-chart"></div>
+<p class="text-sm text-gray-500 italic">
+                        相関は存在するが、その理由や影響関係は不明確
+                    </p>
+</div>
+<!-- First-class technique -->
+<div class="comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-sitemap text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">因果関係をもとに説明する</h3>
+</div>
+<p class="text-gray-600 mb-4">
+                        一流の説明者は、「AはBを引き起こす」という因果関係を明確にし、
+                        データの背後にあるメカニズムを論理的に説明します。
+                    </p>
+<div class="bg-white p-4 rounded mb-4">
+<h4 class="font-bold text-green-600 mb-2">因果関係の例</h4>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+<span>「新広告の感情的訴求が若年層の購買意欲を刺激し、販売増につながりました」</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+<span>「価格改定が競合との差別化を生み、市場シェア拡大の原因となっています」</span>
+</li>
+</ul>
+</div>
+<div class="w-full h-32 mb-4" id="causation-chart"></div>
+<p class="text-sm text-gray-500 italic">
+                        明確な因果関係を示し、行動の根拠を提供
+                    </p>
+</div>
+</div>
+<!-- Best practices -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>説得力のある分析提示のポイント
+                </h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-white p-4 rounded shadow">
+<div class="text-blue-600 text-lg font-bold mb-2">
+<i class="fas fa-search mr-2"></i>根本原因を探る
+                        </div>
+<p class="text-gray-600">
+                            表面的な相関だけでなく、「なぜそうなるのか」の原因を追究して説明する
+                        </p>
+</div>
+<div class="bg-white p-4 rounded shadow">
+<div class="text-blue-600 text-lg font-bold mb-2">
+<i class="fas fa-link mr-2"></i>論理的なつながり
+                        </div>
+<p class="text-gray-600">
+                            データポイント間の論理的な関連性を明確にし、ストーリーとして伝える
+                        </p>
+</div>
+<div class="bg-white p-4 rounded shadow">
+<div class="text-blue-600 text-lg font-bold mb-2">
+<i class="fas fa-forward mr-2"></i>次のアクション
+                        </div>
+<p class="text-gray-600">
+                            因果関係の理解に基づいて、具体的な行動提案や予測を示す
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            29 / 50
+        </div>
+</div>
+<script>
+        // D3.js visualization for correlation
+        const correlationData = [
+            {x: 0, y1: 10, y2: 15},
+            {x: 1, y1: 20, y2: 22},
+            {x: 2, y1: 15, y2: 18},
+            {x: 3, y1: 25, y2: 24},
+            {x: 4, y1: 30, y2: 32}
+        ];
+        
+        const correlationSvg = d3.select("#correlation-chart")
+            .append("svg")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("viewBox", "0 0 300 100");
+            
+        // Line for first variable
+        const line1 = d3.line()
+            .x(d => d.x * 60 + 30)
+            .y(d => 100 - d.y1 * 2);
+            
+        correlationSvg.append("path")
+            .datum(correlationData)
+            .attr("fill", "none")
+            .attr("stroke", "#FF6B35")
+            .attr("stroke-width", 2)
+            .attr("d", line1);
+            
+        // Line for second variable
+        const line2 = d3.line()
+            .x(d => d.x * 60 + 30)
+            .y(d => 100 - d.y2 * 2);
+            
+        correlationSvg.append("path")
+            .datum(correlationData)
+            .attr("fill", "none")
+            .attr("stroke", "#0047AB")
+            .attr("stroke-opacity", 0.6)
+            .attr("stroke-width", 2)
+            .attr("d", line2);
+            
+        // Points for first variable
+        correlationSvg.selectAll(".point1")
+            .data(correlationData)
+            .enter()
+            .append("circle")
+            .attr("class", "point1")
+            .attr("cx", d => d.x * 60 + 30)
+            .attr("cy", d => 100 - d.y1 * 2)
+            .attr("r", 4)
+            .attr("fill", "#FF6B35");
+            
+        // Points for second variable
+        correlationSvg.selectAll(".point2")
+            .data(correlationData)
+            .enter()
+            .append("circle")
+            .attr("class", "point2")
+            .attr("cx", d => d.x * 60 + 30)
+            .attr("cy", d => 100 - d.y2 * 2)
+            .attr("r", 4)
+            .attr("fill", "#0047AB")
+            .attr("fill-opacity", 0.6);
+            
+        // Add legend
+        correlationSvg.append("circle")
+            .attr("cx", 30)
+            .attr("cy", 20)
+            .attr("r", 4)
+            .attr("fill", "#FF6B35");
+            
+        correlationSvg.append("text")
+            .attr("x", 40)
+            .attr("y", 24)
+            .text("変数A")
+            .attr("font-size", "12px")
+            .attr("fill", "#666");
+            
+        correlationSvg.append("circle")
+            .attr("cx", 100)
+            .attr("cy", 20)
+            .attr("r", 4)
+            .attr("fill", "#0047AB")
+            .attr("fill-opacity", 0.6);
+            
+        correlationSvg.append("text")
+            .attr("x", 110)
+            .attr("y", 24)
+            .text("変数B")
+            .attr("font-size", "12px")
+            .attr("fill", "#666");
+            
+        // D3.js visualization for causation
+        const causationSvg = d3.select("#causation-chart")
+            .append("svg")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("viewBox", "0 0 300 100");
+            
+        // Draw nodes
+        const nodes = [
+            {id: "A", x: 50, y: 50, label: "原因A"},
+            {id: "B", x: 150, y: 30, label: "結果B"},
+            {id: "C", x: 150, y: 70, label: "結果C"},
+            {id: "D", x: 250, y: 50, label: "最終結果D"}
+        ];
+        
+        // Draw edges
+        const edges = [
+            {source: "A", target: "B"},
+            {source: "A", target: "C"},
+            {source: "B", target: "D"},
+            {source: "C", target: "D"}
+        ];
+        
+        // Draw the arrows
+        edges.forEach(edge => {
+            const source = nodes.find(n => n.id === edge.source);
+            const target = nodes.find(n => n.id === edge.target);
+            
+            causationSvg.append("line")
+                .attr("x1", source.x)
+                .attr("y1", source.y)
+                .attr("x2", target.x)
+                .attr("y2", target.y)
+                .attr("stroke", "#4CAF50")
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrow)");
+                
+            // Add arrowhead
+            causationSvg.append("polygon")
+                .attr("points", "0,-3 6,0 0,3")
+                .attr("fill", "#4CAF50")
+                .attr("transform", `translate(${target.x - 6}, ${target.y}) rotate(${
+                    Math.atan2(target.y - source.y, target.x - source.x) * 180 / Math.PI
+                })`);
+        });
+        
+        // Draw the nodes
+        nodes.forEach(node => {
+            causationSvg.append("circle")
+                .attr("cx", node.x)
+                .attr("cy", node.y)
+                .attr("r", 15)
+                .attr("fill", "#4CAF50")
+                .attr("fill-opacity", 0.2)
+                .attr("stroke", "#4CAF50")
+                .attr("stroke-width", 2);
+                
+            causationSvg.append("text")
+                .attr("x", node.x)
+                .attr("y", node.y)
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "middle")
+                .attr("font-size", "12px")
+                .attr("fill", "#4CAF50")
+                .attr("font-weight", "bold")
+                .text(node.id);
+                
+            causationSvg.append("text")
+                .attr("x", node.x)
+                .attr("y", node.y + 25)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "10px")
+                .attr("fill", "#666")
+                .text(node.label);
+        });
+    </script>
+
+</body></html>

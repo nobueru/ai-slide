@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ひと言でまとめる技術</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1380px; height: 928px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 928px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .technique-card {
+            transition: transform 0.3s ease;
+        }
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .example-box {
+            position: relative;
+            border-radius: 8px;
+        }
+        .example-box::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+        .second-example::before {
+            border-bottom: 10px solid rgba(255, 107, 53, 0.1);
+        }
+        .first-example::before {
+            border-bottom: 10px solid rgba(76, 175, 80, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -left-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -right-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">ひと言でまとめる技術</h1>
+<div class="ml-auto flex items-center">
+<div class="bg-white bg-opacity-20 rounded-full px-3 py-1">
+<span class="text-white text-sm">重要度: ○○○○</span>
+</div>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-10">
+<!-- Second-class technique -->
+<div class="w-1/2 technique-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-down text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：なんとなくまとめる</h3>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>具体的な内容を羅列するだけ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>要点が不明確で印象に残りにくい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>聞き手が自分で意味を考える必要がある</span>
+</li>
+</ul>
+<div class="mt-4 example-box second-example bg-orange-50 bg-opacity-10 p-4 border border-orange-200">
+<p class="text-gray-700 italic">
+                            「今回の調査では、20代の利用率が高く、特に女性からの評価が良かったです。また、リピート率も前回より上がっていて、広告効果も見られました...」
+                        </p>
+</div>
+</div>
+<!-- First-class technique -->
+<div class="w-1/2 technique-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-up text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：抽象化してまとめる</h3>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>個別の事象から本質を抽出する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>簡潔な言葉で全体を表現できる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>聞き手の記憶に残りやすい</span>
+</li>
+</ul>
+<div class="mt-4 example-box first-example bg-green-50 bg-opacity-10 p-4 border border-green-200">
+<p class="text-gray-700 italic">
+                            「今回の調査結果は<strong>若年女性層への訴求力の高さ</strong>を示しており、これは我々の新しいマーケティング戦略の有効性を証明しています」
+                        </p>
+</div>
+</div>
+</div>
+<!-- Abstraction techniques section -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-md">
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>抽象化のテクニック
+                </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- Technique 1 -->
+<div class="bg-white p-5 rounded-lg shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+<i class="fas fa-search text-blue-800"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">共通点を見つける</h3>
+</div>
+<p class="text-gray-600">
+                            複数の事象や情報から共通する要素を見つけ、それを中心に据えてまとめる
+                        </p>
+</div>
+<!-- Technique 2 -->
+<div class="bg-white p-5 rounded-lg shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+<i class="fas fa-question text-blue-800"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">「なぜ」を考える</h3>
+</div>
+<p class="text-gray-600">
+                            表面的な事象ではなく、その背景にある理由や原因を考え、本質を抽出する
+                        </p>
+</div>
+<!-- Technique 3 -->
+<div class="bg-white p-5 rounded-lg shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+<i class="fas fa-bullseye text-blue-800"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">目的を意識する</h3>
+</div>
+<p class="text-gray-600">
+                            情報を伝える目的に照らし合わせて、最も重要な要素を中心にまとめる
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            11 / 50
+        </div>
+</div>
+
+</body></html>

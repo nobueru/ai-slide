@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>聴衆を惹きつける説明法</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 1116px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1116px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .story-element {
+            transition: all 0.3s ease;
+        }
+        .story-element:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">聴衆を惹きつける説明法</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-10">
+<!-- Second class technique -->
+<div class="comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md w-1/2">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-4">
+<i class="fas fa-arrow-down text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流：ポイントを説明する</h2>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>要点を箇条書きにして伝える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>論理的だが感情に訴えかけない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>聴衆の記憶に残りにくい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>情報は伝わるが行動喚起しにくい</span>
+</li>
+</ul>
+</div>
+<!-- First class technique -->
+<div class="comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md w-1/2">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-4">
+<i class="fas fa-arrow-up text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流：事件を起こして説明する</h2>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>ストーリーを通じて情報を伝える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>感情に訴えかけ記憶に残りやすい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>聴衆の共感を得やすい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>行動変容を促しやすい</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Storytelling effectiveness -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-6">
+<i class="fas fa-book-open text-blue-800 mr-2"></i>ストーリーテリングの効果
+                </h2>
+<!-- Story arc visualization -->
+<div class="relative h-48 mb-6" id="story-arc-container">
+<script>
+                        // Simple D3.js visualization of a story arc
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const width = 1100;
+                            const height = 160;
+                            
+                            const svg = d3.select("#story-arc-container")
+                                .append("svg")
+                                .attr("width", width)
+                                .attr("height", height);
+                            
+                            // Define the story arc points
+                            const points = [
+                                {x: 50, y: 100, label: "導入", icon: "flag"},
+                                {x: 250, y: 50, label: "事件発生", icon: "bolt"},
+                                {x: 450, y: 140, label: "葛藤", icon: "question"},
+                                {x: 650, y: 30, label: "クライマックス", icon: "fire"},
+                                {x: 850, y: 70, label: "解決", icon: "lightbulb"},
+                                {x: 1050, y: 100, label: "結論", icon: "check-circle"}
+                            ];
+                            
+                            // Draw the line
+                            const line = d3.line()
+                                .x(d => d.x)
+                                .y(d => d.y)
+                                .curve(d3.curveCardinal);
+                            
+                            svg.append("path")
+                                .datum(points)
+                                .attr("fill", "none")
+                                .attr("stroke", "#0047AB")
+                                .attr("stroke-width", 3)
+                                .attr("d", line);
+                            
+                            // Add points and labels
+                            const nodes = svg.selectAll(".story-node")
+                                .data(points)
+                                .enter()
+                                .append("g")
+                                .attr("class", "story-node")
+                                .attr("transform", d => `translate(${d.x}, ${d.y})`);
+                            
+                            nodes.append("circle")
+                                .attr("r", 10)
+                                .attr("fill", "#4CAF50");
+                            
+                            nodes.append("text")
+                                .attr("text-anchor", "middle")
+                                .attr("dy", -20)
+                                .attr("font-size", "14px")
+                                .attr("font-weight", "bold")
+                                .attr("fill", "#333")
+                                .text(d => d.label);
+                        });
+                    </script>
+</div>
+<!-- Storytelling elements -->
+<div class="grid grid-cols-3 gap-6">
+<div class="story-element bg-blue-50 p-5 rounded-lg border-t-4 border-blue-600">
+<div class="flex items-center mb-3">
+<i class="fas fa-heart text-red-500 text-2xl mr-3"></i>
+<h3 class="text-xl font-bold text-gray-800">感情の喚起</h3>
+</div>
+<p class="text-gray-600">
+                            物語は論理だけでなく感情に訴えかけることで、情報の記憶定着率を高め、共感を生み出します。
+                        </p>
+</div>
+<div class="story-element bg-blue-50 p-5 rounded-lg border-t-4 border-blue-600">
+<div class="flex items-center mb-3">
+<i class="fas fa-user-friends text-blue-500 text-2xl mr-3"></i>
+<h3 class="text-xl font-bold text-gray-800">キャラクター</h3>
+</div>
+<p class="text-gray-600">
+                            聴衆が共感できる登場人物を設定することで、メッセージの伝達効果が飛躍的に高まります。
+                        </p>
+</div>
+<div class="story-element bg-blue-50 p-5 rounded-lg border-t-4 border-blue-600">
+<div class="flex items-center mb-3">
+<i class="fas fa-mountain text-green-700 text-2xl mr-3"></i>
+<h3 class="text-xl font-bold text-gray-800">葛藤と解決</h3>
+</div>
+<p class="text-gray-600">
+                            課題と解決策を物語形式で提示することで、聴衆の理解と行動変容を促進します。
+                        </p>
+</div>
+</div>
+</div>
+<!-- Key takeaway -->
+<div class="mt-8 bg-blue-800 text-white p-4 rounded-lg">
+<div class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-300 text-2xl mr-3"></i>
+<p class="text-lg font-medium">
+                        単なる事実や数字の羅列よりも、ストーリー形式で「事件」を起こして説明することで、聴衆の記憶に残り、行動を促す説明ができます。
+                    </p>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            36 / 50
+        </div>
+</div>
+
+</body></html>

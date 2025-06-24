@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>効果的なメール作成法</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 914px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 914px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .email-card {
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .email-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .tip-card {
+            border-left: 4px solid #0047AB;
+            transition: transform 0.3s ease;
+        }
+        .tip-card:hover {
+            transform: translateY(-3px);
+        }
+        .email-icon {
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .email-preview {
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">効果的なメール作成法</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Email Comparison Section -->
+<div class="flex space-x-8 mb-10">
+<!-- Second Class Email -->
+<div class="w-1/2">
+<div class="flex items-center mb-4">
+<div class="email-icon bg-orange-100 mr-3">
+<i class="fas fa-envelope text-2xl text-orange-500"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">
+<span class="text-orange-500">二流：</span>短くまとめたメール
+                        </h2>
+</div>
+<div class="email-card second-class bg-gray-50 p-6 shadow-md h-64">
+<div class="mb-4">
+<p class="text-gray-600">
+<i class="fas fa-times-circle text-orange-500 mr-2"></i>
+                                単に文字数を減らすことに注力
+                            </p>
+<p class="text-gray-600 mt-2">
+<i class="fas fa-times-circle text-orange-500 mr-2"></i>
+                                重要度の区別がない情報の羅列
+                            </p>
+<p class="text-gray-600 mt-2">
+<i class="fas fa-times-circle text-orange-500 mr-2"></i>
+                                読み手の理解度を考慮していない
+                            </p>
+</div>
+<div class="email-preview bg-white p-4">
+<p class="text-sm text-gray-800 font-medium">【二流のメール例】</p>
+<p class="text-sm text-gray-600 mt-2">
+                                件名: 報告<br/>
+                                本文:<br/>
+                                先日の件、承知しました。検討した結果、A案で進めます。詳細は添付資料をご確認ください。来週会議を設定します。
+                            </p>
+</div>
+</div>
+</div>
+<!-- First Class Email -->
+<div class="w-1/2">
+<div class="flex items-center mb-4">
+<div class="email-icon bg-green-100 mr-3">
+<i class="fas fa-envelope-open-text text-2xl text-green-500"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">
+<span class="text-green-500">一流：</span>相手の負荷を減らすメール
+                        </h2>
+</div>
+<div class="email-card first-class bg-gray-50 p-6 shadow-md h-64">
+<div class="mb-4">
+<p class="text-gray-600">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                読み手の理解・行動コストを最小化
+                            </p>
+<p class="text-gray-600 mt-2">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                視覚的に情報の優先度を区別
+                            </p>
+<p class="text-gray-600 mt-2">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                必要な情報へのアクセスを容易にする
+                            </p>
+</div>
+<div class="email-preview bg-white p-4">
+<p class="text-sm text-gray-800 font-medium">【一流のメール例】</p>
+<p class="text-sm text-gray-600 mt-2">
+                                件名: 【回答必要・6/15まで】プロジェクトA案採用のご報告<br/>
+                                本文:<br/>
+                                ■結論：先日ご相談した件、A案で進めることに決定しました<br/>
+                                ■依頼：添付資料の2ページ目をご確認いただけますか<br/>
+                                ■次回：6/20(月) 10:00～ 会議室Bで詳細打合せを実施します
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Email Readability Tips -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>読みやすさを高める工夫
+                </h2>
+<div class="grid grid-cols-3 gap-5">
+<!-- Tip 1 -->
+<div class="tip-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-heading text-white"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">明確な件名</h3>
+</div>
+<p class="text-gray-600">
+                            目的、期限、重要度が一目でわかる件名を付ける。【回答必要】【緊急】などの接頭語を効果的に活用する。
+                        </p>
+</div>
+<!-- Tip 2 -->
+<div class="tip-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-layer-group text-white"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">構造化された本文</h3>
+</div>
+<p class="text-gray-600">
+                            「■結論」「■依頼事項」「■背景」など、記号を使って情報を整理。視認性を高め、必要な情報を素早く把握できるようにする。
+                        </p>
+</div>
+<!-- Tip 3 -->
+<div class="tip-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-file-alt text-white"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">添付資料の工夫</h3>
+</div>
+<p class="text-gray-600">
+                            添付ファイルがある場合、どのページの何を見るべきかを明記。必要に応じて資料の要点をメール本文に記載する。
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            43 / 50
+        </div>
+</div>
+
+</body></html>

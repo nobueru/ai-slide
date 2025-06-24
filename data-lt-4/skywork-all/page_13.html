@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chapter 2: 説明の組み立て方</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 944px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 944px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .chapter-header {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .technique-card {
+            transition: transform 0.3s ease;
+            border-left: 4px solid;
+        }
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[500px] h-[500px] -right-[200px] -bottom-[200px]"></div>
+<div class="geometric-shape w-[400px] h-[400px] -left-[150px] -top-[150px]"></div>
+<!-- Chapter header -->
+<div class="chapter-header h-32 flex items-center pl-16">
+<div>
+<h2 class="text-xl font-medium text-blue-100">Chapter 2</h2>
+<h1 class="text-4xl font-bold text-white">説明の組み立て方</h1>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-8">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-xl text-gray-600">
+                    説明の内容だけでなく<span class="font-bold text-blue-800">「構造」</span>も重要です。このチャプターでは、様々な状況に応じた説明の組み立て方を学びます。説明の構造を工夫することで、聞き手の理解度と満足度が大きく向上します。
+                </p>
+</div>
+<!-- Key techniques grid -->
+<div class="grid grid-cols-2 gap-6">
+<!-- Technique 1 -->
+<div class="bg-gray-50 rounded-lg shadow-md p-5 flex">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-clock text-blue-800 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">説明の適正時間</h3>
+<div class="flex space-x-2 mb-1">
+<span class="text-orange-500"><i class="fas fa-arrow-down mr-1"></i>二流:</span>
+<span class="text-gray-600">説明のボリュームで設定する</span>
+</div>
+<div class="flex space-x-2">
+<span class="text-green-500"><i class="fas fa-arrow-up mr-1"></i>一流:</span>
+<span class="text-gray-600">相手の許容時間で設定する</span>
+</div>
+</div>
+</div>
+<!-- Technique 2 -->
+<div class="bg-gray-50 rounded-lg shadow-md p-5 flex">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-brain text-blue-800 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">説明の準備</h3>
+<div class="flex space-x-2 mb-1">
+<span class="text-orange-500"><i class="fas fa-arrow-down mr-1"></i>二流:</span>
+<span class="text-gray-600">結論から考える</span>
+</div>
+<div class="flex space-x-2">
+<span class="text-green-500"><i class="fas fa-arrow-up mr-1"></i>一流:</span>
+<span class="text-gray-600">相手の頭の中から考えはじめる</span>
+</div>
+</div>
+</div>
+<!-- Technique 3 -->
+<div class="bg-gray-50 rounded-lg shadow-md p-5 flex">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-sitemap text-blue-800 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">論理的思考法</h3>
+<div class="flex space-x-2 mb-1">
+<span class="text-gray-600">演繹法: 前提を重視する</span>
+</div>
+<div class="flex space-x-2">
+<span class="text-gray-600">帰納法: 複数の事実から仮説を導く</span>
+</div>
+</div>
+</div>
+<!-- Technique 4 -->
+<div class="bg-gray-50 rounded-lg shadow-md p-5 flex">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-project-diagram text-blue-800 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">問題解決の説明</h3>
+<div class="flex space-x-2 mb-1">
+<span class="text-orange-500"><i class="fas fa-arrow-down mr-1"></i>二流:</span>
+<span class="text-gray-600">問題を分解して考える</span>
+</div>
+<div class="flex space-x-2">
+<span class="text-green-500"><i class="fas fa-arrow-up mr-1"></i>一流:</span>
+<span class="text-gray-600">3種のツリーを駆使して考える</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional techniques -->
+<div class="mt-8">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-plus-circle text-blue-800 mr-2"></i>このチャプターで学べる他のテクニック
+                </h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="technique-card first-class bg-gray-50 p-4 rounded-lg shadow-md">
+<h4 class="font-bold text-gray-800">体系的なまとめ方</h4>
+<p class="text-sm text-gray-600">「総論→各論→具体論」の型でまとめる</p>
+</div>
+<div class="technique-card first-class bg-gray-50 p-4 rounded-lg shadow-md">
+<h4 class="font-bold text-gray-800">急な報告での説明</h4>
+<p class="text-sm text-gray-600">「事実」から「所感」を語る</p>
+</div>
+<div class="technique-card first-class bg-gray-50 p-4 rounded-lg shadow-md">
+<h4 class="font-bold text-gray-800">道案内のスキル</h4>
+<p class="text-sm text-gray-600">目的地から説明する</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            13 / 50
+        </div>
+</div>
+
+</body></html>

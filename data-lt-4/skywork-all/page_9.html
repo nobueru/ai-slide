@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明の詳細さ：共通体験を活用する</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 926px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 926px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-panel {
+            transition: transform 0.3s ease;
+        }
+        .comparison-panel:hover {
+            transform: translateY(-5px);
+        }
+        .second-class-border {
+            border-top: 4px solid #FF6B35;
+        }
+        .first-class-border {
+            border-top: 4px solid #4CAF50;
+        }
+        .example-dialog {
+            position: relative;
+            padding-left: 40px;
+        }
+        .example-dialog:before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ddd;
+        }
+        .dialog-icon {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+        }
+        .importance-indicator {
+            display: inline-flex;
+            align-items: center;
+        }
+        .importance-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 4px;
+            background-color: #0047AB;
+        }
+        .importance-dot.empty {
+            background-color: transparent;
+            border: 1px solid #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説明の詳細さ：共通体験を活用する</h1>
+<div class="ml-auto importance-indicator">
+<div class="importance-dot"></div>
+<div class="importance-dot"></div>
+<div class="importance-dot"></div>
+<div class="importance-dot empty"></div>
+<div class="importance-dot empty"></div>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<div class="grid grid-cols-2 gap-10">
+<!-- Second Class Explanation -->
+<div class="comparison-panel second-class-border bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流：説明しすぎてくどくなる</h2>
+</div>
+<p class="text-gray-600 mb-4">
+                        相手の知識レベルを考慮せず、全ての情報を詳細に伝えようとします。結果として：
+                    </p>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>聞き手が既に知っている情報も繰り返し説明してしまう</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>説明が長くなり、重要なポイントが埋もれてしまう</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>聞き手の集中力が途切れ、理解度が低下する</span>
+</li>
+</ul>
+<div class="bg-white p-4 rounded-lg border border-gray-200">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-comment-alt text-orange-500 mr-2"></i>例：スマートフォンの使い方
+                        </h3>
+<div class="example-dialog">
+<div class="dialog-icon bg-orange-100 text-orange-500">
+<i class="fas fa-user-tie text-xs"></i>
+</div>
+<p class="text-gray-600 mb-2">「まず電源ボタンを押して、画面をタップします。次に、アプリアイコンをタップします。アプリが起動したら、設定ボタンをタップします。設定画面が開いたら...」</p>
+<p class="text-sm text-orange-500 italic">（基本操作から全て説明し、相手を退屈させてしまう）</p>
+</div>
+</div>
+</div>
+<!-- First Class Explanation -->
+<div class="comparison-panel first-class-border bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流：共通体験のレベルに合わせて説明する</h2>
+</div>
+<p class="text-gray-600 mb-4">
+                        聞き手との共通体験や知識を把握し、そのレベルからスタートして説明します：
+                    </p>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>相手が既に知っていることは前提として省略できる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>本当に必要な情報だけに焦点を当てられる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>効率的な説明で相手の理解度と満足度が向上する</span>
+</li>
+</ul>
+<div class="bg-white p-4 rounded-lg border border-gray-200">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-comment-alt text-green-500 mr-2"></i>例：スマートフォンの使い方
+                        </h3>
+<div class="example-dialog">
+<div class="dialog-icon bg-green-100 text-green-500">
+<i class="fas fa-user-tie text-xs"></i>
+</div>
+<p class="text-gray-600 mb-2">「設定アプリの中の『セキュリティ』セクションに移動して、『生体認証』をタップしてください。」</p>
+<p class="text-sm text-green-500 italic">（相手がスマホの基本操作を知っていると判断し、必要な情報だけを提供）</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+<h3 class="text-xl font-bold text-gray-800 mb-2">
+<i class="fas fa-lightbulb text-blue-500 mr-2"></i>ポイント
+                </h3>
+<p class="text-gray-700">
+                    説明を始める前に、相手の知識レベルや経験を確認することが重要です。「〜については既にご存知ですか？」と尋ねることで、適切な詳細さのレベルを設定できます。共通の知識基盤から始めることで、説明の効率と効果が大幅に向上します。
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            9 / 50
+        </div>
+</div>
+
+</body></html>
