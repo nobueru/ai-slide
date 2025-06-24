@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIモデル別スライド生成能力まとめ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.05) 0%, 
+          rgba(255,154,0,0.05) 10%, 
+          rgba(208,222,33,0.05) 20%, 
+          rgba(79,220,74,0.05) 30%, 
+          rgba(63,218,216,0.05) 40%, 
+          rgba(47,201,226,0.05) 50%, 
+          rgba(28,127,238,0.05) 60%, 
+          rgba(95,21,242,0.05) 70%, 
+          rgba(186,12,248,0.05) 80%, 
+          rgba(251,7,217,0.05) 90%, 
+          rgba(255,0,0,0.05) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .ai-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+      
+      .ai-card:hover {
+        transform: translateX(5px);
+      }
+      
+      .manus-card {
+        border-left: 4px solid #22c55e;
+      }
+      
+      .genspark-card {
+        border-left: 4px solid #0ea5e9;
+      }
+      
+      .skywork-card {
+        border-left: 4px solid #8b5cf6;
+      }
+      
+      .claude-card {
+        border-left: 4px solid #f97316;
+      }
+      
+      .gemini-card {
+        border-left: 4px solid #6b7280;
+      }
+      
+      .chatgpt-card {
+        border-left: 4px solid #ef4444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container flex flex-col p-12 relative">
+      <div class="rainbow-circle"></div>
+      
+      <div class="z-10 w-full flex flex-col justify-between" style="min-height: 680px;">
+        <div>
+          <h1 class="text-4xl font-bold mb-6 rainbow-border inline-block">AIモデル別スライド生成能力まとめ</h1>
+          
+          <div class="grid grid-cols-2 gap-6 mt-4">
+            <div class="ai-card manus-card bg-white p-4 rounded-lg shadow-sm">
+              <h2 class="text-xl font-bold mb-2 flex items-center">
+                <span class="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center text-white mr-3">M</span>
+                Manus
+              </h2>
+              <p class="text-base mb-2"><span class="font-semibold">評価：</span>一枚スライド <span class="text-green-600 font-bold">5点</span> / 学習用資料集 <span class="text-purple-600 font-bold">3点</span></p>
+              <ul class="list-disc pl-6 text-sm space-y-1">
+                <li>要件をしっかり満たす</li>
+                <li>デザインも良い</li>
+                <li>JavaScriptを活用した動的な表現が可能</li>
+                <li>プロンプト次第でさらに高品質なスライドが期待できる</li>
+              </ul>
+            </div>
+            
+            <div class="ai-card genspark-card bg-white p-4 rounded-lg shadow-sm">
+              <h2 class="text-xl font-bold mb-2 flex items-center">
+                <span class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-white mr-3">G</span>
+                Genspark
+              </h2>
+              <p class="text-base mb-2"><span class="font-semibold">評価：</span>一枚スライド <span class="text-blue-600 font-bold">4点</span> / 学習用資料集 <span class="text-gray-500">未検証</span></p>
+              <ul class="list-disc pl-6 text-sm space-y-1">
+                <li>要件を満たしている</li>
+                <li>シンプルだがかなり見やすいデザイン</li>
+                <li>一枚スライドの生成に特に優れている</li>
+              </ul>
+            </div>
+            
+            <div class="ai-card skywork-card bg-white p-4 rounded-lg shadow-sm">
+              <h2 class="text-xl font-bold mb-2 flex items-center">
+                <span class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white mr-3">S</span>
+                skywork
+              </h2>
+              <p class="text-base mb-2"><span class="font-semibold">評価：</span>一枚スライド <span class="text-gray-500">未検証</span> / 学習用資料集 <span class="text-blue-600 font-bold">4点</span></p>
+              <ul class="list-disc pl-6 text-sm space-y-1">
+                <li>良くも悪くも情報を勝手に付け足してくれる</li>
+                <li>デザインはシンプルだがかなり見やすい</li>
+                <li>学習用資料集の作成に特に優れている</li>
+              </ul>
+            </div>
+            
+            <div class="ai-card claude-card bg-white p-4 rounded-lg shadow-sm">
+              <h2 class="text-xl font-bold mb-2 flex items-center">
+                <span class="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center text-white mr-3">C</span>
+                Claude
+              </h2>
+              <p class="text-base mb-2"><span class="font-semibold">評価：</span>一枚スライド <span class="text-purple-600 font-bold">3点</span> / 学習用資料集 <span class="text-orange-600 font-bold">2点</span></p>
+              <ul class="list-disc pl-6 text-sm space-y-1">
+                <li>最低限の要件 - いい感じのデザイン</li>
+                <li>出力が長くなると要件を満たしにくくなる</li>
+                <li>デザインがイケてる</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 p-5 rounded-lg border border-gray-200">
+            <h3 class="text-xl font-semibold mb-3">業務への示唆</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li class="text-base">
+                <span class="font-semibold">一枚スライド作成：</span>
+                Manus または Genspark が最適。特に視覚的な魅力と要件の充足度が高い。
+              </li>
+              <li class="text-base">
+                <span class="font-semibold">学習用資料集作成：</span>
+                skywork が最適。情報の網羅性と見やすさのバランスが良い。
+              </li>
+              <li class="text-base">
+                <span class="font-semibold">プロンプト設計の重要性：</span>
+                どのAIモデルでも、明確な要件とデザイン指示が品質を大きく左右する。
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="text-right text-sm text-gray-500 mt-4">
+          <p>社内発表資料 | 2025年6月23日</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

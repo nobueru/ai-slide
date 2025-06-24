@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検証詳細（学習用資料集）</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-gradient {
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,0.7) 0%, 
+          rgba(255,154,0,0.7) 10%, 
+          rgba(208,222,33,0.7) 20%, 
+          rgba(79,220,74,0.7) 30%, 
+          rgba(63,218,216,0.7) 40%, 
+          rgba(47,201,226,0.7) 50%, 
+          rgba(28,127,238,0.7) 60%, 
+          rgba(95,21,242,0.7) 70%, 
+          rgba(186,12,248,0.7) 80%, 
+          rgba(251,7,217,0.7) 90%, 
+          rgba(255,0,0,0.7) 100%);
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.05) 0%, 
+          rgba(255,154,0,0.05) 10%, 
+          rgba(208,222,33,0.05) 20%, 
+          rgba(79,220,74,0.05) 30%, 
+          rgba(63,218,216,0.05) 40%, 
+          rgba(47,201,226,0.05) 50%, 
+          rgba(28,127,238,0.05) 60%, 
+          rgba(95,21,242,0.05) 70%, 
+          rgba(186,12,248,0.05) 80%, 
+          rgba(251,7,217,0.05) 90%, 
+          rgba(255,0,0,0.05) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .process-step {
+        transition: all 0.3s ease;
+      }
+      
+      .process-step:hover {
+        transform: translateY(-3px);
+      }
+      
+      .code-block {
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #333;
+        border-left: 4px solid #6366f1;
+      }
+      
+      .tab-content {
+        display: none;
+      }
+      
+      .tab-content.active {
+        display: block;
+      }
+      
+      .tab-button {
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+      }
+      
+      .tab-button.active {
+        border-bottom: 3px solid #6366f1;
+        color: #4f46e5;
+      }
+      
+      .tab-button:hover:not(.active) {
+        border-bottom: 3px solid #c7d2fe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container flex flex-col p-16 relative">
+      <div class="rainbow-circle"></div>
+      
+      <div class="z-10">
+        <h1 class="text-4xl font-bold mb-8 rainbow-border inline-block">検証詳細（学習用資料集）</h1>
+        
+        <div class="flex space-x-4 mb-6">
+          <button class="tab-button active px-4 py-2 font-medium text-lg" data-tab="process">検証プロセス</button>
+          <button class="tab-button px-4 py-2 font-medium text-lg" data-tab="prompt">プロンプト</button>
+          <button class="tab-button px-4 py-2 font-medium text-lg" data-tab="csv">CSVデータ</button>
+          <button class="tab-button px-4 py-2 font-medium text-lg" data-tab="criteria">評価基準</button>
+        </div>
+        
+        <div class="tab-content active" id="process">
+          <div class="grid grid-cols-2 gap-10">
+            <!-- 左側：検証プロセス -->
+            <div>
+              <h2 class="text-2xl font-bold mb-6">検証プロセス</h2>
+              
+              <div class="space-y-6">
+                <div class="process-step flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">1</div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-1">プロンプトとCSVファイル投入</h3>
+                    <p class="text-base text-gray-700">書籍「説明の一流、二流、三流」の内容を学習用資料集としてまとめるプロンプトとCSVデータを各AIに投入</p>
+                  </div>
+                </div>
+                
+                <div class="process-step flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">2</div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-1">質問応答</h3>
+                    <p class="text-base text-gray-700">AIからの質問に回答し、スライド生成を促進</p>
+                  </div>
+                </div>
+                
+                <div class="process-step flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">3</div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-1">サンプルスライド確認</h3>
+                    <p class="text-base text-gray-700">AIが生成したサンプルスライドを確認し、フィードバック</p>
+                  </div>
+                </div>
+                
+                <div class="process-step flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">4</div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-1">スライド生成</h3>
+                    <p class="text-base text-gray-700">各AIが最終的なスライドを生成</p>
+                  </div>
+                </div>
+                
+                <div class="process-step flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">5</div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-1">評価</h3>
+                    <p class="text-base text-gray-700">評価基準に基づいて各AIの生成結果を評価</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 右側：検証対象AIと検証ポイント -->
+            <div>
+              <h2 class="text-2xl font-bold mb-6">検証対象AI</h2>
+              <div class="bg-white p-5 rounded-lg shadow-sm mb-8">
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="text-base">• ChatGPT o4-mini-high</div>
+                  <div class="text-base">• Claude</div>
+                  <div class="text-base">• Gemini</div>
+                  <div class="text-base">• Manus</div>
+                  <div class="text-base">• skywork</div>
+                </div>
+              </div>
+              
+              <h2 class="text-2xl font-bold mb-6">検証ポイント</h2>
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-5 rounded-lg border border-gray-200">
+                <ul class="list-disc pl-6 space-y-3">
+                  <li class="text-base">
+                    <span class="font-semibold">スライド構成の適切さ</span>：概要、チャプター、比較項目、クロージングの構成
+                  </li>
+                  <li class="text-base">
+                    <span class="font-semibold">比較表現の分かりやすさ</span>：一流、二流の比較を視覚的に表現できているか
+                  </li>
+                  <li class="text-base">
+                    <span class="font-semibold">デザイン性</span>：参考サイト（Dia）のデザインを反映できているか
+                  </li>
+                  <li class="text-base">
+                    <span class="font-semibold">情報の網羅性</span>：CSVデータの内容を適切に反映しているか
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="prompt">
+          <h2 class="text-2xl font-bold mb-6">プロンプト（抜粋）</h2>
+          <div class="code-block mb-6 text-sm h-96 overflow-y-auto">
+## 概要
+本の内容をスライドにしてもらいます。
+目的はスライドにすることで、今後その本の理解を早めたいからです。
+
+## スライド構成
+### 1. 概要部分（約2ページ）
+a. 本のタイトルや画像、著者、概要
+b. チャプター一覧
+
+### 2. メインコンテンツ
+- チャプターを1枚のスライドで出力（コンテンツの途中に挟む）
+  - スライドの分類目的
+- 比較項目（一流、二流）を1比較1枚、もしくは複数比較を1枚で表現
+	- わかりやすい方法でOK
+	- ここの比較の見やすさ、理解のしやすさが今回のスライドでキーポイントです
+	
+### 3. クロージング
+- 関連著書
+- その他いい感じに
+
+### デザイン
+- Dia（https://www.diabrowser.com/）というWebサイトのデザインが好きなのでこのWebサイトを参考にデザインを行って。
+	- もしこのサイトのデザインの理解があまりできていないのなら正直に言って、その場合は私がイメージ画像を添付します。
+
+## スライド内容
+
+### 本の概要
+- Amazonの「説明の一流、二流、三流」リンク：https://amzn.asia/d/h7GMDr2
+- 表紙の画像リンク：https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg
+- 著者：桐生 稔（きりゅう みのる）
+- 著者のその他著書：
+	- 雑談の一流、二流、三流：https://amzn.asia/d/52IwSCt
+	- 質問の一流、二流、三流：https://amzn.asia/d/2HT3Vt2
+- Chapter
+  1. すごく伝わる説明
+  2. 説明の組み立て方
+  3. 説得力が増す説明
+  4. プレゼンや人前での説明
+  5. リモート・メールでの説明
+  6. 説明上手になる心得
+- 紹介：
+  - **すごく伝わる説明には、具体的な法則があります。しかも意外と簡単です。本書ではそれを45項目で学ぶことができます。**一つの項目に対して、**ダメレベル(三流レベル)、普通レベル(二流レベル)、優秀なレベル(一流レベル)**の3つの段階で解説しているので、自分がどのレベルかわかり、どのように改善すれば良いのかがよくわかります。
+
+### 本の内容
+添付したCSVを参考にしてください
+- IDは無視してください
+- ページは著書の掲載ページです
+- 表示レベルは、個人的な（私的な）重要度です
+          </div>
+        </div>
+        
+        <div class="tab-content" id="csv">
+          <h2 class="text-2xl font-bold mb-6">CSVデータ（抜粋）</h2>
+          <div class="bg-white rounded-lg shadow-sm overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">チャプター</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">項目</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">三流</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">二流</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">一流</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ページ</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">表示レベル</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                <tr>
+                  <td class="px-4 py-3">1</td>
+                  <td class="px-4 py-3">すごく伝わる説明</td>
+                  <td class="px-4 py-3">話の説明</td>
+                  <td class="px-4 py-3">話の全体像を説明せず、いきなり細部から話す</td>
+                  <td class="px-4 py-3">モレなく、ダブりなく話す</td>
+                  <td class="px-4 py-3">大胆に削り、真芯にフォーカスして話す</td>
+                  <td class="px-4 py-3">16</td>
+                  <td class="px-4 py-3">1</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-4 py-3">2</td>
+                  <td class="px-4 py-3">すごく伝わる説明</td>
+                  <td class="px-4 py-3">言葉の説明</td>
+                  <td class="px-4 py-3">専門用語や略語を多用する</td>
+                  <td class="px-4 py-3">専門用語を使うときは、言い換えや補足をする</td>
+                  <td class="px-4 py-3">相手の知識レベルに合わせて、言葉を選ぶ</td>
+                  <td class="px-4 py-3">22</td>
+                  <td class="px-4 py-3">1</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">3</td>
+                  <td class="px-4 py-3">すごく伝わる説明</td>
+                  <td class="px-4 py-3">数字の説明</td>
+                  <td class="px-4 py-3">数字を羅列する</td>
+                  <td class="px-4 py-3">数字に意味づけをする</td>
+                  <td class="px-4 py-3">数字を身近なものに例える</td>
+                  <td class="px-4 py-3">28</td>
+                  <td class="px-4 py-3">1</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-4 py-3">4</td>
+                  <td class="px-4 py-3">すごく伝わる説明</td>
+                  <td class="px-4 py-3">図解の説明</td>
+                  <td class="px-4 py-3">図解を使わない</td>
+                  <td class="px-4 py-3">図解を使う</td>
+                  <td class="px-4 py-3">図解を使い、さらに言葉で補足する</td>
+                  <td class="px-4 py-3">34</td>
+                  <td class="px-4 py-3">2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-gray-500 mt-3">※ CSVデータは全45項目あり、上記は一部抜粋です</p>
+        </div>
+        
+        <div class="tab-content" id="criteria">
+          <h2 class="text-2xl font-bold mb-6">評価基準</h2>
+          <div class="bg-white p-5 rounded-lg shadow-sm">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left pb-2 w-1/6">評価</th>
+                  <th class="text-left pb-2 w-1/4">ランク名</th>
+                  <th class="text-left pb-2">典型的な印象</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+                      <span class="font-bold">5</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">卓越</td>
+                  <td class="py-2">「このまま公開資料に採用したい」レベルの完成度</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+                      <span class="font-bold">4</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">優秀</td>
+                  <td class="py-2">「社内外で十分に使える。もう一歩で傑作」</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
+                      <span class="font-bold">3</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">良好</td>
+                  <td class="py-2">「普通に使えるが、比較すると埋もれがち」</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-orange-500 mr-2"></div>
+                      <span class="font-bold">2</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">弱い</td>
+                  <td class="py-2">「会議で使う前に大幅なブラッシュアップ必須」</td>
+                </tr>
+                <tr>
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
+                      <span class="font-bold">1</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">不適</td>
+                  <td class="py-2">「最初から作り直した方が早い」</td>
+                </tr>
+                <tr>
+                  <td class="py-2">
+                    <div class="flex items-center">
+                      <div class="w-4 h-4 rounded-full bg-gray-500 mr-2"></div>
+                      <span class="font-bold">0</span>
+                    </div>
+                  </td>
+                  <td class="py-2 font-medium">エラー</td>
+                  <td class="py-2">「生成中にエラーが起こる」</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-8 right-8 z-10 text-sm text-gray-500">
+        <p>社内発表資料 | 2025年6月23日</p>
+      </div>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            button.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+

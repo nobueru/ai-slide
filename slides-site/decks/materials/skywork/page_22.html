@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説得するための技術</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 1156px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1156px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+            z-index: 1;
+        }
+        .comparison-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .prep-step {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .second-class .prep-step {
+            background-color: #FF6B35;
+        }
+        .first-class .prep-step {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -top-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10 relative">
+<h1 class="text-3xl font-bold text-white">説得するための技術</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10 relative">
+<!-- PREP Method Explanation -->
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">
+<i class="fas fa-bullhorn text-blue-800 mr-2"></i>PREP法とは
+                </h2>
+<p class="text-lg text-gray-600">
+                    PREP法は「Point（要点）→ Reason（理由）→ Example（例）→ Point（要点）」の順で説明する構造化された説得テクニックです。シンプルながら効果的な説明方法として広く使われています。
+                </p>
+</div>
+<!-- Comparison Section -->
+<div class="grid grid-cols-2 gap-8 mb-8">
+<!-- Second Class -->
+<div class="comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：標準的なPREP法</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">P</div>
+<div>
+<h4 class="font-bold text-gray-700">Point（要点）</h4>
+<p class="text-gray-600">最初に結論や主張を述べる</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">R</div>
+<div>
+<h4 class="font-bold text-gray-700">Reason（理由）</h4>
+<p class="text-gray-600">主張の根拠や理由を説明する</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">E</div>
+<div>
+<h4 class="font-bold text-gray-700">Example（例）</h4>
+<p class="text-gray-600">具体例を挙げて理解を促進する</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">P</div>
+<div>
+<h4 class="font-bold text-gray-700">Point（要点）</h4>
+<p class="text-gray-600">再度結論を強調して締めくくる</p>
+</div>
+</div>
+</div>
+<div class="mt-4 p-3 bg-orange-50 rounded-md">
+<p class="text-orange-700">
+<i class="fas fa-exclamation-circle mr-2"></i>
+                            どんな場面でも同じ順序で説明するため、状況によっては説得力が不足することがある
+                        </p>
+</div>
+</div>
+<!-- First Class -->
+<div class="comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：状況に応じたPREP法</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">E</div>
+<div>
+<h4 class="font-bold text-gray-700">Example（例）から始める</h4>
+<p class="text-gray-600">興味を引く具体例から入る</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">R</div>
+<div>
+<h4 class="font-bold text-gray-700">Reason（理由）を説明</h4>
+<p class="text-gray-600">例に関連する理由や分析を提示</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">P</div>
+<div>
+<h4 class="font-bold text-gray-700">Point（要点）を伝える</h4>
+<p class="text-gray-600">理由から導かれる結論を明確に</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="prep-step mr-4 flex-shrink-0">P</div>
+<div>
+<h4 class="font-bold text-gray-700">Point（要点）を強調</h4>
+<p class="text-gray-600">行動を促す言葉で締めくくる</p>
+</div>
+</div>
+</div>
+<div class="mt-4 p-3 bg-green-50 rounded-md">
+<p class="text-green-700">
+<i class="fas fa-lightbulb mr-2"></i>
+                            相手や状況に応じて順序を変えることで、より関心を引き、説得力が高まる
+                        </p>
+</div>
+</div>
+</div>
+<!-- Situation-specific Approaches -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-4">
+<i class="fas fa-random text-blue-800 mr-2"></i>状況別アプローチ
+                </h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-blue-50 p-4 rounded-lg">
+<h4 class="font-bold text-blue-800 mb-2">
+<i class="fas fa-user-tie mr-2"></i>経営層への報告
+                        </h4>
+<p class="text-gray-700">
+                            P→R→E→P（標準順）：結論から入り、迅速に要点を把握してもらう
+                        </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg">
+<h4 class="font-bold text-blue-800 mb-2">
+<i class="fas fa-users mr-2"></i>チームミーティング
+                        </h4>
+<p class="text-gray-700">
+                            E→R→P→P（変形）：身近な例から入り、共感を得てから提案する
+                        </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg">
+<h4 class="font-bold text-blue-800 mb-2">
+<i class="fas fa-handshake mr-2"></i>クライアントへの提案
+                        </h4>
+<p class="text-gray-700">
+                            E→P→R→P（変形）：インパクトのある例で興味を引き、すぐに提案する
+                        </p>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg">
+<h4 class="font-bold text-blue-800 mb-2">
+<i class="fas fa-exclamation-triangle mr-2"></i>緊急事態の報告
+                        </h4>
+<p class="text-gray-700">
+                            P→E→R→P（変形）：重要な結論を先に伝え、すぐに具体例で状況を説明
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            22 / 50
+        </div>
+</div>
+
+</body></html>

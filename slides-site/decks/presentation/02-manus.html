@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景と目的</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-gradient {
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,0.7) 0%, 
+          rgba(255,154,0,0.7) 10%, 
+          rgba(208,222,33,0.7) 20%, 
+          rgba(79,220,74,0.7) 30%, 
+          rgba(63,218,216,0.7) 40%, 
+          rgba(47,201,226,0.7) 50%, 
+          rgba(28,127,238,0.7) 60%, 
+          rgba(95,21,242,0.7) 70%, 
+          rgba(186,12,248,0.7) 80%, 
+          rgba(251,7,217,0.7) 90%, 
+          rgba(255,0,0,0.7) 100%);
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.05) 0%, 
+          rgba(255,154,0,0.05) 10%, 
+          rgba(208,222,33,0.05) 20%, 
+          rgba(79,220,74,0.05) 30%, 
+          rgba(63,218,216,0.05) 40%, 
+          rgba(47,201,226,0.05) 50%, 
+          rgba(28,127,238,0.05) 60%, 
+          rgba(95,21,242,0.05) 70%, 
+          rgba(186,12,248,0.05) 80%, 
+          rgba(251,7,217,0.05) 90%, 
+          rgba(255,0,0,0.05) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .feature-card {
+        transition: all 0.3s ease;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container flex flex-col p-16 relative">
+      <div class="rainbow-circle"></div>
+      
+      <div class="z-10">
+        <h1 class="text-4xl font-bold mb-12 rainbow-border inline-block">背景と目的</h1>
+        
+        <div class="grid grid-cols-2 gap-12 mt-8">
+          <div class="feature-card bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">背景</h2>
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+              <li>生成AIの進化により、スライド作成能力も向上している</li>
+              <li>各AIモデル・プラットフォーム間で品質差が存在する</li>
+              <li>エンジニアと非エンジニアが共に活用できるツールの選定が必要</li>
+              <li>視覚的な理解と実用性の両立が求められている</li>
+            </ul>
+          </div>
+          
+          <div class="feature-card bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">目的</h2>
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+              <li>各AIモデル・プラットフォームのスライド生成能力を客観的に評価</li>
+              <li>デザイン性と理解容易性の観点から最適なツールを特定</li>
+              <li>業務効率化のための具体的な活用方法を提案</li>
+              <li>10人程度のエンジニアと非エンジニアが活用できる指針の作成</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="text-xl font-semibold mb-3">検証のゴール</h3>
+          <p class="text-lg">
+            <span class="font-bold">どのAIモデル・プラットフォームが、どんな違いがあるかを視覚的に認知し、</span>
+            今後の具体的な業務に役立てるための指針を得ること
+          </p>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-8 right-8 z-10 text-sm text-gray-500">
+        <p>社内発表資料 | 2025年6月23日</p>
+      </div>
+    </div>
+  </body>
+</html>
+

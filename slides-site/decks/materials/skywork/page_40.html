@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>商品説明の極意</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 912px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 912px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .feature-item, .benefit-item {
+            position: relative;
+            padding-left: 28px;
+        }
+        .feature-item:before, .benefit-item:before {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        .feature-item:before {
+            content: "\f15c"; /* document icon */
+            color: #FF6B35;
+        }
+        .benefit-item:before {
+            content: "\f164"; /* thumbs up icon */
+            color: #4CAF50;
+        }
+        .arrow-path {
+            stroke: #0047AB;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5, 5;
+        }
+        .arrow-head {
+            fill: #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[500px] h-[500px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">商品説明の極意</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<p class="text-lg text-gray-700 mb-6">
+                効果的な商品説明は、機能の羅列ではなく、購入後の顧客体験にフォーカスすることで説得力が大幅に向上します。
+            </p>
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-8">
+<!-- Second class approach -->
+<div class="comparison-card second-class w-1/2 bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-cogs text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：商品の機能を説明する</h3>
+</div>
+<div class="space-y-3 mb-6">
+<div class="feature-item text-gray-600">
+                            スペックや性能を詳細に説明
+                        </div>
+<div class="feature-item text-gray-600">
+                            他社製品との比較データを提示
+                        </div>
+<div class="feature-item text-gray-600">
+                            機能の使い方を詳しく解説
+                        </div>
+</div>
+<div class="bg-orange-50 p-4 rounded border-l-4 border-orange-400">
+<p class="text-sm text-orange-800">
+<i class="fas fa-exclamation-triangle mr-2"></i>
+                            機能を伝えるだけでは、顧客の心に響かず、購入意欲を高めることが難しい
+                        </p>
+</div>
+</div>
+<!-- First class approach -->
+<div class="comparison-card first-class w-1/2 bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-rocket text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：商品購入後の未来を説明する</h3>
+</div>
+<div class="space-y-3 mb-6">
+<div class="benefit-item text-gray-600">
+                            商品使用によって得られる具体的なメリット
+                        </div>
+<div class="benefit-item text-gray-600">
+                            顧客の生活や業務がどう変化するか
+                        </div>
+<div class="benefit-item text-gray-600">
+                            顧客が感じる感情や達成できる目標
+                        </div>
+</div>
+<div class="bg-green-50 p-4 rounded border-l-4 border-green-400">
+<p class="text-sm text-green-800">
+<i class="fas fa-lightbulb mr-2"></i>
+                            顧客が想像できる具体的な未来像を提示することで、購入意欲を大きく高める効果がある
+                        </p>
+</div>
+</div>
+</div>
+<!-- Benefit explanation section -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-star text-blue-600 mr-2"></i>
+                    ベネフィット訴求の重要性
+                </h3>
+<div class="flex items-center">
+<!-- Left side: Process visualization -->
+<div class="w-1/2 pr-6">
+<div class="relative h-40">
+<!-- D3.js visualization -->
+<svg height="100%" id="benefit-flow" width="100%">
+<!-- Content will be added by D3 -->
+</svg>
+</div>
+</div>
+<!-- Right side: Key points -->
+<div class="w-1/2 space-y-3">
+<p class="text-gray-700">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            顧客は機能ではなく「得られる価値」に対してお金を払う
+                        </p>
+<p class="text-gray-700">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            具体的な体験を想像させることで購買意欲が高まる
+                        </p>
+<p class="text-gray-700">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            感情に訴えかける説明が最も強力な購買動機になる
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            40 / 50
+        </div>
+</div>
+<script>
+        // D3.js visualization for benefit flow
+        const svg = d3.select("#benefit-flow");
+        const width = svg.node().getBoundingClientRect().width;
+        const height = svg.node().getBoundingClientRect().height;
+        
+        // Create feature box
+        svg.append("rect")
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr("width", 120)
+            .attr("height", 40)
+            .attr("rx", 5)
+            .attr("fill", "#FFE0D0")
+            .attr("stroke", "#FF6B35")
+            .attr("stroke-width", 1);
+            
+        svg.append("text")
+            .attr("x", 70)
+            .attr("y", 35)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "14px")
+            .attr("fill", "#333")
+            .text("機能説明");
+            
+        // Create benefit box
+        svg.append("rect")
+            .attr("x", 210)
+            .attr("y", 10)
+            .attr("width", 120)
+            .attr("height", 40)
+            .attr("rx", 5)
+            .attr("fill", "#D0F0D0")
+            .attr("stroke", "#4CAF50")
+            .attr("stroke-width", 1);
+            
+        svg.append("text")
+            .attr("x", 270)
+            .attr("y", 35)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "14px")
+            .attr("fill", "#333")
+            .text("ベネフィット訴求");
+        
+        // Create customer box
+        svg.append("rect")
+            .attr("x", 210)
+            .attr("y", 90)
+            .attr("width", 120)
+            .attr("height", 40)
+            .attr("rx", 5)
+            .attr("fill", "#D0E0F0")
+            .attr("stroke", "#0047AB")
+            .attr("stroke-width", 1);
+            
+        svg.append("text")
+            .attr("x", 270)
+            .attr("y", 115)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "14px")
+            .attr("fill", "#333")
+            .text("購買意欲向上");
+            
+        // Create arrows
+        svg.append("path")
+            .attr("d", "M130,30 L210,30")
+            .attr("class", "arrow-path");
+            
+        svg.append("path")
+            .attr("d", "M270,50 L270,90")
+            .attr("class", "arrow-path");
+            
+        // Create arrow heads
+        svg.append("polygon")
+            .attr("points", "208,30 200,26 200,34")
+            .attr("class", "arrow-head");
+            
+        svg.append("polygon")
+            .attr("points", "270,88 266,80 274,80")
+            .attr("class", "arrow-head");
+            
+        // Create weak arrow from feature to customer
+        svg.append("path")
+            .attr("d", "M70,50 C70,110 200,110 210,110")
+            .attr("class", "arrow-path")
+            .style("stroke-dasharray", "3, 3")
+            .style("stroke", "#999");
+            
+        svg.append("polygon")
+            .attr("points", "208,110 200,106 200,114")
+            .attr("fill", "#999");
+            
+        // Add labels
+        svg.append("text")
+            .attr("x", 170)
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "12px")
+            .attr("fill", "#666")
+            .text("変換");
+            
+        svg.append("text")
+            .attr("x", 285)
+            .attr("y", 70)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "12px")
+            .attr("fill", "#666")
+            .text("想像を刺激");
+            
+        svg.append("text")
+            .attr("x", 140)
+            .attr("y", 90)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "12px")
+            .attr("fill", "#999")
+            .text("弱い効果");
+    </script>
+
+</body></html>

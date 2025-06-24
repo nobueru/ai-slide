@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明しづらい相手への対応</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 910px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 910px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            transition: transform 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .psychology-item {
+            transition: all 0.3s ease;
+        }
+        .psychology-item:hover {
+            background-color: #f0f9ff;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -bottom-[100px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[150px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説明しづらい相手への対応</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex justify-between mb-10">
+<!-- Second-class approach -->
+<div class="w-[48%] approach-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-exclamation text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流：強引に説明しようとする</h2>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>相手の状況や心理を無視して話を進める</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>聞いてもらえないと声を大きくしたり早口になる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>相手の反応が悪いと自分の説明不足だと考える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3 w-5"></i>
+<span>同じ説明を繰り返し、相手を疲弊させる</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-orange-50 rounded border border-orange-200">
+<p class="text-orange-700">
+<i class="fas fa-lightbulb mr-2"></i>
+                            結果：相手の抵抗感が増し、コミュニケーションが悪化する
+                        </p>
+</div>
+</div>
+<!-- First-class approach -->
+<div class="w-[48%] approach-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-search text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流：聞いてもらえない理由を見極める</h2>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>まず相手の状況や心理状態を観察する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>聞く余裕がない理由を探り、適切なタイミングを待つ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>相手の関心事や優先事項を理解して話題を調整する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3 w-5"></i>
+<span>必要であれば、説明の方法や場所を変更する</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-green-50 rounded border border-green-200">
+<p class="text-green-700">
+<i class="fas fa-lightbulb mr-2"></i>
+                            結果：相手の心理的抵抗を減らし、効果的な説明が可能になる
+                        </p>
+</div>
+</div>
+</div>
+<!-- Psychology understanding section -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">
+<i class="fas fa-brain text-blue-700 mr-2"></i>相手の心理理解のポイント
+                </h2>
+<div class="grid grid-cols-3 gap-4">
+<div class="psychology-item bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<i class="fas fa-clock text-blue-600 mr-2"></i>
+<h3 class="text-lg font-semibold text-gray-800">時間的余裕</h3>
+</div>
+<p class="text-gray-600">今、相手に話を聞く時間的余裕があるかを見極めましょう。急いでいる場合は要点だけを伝えるか、別の機会を探りましょう。</p>
+</div>
+<div class="psychology-item bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<i class="fas fa-fire-alt text-blue-600 mr-2"></i>
+<h3 class="text-lg font-semibold text-gray-800">優先事項</h3>
+</div>
+<p class="text-gray-600">あなたの説明が相手の優先事項にどう関連するかを明確にしましょう。関連性が低いと感じられると、聞く意欲が下がります。</p>
+</div>
+<div class="psychology-item bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<i class="fas fa-user-shield text-blue-600 mr-2"></i>
+<h3 class="text-lg font-semibold text-gray-800">心理的防衛</h3>
+</div>
+<p class="text-gray-600">相手が何らかの理由で心理的防衛を張っていないか観察しましょう。過去の経験や立場の違いが影響している可能性があります。</p>
+</div>
+</div>
+<div class="mt-4 text-center text-blue-700">
+<p class="font-medium">
+<i class="fas fa-star mr-1"></i>
+                        相手が聞く準備ができていない時は、無理に説明せず、環境を整えることが一流の対応です
+                        <i class="fas fa-star ml-1"></i>
+</p>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            30 / 50
+        </div>
+</div>
+<script>
+        // Any JavaScript can be added here if needed
+    </script>
+
+</body></html>

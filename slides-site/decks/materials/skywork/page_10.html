@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数字による説明の技術</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 958px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 958px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-box {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-box:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .number-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+        }
+        .example-card {
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: currentColor;
+            opacity: 0.1;
+            border-radius: 8px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">数字による説明の技術</h1>
+<div class="ml-auto flex items-center">
+<div class="bg-white bg-opacity-20 rounded-full px-4 py-1 text-white text-sm">
+<i class="fas fa-star mr-1"></i>重要度: ○○○○○
+                </div>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-8">
+<!-- Second class technique -->
+<div class="w-1/2 comparison-box second-class bg-gray-50 p-6 rounded-lg shadow-md relative">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">
+<i class="fas fa-arrow-down text-orange-500 mr-2"></i>二流の説明
+                    </h2>
+<div class="mb-4">
+<div class="text-xl font-bold text-gray-700 mb-2">具体的な数値で説明する</div>
+<p class="text-gray-600">単一の数字だけを提示するため、聞き手は「多いのか少ないのか」「良いのか悪いのか」の判断がつきにくい。</p>
+</div>
+<div class="example-card text-orange-500">
+<div class="text-lg font-medium mb-2">例：</div>
+<div class="flex items-center">
+<div class="number-circle bg-orange-500 mr-4">1</div>
+<p class="text-gray-700">&#34;このプロジェクトは<span class="font-bold">35%</span>の収益率があります&#34;</p>
+</div>
+<div class="mt-2 text-gray-500 text-sm italic">
+<i class="fas fa-exclamation-circle mr-1"></i>
+                            数字の持つ意味や価値の判断が難しい
+                        </div>
+</div>
+</div>
+<!-- First class technique -->
+<div class="w-1/2 comparison-box first-class bg-gray-50 p-6 rounded-lg shadow-md relative">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">
+<i class="fas fa-arrow-up text-green-500 mr-2"></i>一流の説明
+                    </h2>
+<div class="mb-4">
+<div class="text-xl font-bold text-gray-700 mb-2">数字を2つ使って説明する</div>
+<p class="text-gray-600">2つの数字を比較することで、聞き手は文脈や意味を正確に理解できる。相対的な価値が明確になる。</p>
+</div>
+<div class="example-card text-green-500">
+<div class="text-lg font-medium mb-2">例：</div>
+<div class="flex items-center">
+<div class="flex items-center">
+<div class="number-circle bg-green-500 mr-2">2</div>
+<i class="fas fa-greater-than text-green-500 text-xl mx-2"></i>
+<div class="number-circle bg-gray-400">1</div>
+</div>
+<p class="text-gray-700 ml-4">&#34;このプロジェクトは<span class="font-bold">35%</span>の収益率があり、<span class="font-bold">業界平均の22%</span>を大きく上回ります&#34;</p>
+</div>
+<div class="mt-2 text-gray-500 text-sm italic">
+<i class="fas fa-check-circle mr-1"></i>
+                            比較により数字の価値が明確になる
+                        </div>
+</div>
+</div>
+</div>
+<!-- Practical tips section -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-bold text-blue-800 mb-4">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>効果的な数字活用のポイント
+                </h3>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<h4 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>比較の種類
+                        </h4>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>時間的比較（以前 vs 現在）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>競合との比較（自社 vs 他社）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>目標との比較（現状 vs 目標）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>平均値との比較（個別 vs 平均）</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>実践テクニック
+                        </h4>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>意図的に対比する2つの数字を選ぶ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>比率や倍率で表現する（「1.5倍」など）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>変化量と変化率の両方を示す</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>聞き手の関心に合わせた数字を選択する</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            10 / 50
+        </div>
+</div>
+
+</body></html>

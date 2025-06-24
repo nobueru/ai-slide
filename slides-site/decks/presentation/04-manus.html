@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検証詳細（1枚スライド）</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-gradient {
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,0.7) 0%, 
+          rgba(255,154,0,0.7) 10%, 
+          rgba(208,222,33,0.7) 20%, 
+          rgba(79,220,74,0.7) 30%, 
+          rgba(63,218,216,0.7) 40%, 
+          rgba(47,201,226,0.7) 50%, 
+          rgba(28,127,238,0.7) 60%, 
+          rgba(95,21,242,0.7) 70%, 
+          rgba(186,12,248,0.7) 80%, 
+          rgba(251,7,217,0.7) 90%, 
+          rgba(255,0,0,0.7) 100%);
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.05) 0%, 
+          rgba(255,154,0,0.05) 10%, 
+          rgba(208,222,33,0.05) 20%, 
+          rgba(79,220,74,0.05) 30%, 
+          rgba(63,218,216,0.05) 40%, 
+          rgba(47,201,226,0.05) 50%, 
+          rgba(28,127,238,0.05) 60%, 
+          rgba(95,21,242,0.05) 70%, 
+          rgba(186,12,248,0.05) 80%, 
+          rgba(251,7,217,0.05) 90%, 
+          rgba(255,0,0,0.05) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .process-step {
+        transition: all 0.3s ease;
+      }
+      
+      .process-step:hover {
+        transform: translateY(-3px);
+      }
+      
+      .code-block {
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #333;
+        border-left: 4px solid #6366f1;
+      }
+      
+      .rating-scale {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      
+      .rating-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container flex flex-col p-16 relative">
+      <div class="rainbow-circle"></div>
+      
+      <div class="z-10">
+        <h1 class="text-4xl font-bold mb-8 rainbow-border inline-block">検証詳細（1枚スライド）</h1>
+        
+        <div class="grid grid-cols-2 gap-10">
+          <!-- 左側：検証プロセス -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6">検証プロセス</h2>
+            
+            <div class="space-y-6">
+              <div class="process-step flex">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">プロンプト投入</h3>
+                  <p class="text-base text-gray-700">書籍「説明の一流、二流、三流」の内容を1枚のスライドにまとめるプロンプトを各AIに投入</p>
+                </div>
+              </div>
+              
+              <div class="process-step flex">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">質問応答</h3>
+                  <p class="text-base text-gray-700">AIからの質問に回答し、スライド生成を促進</p>
+                </div>
+              </div>
+              
+              <div class="process-step flex">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">スライド生成</h3>
+                  <p class="text-base text-gray-700">各AIがスライドを生成</p>
+                </div>
+              </div>
+              
+              <div class="process-step flex">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-4 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">評価</h3>
+                  <p class="text-base text-gray-700">評価基準に基づいて各AIの生成結果を評価</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 bg-white p-5 rounded-lg shadow-sm">
+              <h3 class="text-lg font-semibold mb-3">検証対象AI</h3>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="text-base">• ChatGPT o3</div>
+                <div class="text-base">• ChatGPT o4-mini-high</div>
+                <div class="text-base">• Claude</div>
+                <div class="text-base">• Gemini</div>
+                <div class="text-base">• Manus</div>
+                <div class="text-base">• Genspark</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 右側：プロンプトと評価基準 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6">プロンプト（抜粋）</h2>
+            <div class="code-block mb-8 text-sm h-48 overflow-y-auto">
+              本の説明をスライドにしたいです スライドの目的は 本の魅力づけであったり 本の内容がどんな感じか 概要で説明することで 本がどういう内容かを知るかつ それより魅力的に感じてもらうというところです 一番は魅力づけもなんですけど ちゃんとどういう本なのかを ちゃんと説明できていること っていうのをスライドでまとめたいです スライドの内容としては まず本の画像を埋め込みたいのと あとAmazonのリンクとタイトル タイトルにAmazonリンクを ハイパーリンクしてもらいたいです...
+            </div>
+            
+            <h2 class="text-2xl font-bold mb-4">評価基準</h2>
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-200">
+                    <th class="text-left pb-2 w-1/6">評価</th>
+                    <th class="text-left pb-2 w-1/4">ランク名</th>
+                    <th class="text-left pb-2">典型的な印象</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-2">
+                      <div class="rating-scale">
+                        <div class="rating-dot" style="background-color: #4ade80;"></div>
+                        <span class="font-bold">5</span>
+                      </div>
+                    </td>
+                    <td class="py-2 font-medium">卓越</td>
+                    <td class="py-2 text-sm">「このまま公開資料に採用したい」レベルの完成度</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-2">
+                      <div class="rating-scale">
+                        <div class="rating-dot" style="background-color: #22d3ee;"></div>
+                        <span class="font-bold">4</span>
+                      </div>
+                    </td>
+                    <td class="py-2 font-medium">優秀</td>
+                    <td class="py-2 text-sm">「社内外で十分に使える。もう一歩で傑作」</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-2">
+                      <div class="rating-scale">
+                        <div class="rating-dot" style="background-color: #a78bfa;"></div>
+                        <span class="font-bold">3</span>
+                      </div>
+                    </td>
+                    <td class="py-2 font-medium">良好</td>
+                    <td class="py-2 text-sm">「普通に使えるが、比較すると埋もれがち」</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-2">
+                      <div class="rating-scale">
+                        <div class="rating-dot" style="background-color: #fb923c;"></div>
+                        <span class="font-bold">2</span>
+                      </div>
+                    </td>
+                    <td class="py-2 font-medium">弱い</td>
+                    <td class="py-2 text-sm">「会議で使う前に大幅なブラッシュアップ必須」</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2">
+                      <div class="rating-scale">
+                        <div class="rating-dot" style="background-color: #f87171;"></div>
+                        <span class="font-bold">1</span>
+                      </div>
+                    </td>
+                    <td class="py-2 font-medium">不適</td>
+                    <td class="py-2 text-sm">「最初から作り直した方が早い」</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-8 right-8 z-10 text-sm text-gray-500">
+        <p>社内発表資料 | 2025年6月23日</p>
+      </div>
+    </div>
+  </body>
+</html>
+

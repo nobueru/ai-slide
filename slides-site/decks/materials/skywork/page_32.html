@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明の流れ：2つのパターン</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 1017px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1017px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .pattern-card {
+            transition: transform 0.3s ease;
+        }
+        .pattern-card:hover {
+            transform: translateY(-3px);
+        }
+        .conclusion-type {
+            border-top: 3px solid #0047AB;
+        }
+        .development-type {
+            border-top: 3px solid #FF6B35;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説明の流れ：2つのパターン</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex mb-8 space-x-6">
+<!-- Second Class -->
+<div class="w-1/2 approach-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：得意なパターンで説明する</h3>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-exclamation-triangle text-orange-500 mt-1 mr-3 w-5"></i>
+<span>自分の得意な説明パターンのみを使用</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-exclamation-triangle text-orange-500 mt-1 mr-3 w-5"></i>
+<span>状況や聞き手に関わらず同じアプローチ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-exclamation-triangle text-orange-500 mt-1 mr-3 w-5"></i>
+<span>聞き手が理解できないことを相手の問題だと考える</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-orange-50 rounded-md">
+<p class="text-orange-700 text-sm">
+<i class="fas fa-lightbulb mr-2"></i>
+                            自分の伝えやすさを優先するため、聞き手の理解度や状況に合わない場合がある
+                        </p>
+</div>
+</div>
+<!-- First Class -->
+<div class="w-1/2 approach-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：結論型・展開型を使い分ける</h3>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3 w-5"></i>
+<span>状況や聞き手に合わせて説明パターンを選択</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3 w-5"></i>
+<span>相手の知識レベルや関心度に適したアプローチ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3 w-5"></i>
+<span>伝わらない場合は自分のアプローチを変更する</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-green-50 rounded-md">
+<p class="text-green-700 text-sm">
+<i class="fas fa-lightbulb mr-2"></i>
+                            聞き手の理解を最優先し、状況に応じた最適な説明パターンを選択する
+                        </p>
+</div>
+</div>
+</div>
+<!-- Explanation patterns section -->
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-exchange-alt text-blue-800 mr-2"></i>状況に応じたパターン選択
+            </h2>
+<div class="flex space-x-6">
+<!-- Conclusion Type -->
+<div class="w-1/2 pattern-card conclusion-type bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-bullseye text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">結論型</h3>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<i class="fas fa-chart-line text-blue-600 mr-2"></i>
+<span class="font-medium text-gray-800">説明の流れ</span>
+</div>
+<div class="bg-white p-3 rounded-md border border-gray-200">
+<div class="flex items-center">
+<div class="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs">1</div>
+<div class="mx-2 text-gray-400">→</div>
+<div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs">2</div>
+<div class="mx-2 text-gray-400">→</div>
+<div class="w-6 h-6 rounded-full bg-blue-400 flex items-center justify-center text-white text-xs">3</div>
+</div>
+<div class="flex mt-2 text-sm text-gray-600">
+<div class="w-10 text-center">結論</div>
+<div class="flex-1 text-center">理由</div>
+<div class="w-16 text-center">補足説明</div>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<i class="fas fa-check-double text-blue-600 mr-2"></i>
+<span class="font-medium text-gray-800">効果的な状況</span>
+</div>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2 w-4"></i>
+<span>忙しい相手や意思決定者への説明</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2 w-4"></i>
+<span>短時間で伝える必要がある場合</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2 w-4"></i>
+<span>結論が明確で異論の余地が少ない場合</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Development Type -->
+<div class="w-1/2 pattern-card development-type bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-project-diagram text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">展開型</h3>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<i class="fas fa-chart-line text-orange-500 mr-2"></i>
+<span class="font-medium text-gray-800">説明の流れ</span>
+</div>
+<div class="bg-white p-3 rounded-md border border-gray-200">
+<div class="flex items-center">
+<div class="w-6 h-6 rounded-full bg-orange-300 flex items-center justify-center text-white text-xs">1</div>
+<div class="mx-2 text-gray-400">→</div>
+<div class="w-6 h-6 rounded-full bg-orange-400 flex items-center justify-center text-white text-xs">2</div>
+<div class="mx-2 text-gray-400">→</div>
+<div class="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs">3</div>
+</div>
+<div class="flex mt-2 text-sm text-gray-600">
+<div class="w-10 text-center">前提</div>
+<div class="flex-1 text-center">経過・理由</div>
+<div class="w-16 text-center">結論</div>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<i class="fas fa-check-double text-orange-500 mr-2"></i>
+<span class="font-medium text-gray-800">効果的な状況</span>
+</div>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2 w-4"></i>
+<span>共感や理解を得たい場合</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2 w-4"></i>
+<span>複雑な問題や背景の説明が必要な場合</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2 w-4"></i>
+<span>結論に至るプロセスを重視する場合</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            32 / 50
+        </div>
+</div>
+
+</body></html>

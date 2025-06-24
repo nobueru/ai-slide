@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>情報の伝え方：四象限の活用</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 1018px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1018px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .quadrant {
+            border: 2px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        .quadrant:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .single-quadrant {
+            border-color: #FF6B35;
+        }
+        .four-quadrant .quadrant {
+            border-color: #4CAF50;
+        }
+        .benefit-item {
+            transition: transform 0.3s ease;
+        }
+        .benefit-item:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[150px] -bottom-[150px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">情報の伝え方：四象限の活用</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<p class="text-lg text-gray-700 mb-6">
+                情報を効果的に伝えるには、単一の視点ではなく多角的な視点から説明することが重要です。一象限での説明から四象限での説明へ進化させることで、理解度と説得力が大きく向上します。
+            </p>
+<!-- Quadrant comparison section -->
+<div class="flex justify-between mb-8">
+<!-- Second-class (一象限) -->
+<div class="w-5/12">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：一象限で説明する</h3>
+</div>
+<div class="single-quadrant quadrant p-5 bg-gray-50 rounded-lg h-64 flex flex-col justify-center items-center">
+<div class="text-5xl text-orange-500 mb-4">
+<i class="fas fa-square"></i>
+</div>
+<p class="text-center text-gray-700">単一の視点からの情報</p>
+<ul class="mt-4 space-y-2 w-full">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>一面的な情報提供</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>限られた文脈での理解</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>全体像が見えにくい</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- First-class (四象限) -->
+<div class="w-6/12">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：四象限で説明する</h3>
+</div>
+<div class="four-quadrant grid grid-cols-2 gap-2 h-64">
+<div class="quadrant p-3 bg-gray-50 rounded-lg flex flex-col justify-center items-center">
+<i class="fas fa-chart-line text-2xl text-green-500 mb-2"></i>
+<p class="text-sm text-center text-gray-700">定量的データ</p>
+</div>
+<div class="quadrant p-3 bg-gray-50 rounded-lg flex flex-col justify-center items-center">
+<i class="fas fa-comment-dots text-2xl text-green-500 mb-2"></i>
+<p class="text-sm text-center text-gray-700">定性的観点</p>
+</div>
+<div class="quadrant p-3 bg-gray-50 rounded-lg flex flex-col justify-center items-center">
+<i class="fas fa-history text-2xl text-green-500 mb-2"></i>
+<p class="text-sm text-center text-gray-700">時間軸の変化</p>
+</div>
+<div class="quadrant p-3 bg-gray-50 rounded-lg flex flex-col justify-center items-center">
+<i class="fas fa-users text-2xl text-green-500 mb-2"></i>
+<p class="text-sm text-center text-gray-700">多様な視点</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Benefits section -->
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>四象限で説明する効果
+                </h3>
+<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+<div class="benefit-item flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-brain text-blue-800"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">多角的理解の促進</h4>
+<p class="text-gray-600 text-sm">複数の視点から情報を提示することで、聞き手の理解が深まります。</p>
+</div>
+</div>
+<div class="benefit-item flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-check-double text-blue-800"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">説得力の向上</h4>
+<p class="text-gray-600 text-sm">複数の角度からの裏付けにより、説明の信頼性と説得力が高まります。</p>
+</div>
+</div>
+<div class="benefit-item flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-balance-scale text-blue-800"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">バランスの取れた情報提供</h4>
+<p class="text-gray-600 text-sm">偏りのない情報提供により、聞き手が適切な判断を下せるようになります。</p>
+</div>
+</div>
+<div class="benefit-item flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-bullseye text-blue-800"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">論点の明確化</h4>
+<p class="text-gray-600 text-sm">複数の視点を整理して提示することで、本質的な論点が明確になります。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary -->
+<div class="mt-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+<p class="text-gray-700">
+<i class="fas fa-quote-left text-blue-500 mr-2"></i>
+                    一流の説明者は、常に複数の視点（四象限）から情報を整理し、相手に最適な形で提示します。これにより、聞き手の理解度と満足度が大きく向上します。
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            8 / 50
+        </div>
+</div>
+<script>
+        // D3.js could be used here for more advanced visualizations if needed
+    </script>
+
+</body></html>

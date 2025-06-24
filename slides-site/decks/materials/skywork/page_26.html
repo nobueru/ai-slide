@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>言いづらいことの伝え方</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 919px; font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 919px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .technique-card {
+            border-top: 3px solid #0047AB;
+            transition: all 0.3s ease;
+        }
+        .technique-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .evaluation-dots {
+            display: inline-flex;
+            align-items: center;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        .dot-filled {
+            background-color: #0047AB;
+        }
+        .dot-empty {
+            border: 1px solid #0047AB;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center justify-between pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">言いづらいことの伝え方</h1>
+<div class="evaluation-dots">
+<div class="dot dot-filled"></div>
+<div class="dot dot-filled"></div>
+<div class="dot dot-filled"></div>
+<div class="dot dot-empty"></div>
+<div class="dot dot-empty"></div>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Two approaches comparison -->
+<div class="flex space-x-8 mb-10">
+<!-- Second-class approach -->
+<div class="approach-card second-class w-1/2 bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-exclamation-triangle text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">二流：正論をぶつける</h3>
+<p class="text-orange-600 text-sm">効果的ではない伝え方</p>
+</div>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>論理的に正しいことを遠慮なく伝える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>相手の感情を考慮せず事実だけを指摘する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>批判や否定が中心のコミュニケーション</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>「正しさ」を優先し、関係性を二の次にする</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-orange-50 rounded border border-orange-200">
+<p class="text-sm text-gray-700"><i class="fas fa-comment-dots text-orange-500 mr-2"></i>「これは間違っています。正しくはこうです。」</p>
+</div>
+</div>
+<!-- First-class approach -->
+<div class="approach-card first-class w-1/2 bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-comments text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">一流：アサーティブに説明する</h3>
+<p class="text-green-600 text-sm">効果的な伝え方</p>
+</div>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>自他を尊重した誠実なコミュニケーション</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>感情に配慮しながら事実を伝える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>建設的な提案を含めた前向きな伝え方</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>相手との関係性を維持しながら本質を伝える</span>
+</li>
+</ul>
+<div class="mt-4 p-3 bg-green-50 rounded border border-green-200">
+<p class="text-sm text-gray-700"><i class="fas fa-comment-dots text-green-500 mr-2"></i>「こうすると、より効果的かもしれません。いかがでしょうか？」</p>
+</div>
+</div>
+</div>
+<!-- Constructive feedback techniques -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>建設的なフィードバックの技術
+                </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- Technique 1 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="text-blue-800 text-3xl mb-3">
+<i class="fas fa-hand-point-right"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800 mb-2">SBIメソッド</h3>
+<p class="text-gray-600 text-sm">
+<span class="font-bold">S</span>ituation（状況）、<span class="font-bold">B</span>ehavior（行動）、<span class="font-bold">I</span>mpact（影響）の順に伝えることで、具体的かつ客観的なフィードバックができる
+                        </p>
+</div>
+<!-- Technique 2 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="text-blue-800 text-3xl mb-3">
+<i class="fas fa-balance-scale"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800 mb-2">サンドイッチ法</h3>
+<p class="text-gray-600 text-sm">
+                            肯定的なコメント→改善点の指摘→肯定的なコメントの順で伝えることで、相手が受け入れやすいフィードバックを実現する
+                        </p>
+</div>
+<!-- Technique 3 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="text-blue-800 text-3xl mb-3">
+<i class="fas fa-question-circle"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800 mb-2">質問型フィードバック</h3>
+<p class="text-gray-600 text-sm">
+                            一方的に伝えるのではなく、質問を通じて相手自身に気づきを促し、自発的な改善意欲を引き出す対話型のアプローチ
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            26 / 50
+        </div>
+</div>
+
+</body></html>

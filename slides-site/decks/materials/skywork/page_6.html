@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>イメージできない人への説明</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 854px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 854px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-box {
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .comparison-box:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .example-card {
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .example-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .importance {
+            font-size: 14px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -top-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center justify-between pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">イメージできない人への説明</h1>
+<div class="importance">重要度: ○○○○○</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-8">
+<!-- Second class approach -->
+<div class="w-1/2 comparison-box second-class bg-gray-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流の説明</h2>
+</div>
+<h3 class="text-xl font-bold text-gray-700 mb-3">詳しく長く説明する</h3>
+<div class="space-y-3 text-gray-600">
+<p class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>言葉を尽くして細部まで説明しようとする</span>
+</p>
+<p class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>情報量が多すぎて核心が伝わりにくい</span>
+</p>
+<p class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>聞き手が疲れてしまう</span>
+</p>
+</div>
+<div class="mt-4 p-3 bg-orange-50 rounded-lg border border-orange-100">
+<p class="italic text-orange-700">
+                            「この商品は高性能で、多機能で、デザインも優れていて、使いやすくて、コスパも良くて、耐久性もあって...」
+                        </p>
+</div>
+</div>
+<!-- First class approach -->
+<div class="w-1/2 comparison-box first-class bg-gray-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流の説明</h2>
+</div>
+<h3 class="text-xl font-bold text-gray-700 mb-3">対比で説明する</h3>
+<div class="space-y-3 text-gray-600">
+<p class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>既知のものと未知のものを比較する</span>
+</p>
+<p class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>相違点を明確にして特徴を際立たせる</span>
+</p>
+<p class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>少ない言葉で鮮明なイメージを伝えられる</span>
+</p>
+</div>
+<div class="mt-4 p-3 bg-green-50 rounded-lg border border-green-100">
+<p class="italic text-green-700">
+                            「従来品と比べて半分の大きさで、2倍の処理速度を実現しています」
+                        </p>
+</div>
+</div>
+</div>
+<!-- Effective comparison methods -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>効果的な対比説明の方法
+                </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- Method 1 -->
+<div class="example-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mr-2">
+<i class="fas fa-exchange-alt text-white text-sm"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">明確な対比軸を設定</h3>
+</div>
+<p class="text-gray-600">
+                            大きさ、速度、価格など、比較しやすい明確な基準を選び、その違いを数値や具体例で示します。
+                        </p>
+</div>
+<!-- Method 2 -->
+<div class="example-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mr-2">
+<i class="fas fa-map-marker-alt text-white text-sm"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">身近な例を活用</h3>
+</div>
+<p class="text-gray-600">
+                            相手が確実に知っているものを基準にすることで、未知のものへの理解を促進します。
+                        </p>
+</div>
+<!-- Method 3 -->
+<div class="example-card bg-gray-50 p-5 shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mr-2">
+<i class="fas fa-compress-alt text-white text-sm"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-800">極端な対比を活用</h3>
+</div>
+<p class="text-gray-600">
+                            極端な対比を示すことで、差異を印象的に伝え、記憶に残りやすくします。
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Chapter indicator -->
+<div class="absolute bottom-4 left-6 text-gray-500 flex items-center">
+<i class="fas fa-book-open mr-2"></i>
+<span>Chapter 1: すごく伝わる説明</span>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            6 / 50
+        </div>
+</div>
+
+</body></html>

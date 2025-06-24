@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>問題解決の説明テクニック</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1380px; height: 935px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 935px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .tree-node {
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 14px;
+            display: inline-block;
+        }
+        .tree-connector {
+            width: 2px;
+            height: 20px;
+            margin: 0 auto;
+        }
+        .rating {
+            display: inline-flex;
+            align-items: center;
+        }
+        .rating-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 3px;
+            background-color: #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[350px] h-[350px] -right-[100px] -bottom-[100px]"></div>
+<div class="geometric-shape w-[250px] h-[250px] -left-[80px] -top-[80px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">問題解決の説明テクニック</h1>
+<div class="ml-auto flex items-center">
+<div class="rating">
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+<div class="rating-circle"></div>
+</div>
+<span class="text-white text-sm ml-2">重要度</span>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-10 pt-8">
+<!-- Introduction -->
+<p class="text-lg text-gray-700 mb-6">
+                問題解決の説明では、単に問題を分解するだけでなく、体系的なアプローチが重要です。一流の説明者は、3種類の異なるツリー構造を駆使して、より効果的に問題を分析し、伝えることができます。
+            </p>
+<!-- Comparison section -->
+<div class="flex space-x-8">
+<!-- Second class approach -->
+<div class="w-1/2 comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-puzzle-piece text-white text-lg"></i>
+</div>
+<h2 class="text-xl font-bold text-gray-800">二流：問題を分解して考える</h2>
+</div>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>問題を単純に小さな部分に分解するだけ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>体系的な分析フレームワークがない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>問題の全体像や要素間の関係性が見えにくい</span>
+</li>
+</ul>
+<!-- Simple tree visualization -->
+<div class="bg-white p-4 rounded-md border border-gray-200">
+<div class="text-center">
+<div class="tree-node bg-orange-100 text-orange-800 font-medium">メイン問題</div>
+<div class="tree-connector bg-orange-300"></div>
+<div class="flex justify-center space-x-2">
+<div class="flex flex-col items-center">
+<div class="tree-node bg-orange-100 text-orange-800">サブ問題A</div>
+</div>
+<div class="flex flex-col items-center">
+<div class="tree-node bg-orange-100 text-orange-800">サブ問題B</div>
+</div>
+<div class="flex flex-col items-center">
+<div class="tree-node bg-orange-100 text-orange-800">サブ問題C</div>
+</div>
+</div>
+</div>
+<p class="text-sm text-gray-500 mt-3 text-center">単純な分解だけでは、問題の本質に迫れない</p>
+</div>
+</div>
+<!-- First class approach -->
+<div class="w-1/2 comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-sitemap text-white text-lg"></i>
+</div>
+<h2 class="text-xl font-bold text-gray-800">一流：3種のツリーを駆使して考える</h2>
+</div>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>目的に応じて適切なツリー構造を選択</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>多角的な視点で問題を体系的に分析</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>複雑な問題を構造化して明確に説明できる</span>
+</li>
+</ul>
+<!-- Three trees visualization -->
+<div class="bg-white p-4 rounded-md border border-gray-200">
+<div class="grid grid-cols-3 gap-2">
+<!-- Issue Tree -->
+<div class="text-center">
+<h3 class="text-sm font-bold text-gray-700 mb-2">
+<i class="fas fa-project-diagram text-blue-600 mr-1"></i>課題ツリー
+                                </h3>
+<div class="tree-node bg-blue-100 text-blue-800">問題</div>
+<div class="tree-connector bg-blue-300"></div>
+<div class="flex justify-center space-x-1">
+<div class="tree-node bg-blue-100 text-blue-800 text-xs">要因1</div>
+<div class="tree-node bg-blue-100 text-blue-800 text-xs">要因2</div>
+</div>
+</div>
+<!-- Logic Tree -->
+<div class="text-center">
+<h3 class="text-sm font-bold text-gray-700 mb-2">
+<i class="fas fa-code-branch text-green-600 mr-1"></i>ロジックツリー
+                                </h3>
+<div class="tree-node bg-green-100 text-green-800">結論</div>
+<div class="tree-connector bg-green-300"></div>
+<div class="flex justify-center space-x-1">
+<div class="tree-node bg-green-100 text-green-800 text-xs">根拠1</div>
+<div class="tree-node bg-green-100 text-green-800 text-xs">根拠2</div>
+</div>
+</div>
+<!-- Factor Tree -->
+<div class="text-center">
+<h3 class="text-sm font-bold text-gray-700 mb-2">
+<i class="fas fa-network-wired text-purple-600 mr-1"></i>因果ツリー
+                                </h3>
+<div class="tree-node bg-purple-100 text-purple-800">現象</div>
+<div class="tree-connector bg-purple-300"></div>
+<div class="flex justify-center space-x-1">
+<div class="tree-node bg-purple-100 text-purple-800 text-xs">原因1</div>
+<div class="tree-node bg-purple-100 text-purple-800 text-xs">原因2</div>
+</div>
+</div>
+</div>
+<p class="text-sm text-gray-500 mt-3 text-center">3種のツリーで多角的に問題を構造化</p>
+</div>
+</div>
+</div>
+<!-- Bottom tips -->
+<div class="mt-8 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+<h3 class="text-lg font-bold text-blue-800 mb-2">
+<i class="fas fa-lightbulb text-yellow-500 mr-2"></i>実践のポイント
+                </h3>
+<ul class="text-gray-700 space-y-1">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>問題の性質に応じて適切なツリーを選択する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>複数のツリーを組み合わせることで、より包括的な分析が可能に</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>視覚的なツリー構造を用いることで、聞き手の理解を促進できる</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            17 / 50
+        </div>
+</div>
+
+</body></html>

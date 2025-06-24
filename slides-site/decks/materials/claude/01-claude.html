@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説明の一流、二流、三流</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #00F5A0 0%, #00D9FF 100%);
+            --bg-dark: #0a0a0a;
+            --bg-medium: #141414;
+            --bg-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* スライドコンテナ */
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(245, 87, 108, 0.1) 0%, transparent 50%),
+                        var(--bg-dark);
+            padding: 60px 40px;
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .slide-content {
+            width: 100%;
+            max-width: 1400px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* タイトルスライド */
+        .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .book-cover {
+            width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .book-cover:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.05);
+        }
+        
+        .title-slide h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        .author {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+        
+        /* チャプター一覧 */
+        .chapter-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .chapter-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .chapter-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .chapter-item:hover::before {
+            opacity: 0.1;
+        }
+        
+        .chapter-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .chapter-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        /* チャプタータイトルスライド */
+        .chapter-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        
+        .chapter-slide h2 {
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .chapter-slide .chapter-subtitle {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 比較項目コンテナ */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .comparison-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 重要度インジケーター */
+        .importance-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 4px;
+        }
+        
+        .importance-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .importance-dot.active {
+            background: var(--success-gradient);
+            box-shadow: 0 0 10px rgba(0, 245, 160, 0.5);
+        }
+        
+        /* ページ番号 */
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+        }
+        
+        /* 項目タイトル */
+        .item-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 比較コンテンツ */
+        .comparison-content {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+        }
+        
+        .level-box {
+            flex: 1;
+            padding: 25px;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .level-box.yiliu {
+            background: linear-gradient(135deg, rgba(0, 245, 160, 0.1) 0%, rgba(0, 217, 255, 0.1) 100%);
+            border: 1px solid rgba(0, 245, 160, 0.3);
+            order: 1;
+        }
+        
+        .level-box.erliu {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            order: 2;
+        }
+        
+        .level-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .level-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .level-box.yiliu .level-label {
+            color: #00F5A0;
+        }
+        
+        .level-box.erliu .level-label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .level-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+        
+        .level-box.yiliu .level-icon {
+            background: var(--success-gradient);
+            color: var(--bg-dark);
+        }
+        
+        .level-box.erliu .level-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+        
+        .level-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* スライド番号 */
+        .slide-nav {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .slide-dot.active {
+            width: 30px;
+            border-radius: 4px;
+            background: var(--primary-gradient);
+        }
+        
+        /* クロージングスライド */
+        .closing-slide {
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .closing-title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--success-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 60px;
+        }
+        
+        .related-books {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .related-book {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .related-book:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .related-book-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .amazon-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .amazon-link:hover {
+            color: #00F5A0;
+        }
+        
+        /* アニメーション */
+        .fade-in {
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 1024px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .chapter-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .related-books {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- スライド1: タイトルページ -->
+    <div class="slide">
+        <div class="slide-content title-slide">
+            <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流" class="book-cover">
+            <div>
+                <h1>説明の一流、二流、三流</h1>
+                <p class="subtitle">45の具体的な法則で学ぶ、伝わる説明の技術</p>
+                <p class="author">著者：桐生 稔（きりゅう みのる）</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド2: チャプター一覧 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 60px; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Contents</h2>
+            <div class="chapter-list">
+                <div class="chapter-item">
+                    <div class="chapter-number">1</div>
+                    <div class="chapter-title">すごく伝わる説明</div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">2</div>
+                    <div class="chapter-title">説明の組み立て方</div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">3</div>
+                    <div class="chapter-title">説得力が増す説明</div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">4</div>
+                    <div class="chapter-title">プレゼンや人前での説明</div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">5</div>
+                    <div class="chapter-title">リモート・メールでの説明</div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">6</div>
+                    <div class="chapter-title">説明上手になる心得</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chapter 1: すごく伝わる説明 -->
+    <div class="slide chapter-slide">
+        <div class="slide-content">
+            <h2>Chapter 1</h2>
+            <p class="chapter-subtitle">すごく伝わる説明</p>
+        </div>
+    </div>
+    
+    <!-- Chapter 1の内容 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">説明の準備</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">相手の頭の中から考えはじめる</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">結論から考える</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.58</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">演繹法</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">前提を重視する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">事実を重視して結論を導く</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.62</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">説明がメモされる</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">「構造」を示す</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">「要素」を示す</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.66</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">原因と理由</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">3回くり返して説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">1回で説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.70</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">論点</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">前半で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">最後に説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.74</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">文を短くする</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">単語でコンパクトにして説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">一文一義を心がけて説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.78</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">ゴールを決める</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">「アウトカム」を決める</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">「アウトプット」を決める</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.82</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chapter 3: 説得力が増す説明 -->
+    <div class="slide chapter-slide">
+        <div class="slide-content">
+            <h2>Chapter 3</h2>
+            <p class="chapter-subtitle">説得力が増す説明</p>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">説得する</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">PREP法の順番を変えて説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">PREP法を使って説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.88</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">協力を仰ぎたい時</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">目的と個人の関係を説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">目的を説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.92</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">意見が対立したら</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">ファクトを積み上げる</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">相手に合わせて妥協する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.96</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">数字を使う</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">相手が頭に浮かべやすい数字で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">正確な数字で説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-<span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">話の説明</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">大胆に削り、真芯にフォーカスして話す</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">モレなく、ダブりなく話す</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.20</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">イメージできない人に</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">対比で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">詳しく長く説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.24</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">知識がない人に</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">類比で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">細かく説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.28</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">情報の伝え方</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">四象限で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">一象限で説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.32</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">説明の詳細さ</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">共通体験のレベルに合わせて説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">説明しすぎてくどくなる</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.36</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">メリットとデメリット</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">「ヒューマンベネフィット」で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">「特徴」で説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.40</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">例を交える</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">相手の業界の例で説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">自分が知っている例で説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.44</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                        <span class="importance-dot"></span>
+                    </div>
+                    <h3 class="item-title">相手が納得するために</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">感情を交えて説明する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">事実を説明する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.48</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chapter 2: 説明の組み立て方 -->
+    <div class="slide chapter-slide">
+        <div class="slide-content">
+            <h2>Chapter 2</h2>
+            <p class="chapter-subtitle">説明の組み立て方</p>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                    </div>
+                    <h3 class="item-title">説明の適正時間</h3>
+                    <div class="comparison-content">
+                        <div class="level-box yiliu">
+                            <div class="level-label">
+                                <span class="level-icon">1</span>
+                                一流
+                            </div>
+                            <div class="level-description">相手の許容時間で設定する</div>
+                        </div>
+                        <div class="level-box erliu">
+                            <div class="level-label">
+                                <span class="level-icon">2</span>
+                                二流
+                            </div>
+                            <div class="level-description">説明のボリュームで設定する</div>
+                        </div>
+                    </div>
+                    <span class="page-number">p.54</span>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="importance-indicator">
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>
+                        <span class="importance-dot active"></span>

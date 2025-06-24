@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIと人間の説明の違い</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 904px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 904px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .feature-item {
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .feature-item:hover {
+            background-color: rgba(0, 71, 171, 0.05);
+        }
+        .vs-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0047AB, #2C75FF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -bottom-[100px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] top-[400px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">AIと人間の説明の違い</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    これからのAI時代、人間の説明者として差別化できるのは「感情を理解し、共感する能力」です。
+                    一流の説明者は単なる情報伝達を超え、相手の感情に寄り添った説明ができます。
+                </p>
+</div>
+<!-- Comparison section -->
+<div class="flex justify-between items-center">
+<!-- AI Explanation (Second-class) -->
+<div class="comparison-card second-class bg-gray-50 p-6 w-5/12 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-robot text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">二流の説明</h3>
+<p class="text-orange-600 font-medium">AIでもできることを説明する</p>
+</div>
+</div>
+<ul class="space-y-3 mt-5">
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-database text-orange-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">データと事実だけに基づいた説明</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-arrows-alt-h text-orange-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">一方通行の情報伝達</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-copy text-orange-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">テンプレート化された説明</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-cog text-orange-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">論理的だが機械的な説明</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-chart-line text-orange-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">数値やデータのみに依存</span>
+</li>
+</ul>
+</div>
+<!-- VS Circle -->
+<div class="vs-circle z-10">VS</div>
+<!-- Human Explanation (First-class) -->
+<div class="comparison-card first-class bg-gray-50 p-6 w-5/12 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-user-heart text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">一流の説明</h3>
+<p class="text-green-600 font-medium">相手の感情を汲み取った説明をする</p>
+</div>
+</div>
+<ul class="space-y-3 mt-5">
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-heart text-green-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">相手の感情状態を読み取る</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-sync-alt text-green-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">双方向のコミュニケーション</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-lightbulb text-green-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">状況に応じた柔軟な説明</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-handshake text-green-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">共感を示しながら説明</span>
+</li>
+<li class="feature-item flex items-start p-2">
+<i class="fas fa-comments text-green-500 mt-1 mr-3 w-5"></i>
+<span class="text-gray-600">言葉以上の情報を伝える</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Human Value Section -->
+<div class="mt-10 bg-blue-50 p-5 rounded-lg border-l-4 border-blue-800">
+<h3 class="text-xl font-bold text-blue-800 mb-2">
+<i class="fas fa-star mr-2"></i>人間らしさの価値
+                </h3>
+<p class="text-gray-700">
+                    AIの発展により情報提供や基本的な説明はAIが担うようになります。しかし、感情理解、共感、
+                    文脈の把握、そして相手の状況に合わせた柔軟な説明ができるのは人間の強みです。
+                    一流の説明者になるには、この人間らしさを最大限に活かした説明を心がけましょう。
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            46 / 50
+        </div>
+<!-- Chapter indicator -->
+<div class="absolute bottom-4 left-6 text-gray-400">
+            Chapter 6: 説明上手になる心得
+        </div>
+</div>
+<script>
+        // Replace Font Awesome user-heart icon (which may not exist) with user icon
+        document.addEventListener('DOMContentLoaded', function() {
+            const userHeartIcon = document.querySelector('.fa-user-heart');
+            if (userHeartIcon) {
+                userHeartIcon.classList.remove('fa-user-heart');
+                userHeartIcon.classList.add('fa-user');
+            }
+        });
+    </script>
+
+</body></html>

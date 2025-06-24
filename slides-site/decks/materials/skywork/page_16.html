@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>演繹法と帰納法の使い分け</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 1056px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1056px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .method-card {
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+        .approach-card {
+            border-left: 4px solid;
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .flow-arrow {
+            position: relative;
+            height: 2px;
+            background-color: #0047AB;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #0047AB;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -top-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">演繹法と帰納法の使い分け</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    論理的な説明には、演繹法と帰納法の2つの基本的なアプローチがあります。それぞれの特性を理解し、適切に使い分けることで説明の質が大きく向上します。
+                </p>
+</div>
+<!-- Methods comparison -->
+<div class="grid grid-cols-2 gap-8">
+<!-- Deductive Method -->
+<div class="method-card bg-blue-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+<i class="fas fa-arrow-down text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">演繹法 <span class="text-sm font-normal text-gray-500">(評価レベル: ○○)</span></h2>
+</div>
+<p class="text-gray-700 mb-4">
+                        一般的な原則や前提から特定の結論を導き出す方法。大きな概念から小さな具体例へと展開します。
+                    </p>
+<!-- Flow diagram -->
+<div class="flex items-center justify-center mb-6">
+<div class="text-center px-4 py-2 bg-blue-100 rounded-lg">
+<span class="text-blue-800 font-medium">大前提</span>
+</div>
+<div class="w-16 flow-arrow mx-2"></div>
+<div class="text-center px-4 py-2 bg-blue-100 rounded-lg">
+<span class="text-blue-800 font-medium">小前提</span>
+</div>
+<div class="w-16 flow-arrow mx-2"></div>
+<div class="text-center px-4 py-2 bg-blue-100 rounded-lg">
+<span class="text-blue-800 font-medium">結論</span>
+</div>
+</div>
+<!-- Approaches -->
+<div class="grid grid-cols-1 gap-4">
+<div class="approach-card second-class bg-white p-4 shadow-sm">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-arrow-down text-orange-500 mr-2"></i>二流のアプローチ
+                            </h3>
+<p class="text-gray-600">
+                                事実を重視して結論を導く：事実の収集に力を入れるが、前提条件の設定が弱く、論理の飛躍が生じやすい。
+                            </p>
+</div>
+<div class="approach-card first-class bg-white p-4 shadow-sm">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-arrow-up text-green-500 mr-2"></i>一流のアプローチ
+                            </h3>
+<p class="text-gray-600">
+                                前提を重視する：正確で明確な前提条件を設定し、そこから必然的に結論が導かれるようにする。説得力のある論理展開ができる。
+                            </p>
+</div>
+</div>
+</div>
+<!-- Inductive Method -->
+<div class="method-card bg-green-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center mr-4">
+<i class="fas fa-arrow-up text-white text-xl"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">帰納法 <span class="text-sm font-normal text-gray-500">(評価レベル: ○○○○)</span></h2>
+</div>
+<p class="text-gray-700 mb-4">
+                        個別の事例や観察から一般的な法則や結論を導き出す方法。具体的な事実から抽象的な概念へと展開します。
+                    </p>
+<!-- Flow diagram -->
+<div class="flex items-center justify-center mb-6">
+<div class="text-center px-4 py-2 bg-green-100 rounded-lg">
+<span class="text-green-800 font-medium">事実1</span>
+</div>
+<div class="w-8 flow-arrow mx-1"></div>
+<div class="text-center px-4 py-2 bg-green-100 rounded-lg">
+<span class="text-green-800 font-medium">事実2</span>
+</div>
+<div class="w-8 flow-arrow mx-1"></div>
+<div class="text-center px-4 py-2 bg-green-100 rounded-lg">
+<span class="text-green-800 font-medium">事実3</span>
+</div>
+<div class="w-8 flow-arrow mx-1"></div>
+<div class="text-center px-4 py-2 bg-green-100 rounded-lg">
+<span class="text-green-800 font-medium">仮説</span>
+</div>
+</div>
+<!-- Approaches -->
+<div class="grid grid-cols-1 gap-4">
+<div class="approach-card second-class bg-white p-4 shadow-sm">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-arrow-down text-orange-500 mr-2"></i>二流のアプローチ
+                            </h3>
+<p class="text-gray-600">
+                                事実を並べて語る：複数の事実を羅列するだけで、そこから導かれる仮説や法則性を明確に示さない。聞き手に考えさせすぎる。
+                            </p>
+</div>
+<div class="approach-card first-class bg-white p-4 shadow-sm">
+<h3 class="text-lg font-bold text-gray-700 mb-2">
+<i class="fas fa-arrow-up text-green-500 mr-2"></i>一流のアプローチ
+                            </h3>
+<p class="text-gray-600">
+                                複数の事実を並べたあとに、仮説で語る：事実の提示だけでなく、そこから導かれる仮説や法則性を明確に示す。聞き手の理解を助ける。
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom tips -->
+<div class="mt-8 bg-gray-50 p-4 rounded-lg border-l-4 border-blue-800">
+<h3 class="text-lg font-bold text-gray-800 mb-2">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>効果的な使い分けのポイント
+                </h3>
+<ul class="text-gray-700 list-disc pl-5">
+<li>聞き手にとって馴染みのある概念から説明を始める</li>
+<li>演繹法は原則を説明する際に、帰納法は新しい概念を導入する際に効果的</li>
+<li>両方を組み合わせることで、より説得力のある説明が可能に</li>
+</ul>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            16 / 50
+        </div>
+</div>
+
+</body></html>

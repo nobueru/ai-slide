@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説明の一流、二流、三流 - スライド資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Yu Gothic UI', sans-serif;
+            background: #FFFFFF;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+            page-break-after: always;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #333333;
+        }
+
+        .slide-subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #666666;
+        }
+
+        .chapter-slide {
+            background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chapter-title {
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            font-size: 18px;
+            color: #666666;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 10px;
+        }
+
+        .content-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333333;
+        }
+
+        .comparison-container {
+            display: flex;
+            height: 500px;
+            border: 1px solid #CCCCCC;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-side {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .comparison-left {
+            background: #F8F8F8;
+            border-right: 2px solid #CCCCCC;
+        }
+
+        .comparison-right {
+            background: #FFFFFF;
+        }
+
+        .level-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .level-header.second-class {
+            background: #FFE4E1;
+            color: #CC0000;
+        }
+
+        .level-header.first-class {
+            background: #E1F5FE;
+            color: #007AFF;
+        }
+
+        .level-content {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .level-info {
+            font-size: 14px;
+            color: #666666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .importance-dots {
+            color: #007AFF;
+            font-weight: bold;
+        }
+
+        .book-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        .book-basic-info {
+            flex: 1;
+        }
+
+        .book-description {
+            flex: 2;
+        }
+
+        .book-basic-info h3,
+        .book-description h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007AFF;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 8px;
+        }
+
+        .book-basic-info ul {
+            list-style: none;
+        }
+
+        .book-basic-info li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .book-basic-info li strong {
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .book-description p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #007AFF;
+        }
+
+        .chapter-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .chapter-list ol {
+            list-style: none;
+            counter-reset: chapter-counter;
+        }
+
+        .chapter-list li {
+            counter-increment: chapter-counter;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #F8F8F8;
+            border-radius: 8px;
+            border-left: 4px solid #007AFF;
+            position: relative;
+        }
+
+        .chapter-list li::before {
+            content: counter(chapter-counter);
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #007AFF;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .cover-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #F8F8F8 0%, #FFFFFF 100%);
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .cover-subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #666666;
+        }
+
+        .cover-author {
+            font-size: 24px;
+            color: #007AFF;
+            margin-bottom: 40px;
+        }
+
+        .cover-image {
+            width: 300px;
+            height: 400px;
+            background: #F0F0F0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .related-books {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .related-books h3 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #007AFF;
+        }
+
+        .related-books ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .related-books li {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #F8F8F8;
+            border-radius: 6px;
+            border-left: 4px solid #007AFF;
+        }
+
+        .related-books a {
+            color: #007AFF;
+            text-decoration: none;
+        }
+
+        .related-books a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+            
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .comparison-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .comparison-side {
+                padding: 30px 20px;
+            }
+            
+            .comparison-left {
+                border-right: none;
+                border-bottom: 2px solid #CCCCCC;
+            }
+            
+            .book-info {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media print {
+            .slide {
+                margin-bottom: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        
+        <!-- スライド1: 表紙 -->
+        <div class="slide cover-slide">
+            <h1 class="cover-title">説明の一流、二流、三流</h1>
+            <p class="cover-subtitle">伝わる説明の法則を学ぶ</p>
+            <p class="cover-author">桐生 稔</p>
+            <div class="cover-image">
+                <img src="https://m.media-amazon.com/images/I/81d+Q+ikNKL._UF1000,1000_QL80_.jpg" alt="説明の一流、二流、三流 表紙">
+            </div>
+        </div>
+
+        <!-- スライド2: 本の概要 -->
+        <div class="slide">
+            <h2 class="slide-title">書籍概要</h2>
+            <div class="book-info">
+                <div class="book-basic-info">
+                    <h3>本の基本情報</h3>
+                    <ul>
+                        <li><strong>タイトル:</strong> 説明の一流、二流、三流</li>
+                        <li><strong>著者:</strong> 桐生 稔（きりゅう みのる）</li>
+                        <li><strong>Amazon:</strong> <a href="https://amzn.asia/d/h7GMDr2" target="_blank">購入リンク</a></li>
+                    </ul>
+                </div>
+                <div class="book-description">
+                    <h3>本の紹介</h3>
+                    <p><span class="highlight">すごく伝わる説明には、具体的な法則があります。しかも意外と簡単です。</span>本書ではそれを45項目で学ぶことができます。</p>
+                    <p>一つの項目に対して、<span class="highlight">ダメレベル(三流レベル)、普通レベル(二流レベル)、優秀なレベル(一流レベル)</span>の3つの段階で解説しているので、自分がどのレベルかわかり、どのように改善すれば良いのかがよくわかります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: チャプター一覧 -->
+        <div class="slide">
+            <h2 class="slide-title">本書の構成</h2>
+            <p class="slide-subtitle">6つのチャプター</p>
+            <div class="chapter-list">
+                <ol>
+                    <li>すごく伝わる説明</li>
+                    <li>説明の組み立て方</li>
+                    <li>説得力が増す説明</li>
+                    <li>プレゼンや人前での説明</li>
+                    <li>リモート・メールでの説明</li>
+                    <li>説明上手になる心得</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Chapter 1 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 1.<br>すごく伝わる説明</h2>
+        </div>
+
+        <!-- Chapter 1 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">話の説明</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">モレなく、ダブりなく話す</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 20</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">大胆に削り、真芯にフォーカスして話す</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">イメージできない人に</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">詳しく長く説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 24</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">対比で説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">知識がない人に</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">細かく説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 28</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">類比で説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">情報の伝え方</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">一象限で説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 32</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">四象限で説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">説明の詳細さ</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">説明しすぎてくどくなる</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 36</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">共通体験のレベルに合わせて説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">数字で説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">具体的な数値で説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 40</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">数字を2つ使って説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">ひと言でまとめる</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">なんとなくまとめる</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 44</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">抽象化してまとめる</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 1. すごく伝わる説明</div>
+            <h3 class="content-title">手順を説明するとき</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">分厚い資料で説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 48</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">図解で説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 2 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 2.<br>説明の組み立て方</h2>
+        </div>
+
+        <!-- Chapter 2 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">説明の適正時間</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">説明のボリュームで設定する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 54</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">相手の許容時間で設定する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">説明の準備</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">結論から考える</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 58</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">相手の頭の中から考えはじめる</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">演繹法</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">事実を重視して結論を導く</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●</span>
+                        <span>ページ: 62</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">前提を重視する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">帰納法</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">事実を並べて語る</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 66</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">複数の事実を並べたあとに、仮説で語る</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">問題解決</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">問題を分解して考える</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 70</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">3種のツリーを駆使して考える</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">体系的にまとめる</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">なんとなくまとめようとする</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 74</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">「総論→各論→具体論」の型でまとめる</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">急な報告</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">「所感」を語る</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 78</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">「事実」から「所感」を語る</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 2. 説明の組み立て方</div>
+            <h3 class="content-title">道を聞かれたら</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">現在地から説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 82</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">目的地から説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 3 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 3.<br>説得力が増す説明</h2>
+        </div>
+
+        <!-- Chapter 3 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">説得する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">PREP法を使って説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 88</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">PREP法の順番を変えて説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">協力を仰ぎたい時</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">目的を説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 92</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">目的と個人の関係を説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">意見が対立したら</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">相手に合わせて妥協する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 96</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">ファクトを積み上げる</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">説得材料</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">主張と根拠を明確にする</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 100</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">複数のピラミッドを用意する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">言いづらいこと</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">正論をぶつける</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 104</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">アサーティブに説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">議論が進まないとき</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">何度も持論を説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 108</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">論点を設定し直す</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">話が噛み合わない</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">相手の理解が足りないと思う</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●</span>
+                        <span>ページ: 112</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">階層を合わせにいく</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">データを分析して説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">相関関係をもとに説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 116</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">因果関係をもとに説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 3. 説得力が増す説明</div>
+            <h3 class="content-title">説明しづらい相手</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">強引に説明しようとする</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 120</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">聞いてもらえない理由を見極める</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 4 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 4.<br>プレゼンや人前での説明</h2>
+        </div>
+
+        <!-- Chapter 4 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">説明の流れ</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">得意なパターンで説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 126</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">結論型・展開型を使い分ける</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">話しはじめにやること</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">いきなり説明しはじめる</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 130</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">聞いてもらう態勢を作る</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">パワーポイント</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">構成を考えて作りはじめる</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 134</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">聞き手におこしてほしい行動を考えて作り始める</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">調査結果を説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">調査結果を考察する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 138</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">調査結果から行動を起こす</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">惹きつける説明</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">ポイントを説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 142</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">事件を起こして説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">専門用語の使い方</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">共通の専門用語を使い</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●</span>
+                        <span>ページ: 146</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">聞き手のレベルに合わせた言葉を使う</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">抑揚をつけて説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">抑揚を意識して説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 150</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">感情を込めて説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">説明の届け方</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">聞き手の耳に届ける</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 154</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">聞き手の脳内に届ける</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">商品説明</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">商品の機能を説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 158</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">商品購入後の未来を説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 4. プレゼンや人前での説明</div>
+            <h3 class="content-title">質疑応答</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">その場で必死に取り繕う</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●</span>
+                        <span>ページ: 162</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">用意していた答えを伝える</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 5 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 5.<br>リモート・メールでの説明</h2>
+        </div>
+
+        <!-- Chapter 5 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 5. リモート・メールでの説明</div>
+            <h3 class="content-title">メールで説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">短くまとめたメールを送る</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 184</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">相手の負荷を減らすメールを送る</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 5. リモート・メールでの説明</div>
+            <h3 class="content-title">箇条書きで説明する</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">ただの箇条書きで説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 188</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">読ませる箇条書きで説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 6 区切り -->
+        <div class="slide chapter-slide">
+            <h2 class="chapter-title">Chapter 6.<br>説明上手になる心得</h2>
+        </div>
+
+        <!-- Chapter 6 の比較スライド群 -->
+        <div class="slide">
+            <div class="header">Chapter 6. 説明上手になる心得</div>
+            <h3 class="content-title">これからの説明</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">AIでもできることを説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 194</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">相手の感情を汲み取った説明をする</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 6. 説明上手になる心得</div>
+            <h3 class="content-title">説明が伝わらないとき</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">とことん説明し続け</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 198</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">一旦説明を放棄する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">Chapter 6. 説明上手になる心得</div>
+            <h3 class="content-title">自分の説明</h3>
+            <div class="comparison-container">
+                <div class="comparison-side comparison-left">
+                    <div class="level-header second-class">二流</div>
+                    <div class="level-content">どんな人間かを説明する</div>
+                    <div class="level-info">
+                        <span class="importance-dots">●●●●●</span>
+                        <span>ページ: 206</span>
+                    </div>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <div class="level-header first-class">一流</div>
+                    <div class="level-content">どう在りたいかを説明する</div>
+                    <div class="level-info">
+                        <span>個人的重要度</span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 関連著書スライド -->
+        <div class="slide">
+            <h2 class="slide-title">関連著書</h2>
+            <div class="related-books">
+                <h3>桐生 稔 その他の著書</h3>
+                <ul>
+                    <li>
+                        <strong>雑談の一流、二流、三流</strong><br>
+                        <a href="https://amzn.asia/d/52IwSCt" target="_blank">Amazon購入リンク</a>
+                    </li>
+                    <li>
+                        <strong>質問の一流、二流、三流</strong><br>
+                        <a href="https://amzn.asia/d/2HT3Vt2" target="_blank">Amazon購入リンク</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 終了スライド -->
+        <div class="slide cover-slide">
+            <h1 class="cover-title">ありがとうございました</h1>
+            <p class="cover-subtitle">説明の一流、二流、三流<br>学習資料</p>
+            <p class="cover-author">個人学習用スライド資料</p>
+        </div>
+
+    </div>
+
+    <script>
+        // スライド間のナビゲーション機能
+        document.addEventListener('keydown', function(e) {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            // 現在表示されているスライドを特定
+            slides.forEach((slide, index) => {
+                const rect = slide.getBoundingClientRect();
+                if (rect.top >= -100 && rect.top <= 100) {
+                    currentSlide = index;
+                }
+            });
+            
+            // 矢印キーでスライド移動
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                if (currentSlide < slides.length - 1) {
+                    slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                if (currentSlide > 0) {
+                    slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

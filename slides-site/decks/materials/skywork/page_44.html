@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>箇条書きの活用テクニック</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 1054px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1054px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .bullet-example {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .bullet-example:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .bad-bullet {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .good-bullet {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .bullet-icon {
+            min-width: 24px;
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        .highlight-text {
+            font-weight: 600;
+            color: #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -top-[200px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -bottom-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">箇条書きの活用テクニック</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    メールやリモートコミュニケーションでは、<span class="highlight-text">箇条書き</span>が重要な役割を果たします。単なる情報の羅列ではなく、読み手の視線を誘導し、重要なポイントを印象付ける箇条書きが「一流」の説明を実現します。
+                </p>
+</div>
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-8">
+<!-- Second class approach -->
+<div class="w-1/2 bullet-example second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-down text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：ただの箇条書き</h3>
+</div>
+<p class="text-gray-600 mb-4">情報を単に列挙するだけの箇条書き。読み手の視線や理解を考慮していません。</p>
+<div class="bg-white p-5 rounded border border-gray-200">
+<h4 class="text-lg font-medium text-gray-700 mb-3">プロジェクト進捗報告</h4>
+<ul>
+<li class="bad-bullet">市場調査が完了しました</li>
+<li class="bad-bullet">競合分析を行いました</li>
+<li class="bad-bullet">顧客インタビューを実施しました</li>
+<li class="bad-bullet">予算計画を見直しました</li>
+<li class="bad-bullet">次回のミーティングは来週の水曜日です</li>
+</ul>
+</div>
+<div class="mt-4 text-orange-600">
+<i class="fas fa-exclamation-circle mr-2"></i>
+<span class="font-medium">問題点：</span> 重要度の区別がなく、単調で読みにくい
+                    </div>
+</div>
+<!-- First class approach -->
+<div class="w-1/2 bullet-example first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-up text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：読ませる箇条書き</h3>
+</div>
+<p class="text-gray-600 mb-4">視覚的メリハリをつけ、情報の重要度が一目でわかる箇条書き。読み手の理解を促進します。</p>
+<div class="bg-white p-5 rounded border border-gray-200">
+<h4 class="text-lg font-medium text-gray-700 mb-3">プロジェクト進捗報告</h4>
+<div>
+<div class="good-bullet">
+<i class="fas fa-check-circle bullet-icon text-xl"></i>
+<div>
+<span class="font-semibold">市場調査完了：</span>
+<span>競合他社の2倍の顧客満足度を確認</span>
+</div>
+</div>
+<div class="good-bullet">
+<i class="fas fa-chart-line bullet-icon text-xl"></i>
+<div>
+<span class="font-semibold">競合分析結果：</span>
+<span>価格帯で優位性あり、機能面で改善余地</span>
+</div>
+</div>
+<div class="good-bullet">
+<i class="fas fa-users bullet-icon text-xl"></i>
+<div>
+<span class="font-semibold">顧客インタビュー：</span>
+<span>20名実施、主要な不満点を特定</span>
+</div>
+</div>
+<div class="good-bullet text-red-600">
+<i class="fas fa-exclamation-triangle bullet-icon text-xl"></i>
+<div>
+<span class="font-semibold">重要：次回ミーティング</span>
+<span>6月15日(水) 14:00～ 要対応</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 text-green-600">
+<i class="fas fa-lightbulb mr-2"></i>
+<span class="font-medium">効果：</span> 重要度が視覚的に伝わり、記憶に残る
+                    </div>
+</div>
+</div>
+<!-- Tips for better bullet points -->
+<div class="bg-blue-50 p-6 rounded-lg">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-star text-blue-600 mr-2"></i>読ませる箇条書きのテクニック
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-start">
+<div class="text-blue-600 mr-3">
+<i class="fas fa-palette text-lg"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">色分けを活用する</p>
+<p class="text-gray-600">重要度に応じて色を使い分け、視覚的に情報を区別する</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="text-blue-600 mr-3">
+<i class="fas fa-icons text-lg"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">アイコンを効果的に使う</p>
+<p class="text-gray-600">内容に合ったアイコンで視覚的理解を促進</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="text-blue-600 mr-3">
+<i class="fas fa-font text-lg"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">フォントの強弱をつける</p>
+<p class="text-gray-600">重要な単語や見出しを太字にして強調</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="text-blue-600 mr-3">
+<i class="fas fa-ruler-horizontal text-lg"></i>
+</div>
+<div>
+<p class="font-medium text-gray-800">適切な行間と余白を設ける</p>
+<p class="text-gray-600">読みやすさを考慮したスペーシングで視認性向上</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            44 / 50
+        </div>
+</div>
+
+</body></html>

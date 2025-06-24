@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説明の届け方：脳内への到達</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1280px; height: 1404px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1404px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .brain-path {
+            stroke: #4CAF50;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 5, 5;
+        }
+        .ear-path {
+            stroke: #FF6B35;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 5, 5;
+        }
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .technique-item {
+            padding-left: 15px;
+            position: relative;
+        }
+        .technique-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #0047AB;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説明の届け方：脳内への到達</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    説明の真の目的は、単に言葉を伝えることではなく、<span class="font-bold text-blue-800">聞き手の脳内にイメージを形成させること</span>です。
+                    一流の説明者は、聞き手の脳内に直接届く説明を心がけています。
+                </p>
+</div>
+<!-- Comparison Section -->
+<div class="flex space-x-12 mb-10">
+<!-- Second Class Approach -->
+<div class="comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md flex-1">
+<div class="flex items-center mb-5">
+<div class="icon-circle bg-orange-100 text-orange-500 mr-4">
+<i class="fas fa-ear-listen text-3xl"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-800">二流：聞き手の耳に届ける</h3>
+<div class="text-orange-600 text-sm font-medium">表示レベル：○○○○○</div>
+</div>
+</div>
+<ul class="space-y-4 text-gray-700">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>言葉だけが耳に入り、脳内でイメージに変換されない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>説明者の意図が正確に伝わりにくい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>聞き手の記憶に残りにくく、行動変容を促せない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>抽象的な言葉が多く、具体的なイメージを喚起できていない</span>
+</li>
+</ul>
+</div>
+<!-- First Class Approach -->
+<div class="comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md flex-1">
+<div class="flex items-center mb-5">
+<div class="icon-circle bg-green-100 text-green-500 mr-4">
+<i class="fas fa-brain text-3xl"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-800">一流：聞き手の脳内に届ける</h3>
+<div class="text-green-600 text-sm font-medium">表示レベル：○○○○○</div>
+</div>
+</div>
+<ul class="space-y-4 text-gray-700">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>聞き手の脳内に鮮明なイメージを形成させる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>感情や感覚に訴えかけ、深い理解と共感を生む</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>長期記憶に残り、行動変容につながりやすい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>具体的な例示や比喩を通じて複雑な概念も伝わりやすくなる</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Visualization -->
+<div class="h-150 mb-8" id="visualization">
+<svg height="150" width="1100">
+<!-- Speaker icon -->
+<circle cx="100" cy="75" fill="#0047AB" opacity="0.1" r="40"></circle>
+<text dominant-baseline="middle" fill="#0047AB" font-size="30" text-anchor="middle" x="100" y="75">
+<tspan font-family="FontAwesome"></tspan>
+</text>
+<!-- Ear path (second class) -->
+<path class="ear-path" d="M 150,75 Q 300,20 450,75" id="ear-path"></path>
+<circle cx="450" cy="75" fill="#FF6B35" opacity="0.1" r="30"></circle>
+<text dominant-baseline="middle" fill="#FF6B35" font-size="22" text-anchor="middle" x="450" y="75">
+<tspan font-family="FontAwesome"></tspan>
+</text>
+<text fill="#FF6B35" font-size="16" font-weight="500" text-anchor="middle" x="450" y="130">耳に届く</text>
+<!-- Brain path (first class) -->
+<path class="brain-path" d="M 150,75 Q 300,130 600,75" id="brain-path"></path>
+<circle cx="600" cy="75" fill="#4CAF50" opacity="0.1" r="30"></circle>
+<text dominant-baseline="middle" fill="#4CAF50" font-size="22" text-anchor="middle" x="600" y="75">
+<tspan font-family="FontAwesome"></tspan>
+</text>
+<text fill="#4CAF50" font-size="16" font-weight="500" text-anchor="middle" x="600" y="130">脳内に届く</text>
+<!-- Action arrow -->
+<path d="M 650,75 L 720,75" fill="none" marker-end="url(#arrow)" stroke="#4CAF50" stroke-width="2"></path>
+<circle cx="800" cy="75" fill="#4CAF50" opacity="0.1" r="30"></circle>
+<text dominant-baseline="middle" fill="#4CAF50" font-size="22" text-anchor="middle" x="800" y="75">
+<tspan font-family="FontAwesome"></tspan>
+</text>
+<text fill="#4CAF50" font-size="16" font-weight="500" text-anchor="middle" x="800" y="130">行動変容</text>
+<!-- Definitions -->
+<defs>
+<marker id="arrow" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="9" refY="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#4CAF50"></path>
+</marker>
+</defs>
+</svg>
+</div>
+<!-- Techniques Section -->
+<div class="bg-blue-50 p-6 rounded-lg">
+<h3 class="text-xl font-bold text-blue-800 mb-4">
+<i class="fas fa-lightbulb mr-2"></i>脳内イメージを喚起する技術
+                </h3>
+<div class="grid grid-cols-2 gap-x-10 gap-y-3">
+<div class="technique-item text-gray-700">具体的な例や経験を交えて話す</div>
+<div class="technique-item text-gray-700">五感に訴えかける表現を使う</div>
+<div class="technique-item text-gray-700">聞き手が共感できるストーリーを構築する</div>
+<div class="technique-item text-gray-700">身近な比喩やメタファーを活用する</div>
+<div class="technique-item text-gray-700">質問を通じて聞き手の想像を促す</div>
+<div class="technique-item text-gray-700">感情を込めた語り口で印象を強める</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            39 / 50
+        </div>
+</div>
+<script>
+        // Animation for paths
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate ear path
+            const earPath = document.getElementById('ear-path');
+            const earLength = earPath.getTotalLength();
+            earPath.style.strokeDasharray = earLength;
+            earPath.style.strokeDashoffset = earLength;
+            
+            // Animate brain path
+            const brainPath = document.getElementById('brain-path');
+            const brainLength = brainPath.getTotalLength();
+            brainPath.style.strokeDasharray = brainLength;
+            brainPath.style.strokeDashoffset = brainLength;
+            
+            // Animation
+            setTimeout(() => {
+                earPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+                earPath.style.strokeDashoffset = '0';
+                
+                setTimeout(() => {
+                    brainPath.style.transition = 'stroke-dashoffset 2s ease-in-out';
+                    brainPath.style.strokeDashoffset = '0';
+                }, 500);
+            }, 500);
+        });
+    </script>
+
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>説得材料の提示方法</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 994px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 994px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .pyramid {
+            position: relative;
+            margin: 0 auto;
+        }
+        .pyramid-level {
+            margin: 0 auto;
+            background-color: rgba(0, 71, 171, 0.1);
+            border: 2px solid #0047AB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: -1px;
+        }
+        .multi-pyramid {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">説得材料の提示方法</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<div class="flex space-x-10">
+<!-- Second-class technique -->
+<div class="w-1/2 comparison-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-5">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white text-lg"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流の説明</h2>
+</div>
+<h3 class="text-xl font-semibold text-gray-700 mb-3">
+<i class="fas fa-bullseye text-orange-500 mr-2"></i>主張と根拠を明確にする
+                    </h3>
+<p class="text-gray-600 mb-5">
+                        一つの主張に対して、根拠を明確に示す方法です。基本的なロジックツリーは構築できていますが、視点が単一になりがちです。
+                    </p>
+<div class="pyramid my-6">
+<div class="pyramid-level h-16 w-56 rounded-t-md bg-orange-100 border-orange-500">
+<span class="font-bold text-gray-700">主張</span>
+</div>
+<div class="pyramid-level h-12 w-72 bg-orange-50 border-orange-400">
+<span class="font-medium text-gray-700">根拠 1</span>
+</div>
+<div class="pyramid-level h-12 w-80 bg-orange-50 border-orange-400">
+<span class="font-medium text-gray-700">根拠 2</span>
+</div>
+<div class="pyramid-level h-12 w-96 rounded-b-md bg-orange-50 border-orange-400">
+<span class="font-medium text-gray-700">根拠 3</span>
+</div>
+</div>
+<div class="mt-4 bg-orange-100 p-3 rounded-md">
+<p class="text-orange-800">
+<i class="fas fa-exclamation-circle mr-2"></i>
+                            単一の視点からの説得は、相手の反論に弱くなりがちです。
+                        </p>
+</div>
+</div>
+<!-- First-class technique -->
+<div class="w-1/2 comparison-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-5">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white text-lg"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流の説明</h2>
+</div>
+<h3 class="text-xl font-semibold text-gray-700 mb-3">
+<i class="fas fa-layer-group text-green-500 mr-2"></i>複数のピラミッドを用意する
+                    </h3>
+<p class="text-gray-600 mb-5">
+                        同じ主張に対して、異なる角度からの根拠を複数用意する方法です。多角的なアプローチで説得力が飛躍的に高まります。
+                    </p>
+<div class="multi-pyramid my-6">
+<!-- Pyramid 1 -->
+<div class="pyramid-small">
+<div class="pyramid-level h-10 w-32 rounded-t-md bg-green-100 border-green-500">
+<span class="font-bold text-sm text-gray-700">主張</span>
+</div>
+<div class="pyramid-level h-8 w-40 bg-green-50 border-green-400">
+<span class="font-medium text-sm text-gray-700">論理的根拠</span>
+</div>
+</div>
+<!-- Pyramid 2 -->
+<div class="pyramid-small">
+<div class="pyramid-level h-10 w-32 rounded-t-md bg-blue-100 border-blue-500">
+<span class="font-bold text-sm text-gray-700">主張</span>
+</div>
+<div class="pyramid-level h-8 w-40 bg-blue-50 border-blue-400">
+<span class="font-medium text-sm text-gray-700">感情的根拠</span>
+</div>
+</div>
+<!-- Pyramid 3 -->
+<div class="pyramid-small">
+<div class="pyramid-level h-10 w-32 rounded-t-md bg-purple-100 border-purple-500">
+<span class="font-bold text-sm text-gray-700">主張</span>
+</div>
+<div class="pyramid-level h-8 w-40 bg-purple-50 border-purple-400">
+<span class="font-medium text-sm text-gray-700">実績的根拠</span>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-green-100 p-3 rounded-md">
+<p class="text-green-800">
+<i class="fas fa-check-circle mr-2"></i>
+                            多角的な根拠で相手の様々な懸念に対応できます。
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom section - Key points -->
+<div class="mt-8 bg-blue-50 p-5 rounded-lg shadow-sm">
+<h3 class="text-xl font-bold text-blue-800 mb-3">
+<i class="fas fa-lightbulb mr-2"></i>多角的根拠の重要性
+                </h3>
+<ul class="grid grid-cols-2 gap-4">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+<span class="text-gray-700">論理的・感情的・実績的など多様な角度からのアプローチ</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+<span class="text-gray-700">相手の価値観や懸念に合わせた説得材料の準備</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+<span class="text-gray-700">一つの根拠が否定されても他の根拠で説得を継続できる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+<span class="text-gray-700">説得において強固な基盤を作り、信頼性を高める</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            25 / 50
+        </div>
+</div>
+<script>
+        // D3.js could be used here for more complex visualizations if needed
+    </script>
+
+</body></html>

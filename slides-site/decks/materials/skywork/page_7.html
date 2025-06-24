@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>知識がない人への説明</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1480px; height: 1080px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 1080px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-box {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .comparison-box:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .analogy-example {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+        }
+        .arrow-path {
+            position: relative;
+        }
+        .arrow-path:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 40px;
+            height: 2px;
+            background-color: #0047AB;
+        }
+        .arrow-path:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 40px);
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #0047AB;
+            border-right: 2px solid #0047AB;
+            transform: translateY(-50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[200px] -bottom-[100px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">知識がない人への説明</h1>
+<div class="ml-auto flex items-center">
+<div class="bg-white text-blue-800 rounded-full h-8 w-8 flex items-center justify-center mr-2">
+<i class="fas fa-star"></i>
+</div>
+<span class="text-white font-medium">重要度: ○○○○○</span>
+</div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-8 mb-10">
+<!-- Second-class approach -->
+<div class="w-1/2 comparison-box second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white"></i>
+</div>
+                        二流：細かく説明する
+                    </h2>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>専門用語や詳細な情報を多く使用する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>聞き手の既存知識を考慮せずに説明する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>情報量が多すぎて理解が進まない</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-3"></i>
+<span>聞き手が「わからない」と言いづらくなる</span>
+</li>
+</ul>
+<div class="mt-5 bg-orange-50 p-4 rounded-md">
+<p class="text-orange-700 font-medium">
+<i class="fas fa-exclamation-triangle mr-2"></i>
+                            結果：説明は伝わらず、聞き手は混乱する
+                        </p>
+</div>
+</div>
+<!-- First-class approach -->
+<div class="w-1/2 comparison-box first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white"></i>
+</div>
+                        一流：類比で説明する
+                    </h2>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>聞き手が既に知っているものに例える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>複雑な概念を身近なイメージに置き換える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>「〜のようなもの」という表現を活用する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+<span>共通の理解基盤から話をスタートする</span>
+</li>
+</ul>
+<div class="mt-5 bg-green-50 p-4 rounded-md">
+<p class="text-green-700 font-medium">
+<i class="fas fa-lightbulb mr-2"></i>
+                            結果：理解が促進され、記憶にも残りやすい
+                        </p>
+</div>
+</div>
+</div>
+<!-- How to use analogies section -->
+<h3 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-magic text-blue-800 mr-2"></i>
+                効果的な類比を作るテクニック
+            </h3>
+<div class="grid grid-cols-2 gap-8">
+<!-- Left column: Process -->
+<div>
+<div class="flex mb-5">
+<div class="w-12 h-12 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center mr-4 shrink-0">
+<span class="font-bold text-lg">1</span>
+</div>
+<div class="arrow-path">
+<p class="text-gray-700">説明したい概念の<span class="font-bold">本質的な特徴</span>を特定する</p>
+</div>
+</div>
+<div class="flex mb-5">
+<div class="w-12 h-12 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center mr-4 shrink-0">
+<span class="font-bold text-lg">2</span>
+</div>
+<div class="arrow-path">
+<p class="text-gray-700">聞き手が<span class="font-bold">よく知っているもの</span>で類似した特徴を持つものを探す</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center mr-4 shrink-0">
+<span class="font-bold text-lg">3</span>
+</div>
+<p class="text-gray-700">二つを<span class="font-bold">明確に関連付けて</span>説明する</p>
+</div>
+</div>
+<!-- Right column: Example -->
+<div class="analogy-example p-6">
+<h4 class="text-xl font-bold text-green-700 mb-3">
+<i class="fas fa-flask mr-2"></i>
+                        類比の実例
+                    </h4>
+<div class="flex items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-3 shrink-0">
+<i class="fas fa-microchip text-white"></i>
+</div>
+<div>
+<p class="font-bold text-gray-800">説明したい概念：</p>
+<p class="text-gray-600">「クラウドコンピューティング」</p>
+</div>
+</div>
+<div class="flex items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center mr-3 shrink-0">
+<i class="fas fa-plug text-white"></i>
+</div>
+<div>
+<p class="font-bold text-gray-800">類比で説明：</p>
+<p class="text-gray-600">「クラウドコンピューティングは、電気の供給システムのようなものです。自宅で発電機を持つ必要がなく、必要な時に必要な分だけ電気を使い、使った分だけ料金を払います。同様に、自分でサーバーを持たなくても、インターネット経由で必要な計算能力やストレージを利用できるのです。」</p>
+</div>
+</div>
+<div class="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+<p class="text-gray-700 italic">
+<i class="fas fa-quote-left text-blue-400 mr-2"></i>
+                            聞き手の知識レベルに合わせて類比を選ぶことが重要です。適切な類比は複雑な概念を瞬時に理解させる力を持っています。
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            7 / 50
+        </div>
+</div>
+
+</body></html>

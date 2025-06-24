@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>体系的なまとめ方</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1380px; height: 874px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 874px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-panel {
+            height: 500px;
+            transition: transform 0.3s ease;
+        }
+        .comparison-panel:hover {
+            transform: translateY(-5px);
+        }
+        .second-class-panel {
+            border-top: 4px solid #FF6B35;
+        }
+        .first-class-panel {
+            border-top: 4px solid #4CAF50;
+        }
+        .arrow-connector {
+            position: relative;
+            height: 2px;
+            background-color: #4CAF50;
+            margin: 12px 0;
+        }
+        .arrow-connector:after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #4CAF50;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        .random-note {
+            transform: rotate(-2deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .structured-box {
+            border-left: 3px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -left-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -right-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">体系的なまとめ方</h1>
+<div class="ml-auto text-white opacity-70 text-sm">
+                Chapter 2: 説明の組み立て方
+            </div>
+</div>
+<!-- Main content -->
+<div class="p-12">
+<!-- Comparison Grid -->
+<div class="flex space-x-6">
+<!-- Second Class Approach -->
+<div class="w-1/2 comparison-panel second-class-panel bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-4">
+<i class="fas fa-random text-white text-xl"></i>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-gray-800">二流の説明</h2>
+<p class="text-orange-600 font-medium">なんとなくまとめようとする</p>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-gray-700 mb-3">
+<i class="fas fa-exclamation-triangle text-orange-500 mr-2"></i>問題点
+                        </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>構造がなく、思いつくままに情報を並べる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>重要度の区別がつかず、情報の優先順位が不明確</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>聞き手が全体像を掴みにくい</span>
+</li>
+</ul>
+</div>
+<!-- Visual Example of Second Class -->
+<div class="bg-white p-5 rounded-lg border border-gray-200">
+<h3 class="text-lg font-medium text-gray-700 mb-4">なんとなくまとめた例：</h3>
+<div class="flex flex-wrap">
+<div class="random-note bg-yellow-50 p-3 m-2 rounded border border-yellow-200">
+<i class="fas fa-sticky-note text-yellow-500 mr-1"></i>
+<span>重要なポイント？</span>
+</div>
+<div class="random-note bg-blue-50 p-3 m-2 rounded border border-blue-200 -mt-1">
+<i class="fas fa-sticky-note text-blue-500 mr-1"></i>
+<span>具体例その1</span>
+</div>
+<div class="random-note bg-purple-50 p-3 m-2 rounded border border-purple-200">
+<i class="fas fa-sticky-note text-purple-500 mr-1"></i>
+<span>別の話題</span>
+</div>
+<div class="random-note bg-pink-50 p-3 m-2 rounded border border-pink-200 -mt-2">
+<i class="fas fa-sticky-note text-pink-500 mr-1"></i>
+<span>思いついた詳細</span>
+</div>
+<div class="random-note bg-green-50 p-3 m-2 rounded border border-green-200">
+<i class="fas fa-sticky-note text-green-500 mr-1"></i>
+<span>結論らしきもの</span>
+</div>
+</div>
+</div>
+</div>
+<!-- First Class Approach -->
+<div class="w-1/2 comparison-panel first-class-panel bg-gray-50 rounded-lg shadow-md p-6">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-4">
+<i class="fas fa-layer-group text-white text-xl"></i>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-gray-800">一流の説明</h2>
+<p class="text-green-600 font-medium">「総論→各論→具体論」の型でまとめる</p>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-gray-700 mb-3">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>メリット
+                        </h3>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>論理的な構造で情報が整理される</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>聞き手が全体像から詳細まで理解しやすい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>情報の階層が明確で記憶に残りやすい</span>
+</li>
+</ul>
+</div>
+<!-- Visual Example of First Class -->
+<div class="bg-white p-5 rounded-lg border border-gray-200">
+<h3 class="text-lg font-medium text-gray-700 mb-4">体系的なまとめ方：</h3>
+<!-- 総論 -->
+<div class="structured-box pl-4 mb-3">
+<h4 class="text-lg font-bold text-green-700">
+<i class="fas fa-globe mr-2"></i>総論（全体像・結論）
+                            </h4>
+<p class="text-gray-600 text-sm">全体を俯瞰した内容・主張</p>
+</div>
+<div class="arrow-connector ml-2 mr-2"></div>
+<!-- 各論 -->
+<div class="structured-box pl-4 mb-3">
+<h4 class="text-lg font-bold text-green-700">
+<i class="fas fa-th-large mr-2"></i>各論（詳細・分析）
+                            </h4>
+<p class="text-gray-600 text-sm">主要な項目ごとの説明・根拠</p>
+</div>
+<div class="arrow-connector ml-2 mr-2"></div>
+<!-- 具体論 -->
+<div class="structured-box pl-4">
+<h4 class="text-lg font-bold text-green-700">
+<i class="fas fa-puzzle-piece mr-2"></i>具体論（事例・例示）
+                            </h4>
+<p class="text-gray-600 text-sm">実例や具体的なケーススタディ</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Quote -->
+<div class="mt-6 text-center">
+<p class="text-blue-800 italic">
+                    「体系的にまとめることで、聞き手の理解度と満足度が飛躍的に高まります」
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            18 / 50
+        </div>
+</div>
+
+</body></html>

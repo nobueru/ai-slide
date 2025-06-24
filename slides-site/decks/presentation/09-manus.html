@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diaブラウザに学ぶスライドデザイン</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+      
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,255,1) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rainbow-border {
+        position: relative;
+      }
+      
+      .rainbow-border::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+          rgba(255,0,0,1) 0%, 
+          rgba(255,154,0,1) 10%, 
+          rgba(208,222,33,1) 20%, 
+          rgba(79,220,74,1) 30%, 
+          rgba(63,218,216,1) 40%, 
+          rgba(47,201,226,1) 50%, 
+          rgba(28,127,238,1) 60%, 
+          rgba(95,21,242,1) 70%, 
+          rgba(186,12,248,1) 80%, 
+          rgba(251,7,217,1) 90%, 
+          rgba(255,0,0,1) 100%);
+      }
+      
+      .rainbow-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, 
+          rgba(255,0,0,0.05) 0%, 
+          rgba(255,154,0,0.05) 10%, 
+          rgba(208,222,33,0.05) 20%, 
+          rgba(79,220,74,0.05) 30%, 
+          rgba(63,218,216,0.05) 40%, 
+          rgba(47,201,226,0.05) 50%, 
+          rgba(28,127,238,0.05) 60%, 
+          rgba(95,21,242,0.05) 70%, 
+          rgba(186,12,248,0.05) 80%, 
+          rgba(251,7,217,0.05) 90%, 
+          rgba(255,0,0,0.05) 100%);
+        bottom: -400px;
+        right: -200px;
+        z-index: 0;
+      }
+      
+      .design-element {
+        transition: all 0.3s ease;
+      }
+      
+      .design-element:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .color-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container flex flex-col p-12 relative">
+      <div class="rainbow-circle"></div>
+      
+      <div class="z-10 w-full flex flex-col justify-between" style="min-height: 680px;">
+        <div>
+          <h1 class="text-4xl font-bold mb-6 rainbow-border inline-block">Diaブラウザに学ぶスライドデザイン</h1>
+          
+          <div class="grid grid-cols-2 gap-8 mt-4">
+            <!-- 左側：デザイン要素 -->
+            <div>
+              <h2 class="text-2xl font-bold mb-4">デザイン要素</h2>
+              
+              <div class="space-y-6">
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">カラーパレット</h3>
+                  <div class="flex flex-wrap items-center">
+                    <div class="mr-4 mb-2">
+                      <span class="color-dot" style="background-color: #ffffff;"></span>
+                      <span class="text-sm">白基調</span>
+                    </div>
+                    <div class="mr-4 mb-2">
+                      <span class="color-dot" style="background: linear-gradient(90deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);"></span>
+                      <span class="text-sm">虹色アクセント</span>
+                    </div>
+                    <div class="mr-4 mb-2">
+                      <span class="color-dot" style="background-color: #f8fafc;"></span>
+                      <span class="text-sm">淡色背景</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">タイポグラフィ</h3>
+                  <p class="text-base mb-1">Noto Sans JP（サンセリフ体）</p>
+                  <div class="flex flex-wrap">
+                    <div class="mr-6 mb-2">
+                      <p class="text-4xl font-bold">見出し</p>
+                      <p class="text-xs text-gray-500">36px, Bold</p>
+                    </div>
+                    <div class="mr-6 mb-2">
+                      <p class="text-xl font-semibold">小見出し</p>
+                      <p class="text-xs text-gray-500">20px, SemiBold</p>
+                    </div>
+                    <div>
+                      <p class="text-base">本文テキスト</p>
+                      <p class="text-xs text-gray-500">16px, Regular</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">視覚効果</h3>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <p class="font-medium mb-1">グラデーション背景</p>
+                      <div class="h-12 rounded-md bg-gradient-to-br from-white to-blue-50"></div>
+                    </div>
+                    <div>
+                      <p class="font-medium mb-1">虹色ボーダー</p>
+                      <div class="h-12 rounded-md border-b-4 border-gradient-to-r"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 右側：デザイン原則 -->
+            <div>
+              <h2 class="text-2xl font-bold mb-4">デザイン原則</h2>
+              
+              <div class="space-y-6">
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">シンプルさと洗練</h3>
+                  <p class="text-base">余白を効果的に使い、情報を整理。ごちゃごちゃしないレイアウトで視認性を確保。</p>
+                </div>
+                
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">一貫性のある視覚言語</h3>
+                  <p class="text-base">フォント、色使い、余白のルールを全スライドで統一し、プロフェッショナルな印象を与える。</p>
+                </div>
+                
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">視覚的階層構造</h3>
+                  <p class="text-base">サイズ、色、配置によって情報の重要度を明確に伝え、ユーザーの視線を誘導。</p>
+                </div>
+                
+                <div class="design-element bg-white p-4 rounded-lg shadow-sm">
+                  <h3 class="text-lg font-semibold mb-2">インタラクティブ要素</h3>
+                  <p class="text-base">ホバーエフェクトなど、最小限のアニメーションで体験を向上。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-lg font-semibold mb-2">今回のスライドデザインのポイント</h3>
+            <p class="text-base">
+              Diaブラウザのデザイン哲学「シンプルだが洗練された」UIを取り入れ、白を基調としながら虹色のアクセントで視覚的な魅力を高めました。情報の理解容易性とデザイン性を両立し、エンジニアと非エンジニアの両方に訴求する視覚言語を構築しています。
+            </p>
+          </div>
+        </div>
+        
+        <div class="text-right text-sm text-gray-500 mt-4">
+          <p>社内発表資料 | 2025年6月23日</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

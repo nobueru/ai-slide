@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>専門用語の効果的な使い方</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1380px; height: 970px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 970px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .example-card {
+            transition: transform 0.3s ease;
+        }
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class-border {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class-border {
+            border-left: 4px solid #4CAF50;
+        }
+        .speech-bubble {
+            position: relative;
+            border-radius: 10px;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: -10px;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+        }
+        .second-class-bubble:after {
+            border-color: transparent #FFF0EB transparent transparent;
+        }
+        .first-class-bubble:after {
+            border-color: transparent #EBFFED transparent transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -left-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -right-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">専門用語の効果的な使い方</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Introduction -->
+<div class="mb-8">
+<p class="text-lg text-gray-700">
+                    専門用語の使い方一つで、説明の伝わりやすさは大きく変わります。聞き手に合わせた言葉選びが、理解度と信頼関係を左右します。
+                </p>
+</div>
+<!-- Comparison section -->
+<div class="flex space-x-6 mb-8">
+<!-- Second class approach -->
+<div class="w-1/2 bg-gray-50 p-6 rounded-lg shadow-md second-class-border">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-down text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">二流の説明</h3>
+<p class="text-orange-600 font-medium">共通の専門用語を使う</p>
+</div>
+</div>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>業界内で通用する専門用語をそのまま使用する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>聞き手の知識レベルを考慮せず説明する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>専門用語で説明することで権威性を示そうとする</span>
+</li>
+</ul>
+<div class="flex mt-4">
+<div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+<i class="fas fa-user-tie text-gray-600"></i>
+</div>
+<div class="speech-bubble ml-3 p-4 bg-orange-50 second-class-bubble">
+<p class="text-gray-700">「このシステムではSQLインジェクションの対策としてプリペアドステートメントを実装し、XSSも防止しています。」</p>
+</div>
+</div>
+</div>
+<!-- First class approach -->
+<div class="w-1/2 bg-gray-50 p-6 rounded-lg shadow-md first-class-border">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-arrow-up text-white text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800">一流の説明</h3>
+<p class="text-green-600 font-medium">聞き手のレベルに合わせた言葉を使う</p>
+</div>
+</div>
+<ul class="space-y-3 text-gray-600 mb-5">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>聞き手の知識レベルを事前に把握する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>必要に応じて専門用語を平易な言葉に置き換える</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>専門用語を使う場合は簡単な説明を添える</span>
+</li>
+</ul>
+<div class="flex mt-4">
+<div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+<i class="fas fa-user-tie text-gray-600"></i>
+</div>
+<div class="speech-bubble ml-3 p-4 bg-green-50 first-class-bubble">
+<p class="text-gray-700">「このシステムでは、外部からの不正なデータ入力を防ぐセキュリティ対策を実装しています。例えば、データベースへの攻撃やウェブページの改ざんを防止する仕組みがあります。」</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Key points -->
+<div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+<h3 class="text-xl font-bold text-gray-800 mb-3">
+<i class="fas fa-lightbulb text-blue-700 mr-2"></i>言葉選びの重要性
+                </h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="example-card bg-white p-4 rounded shadow">
+<div class="flex items-center mb-2">
+<i class="fas fa-users text-blue-600 mr-2"></i>
+<h4 class="font-bold text-gray-700">聴衆を分析する</h4>
+</div>
+<p class="text-gray-600 text-sm">説明の前に聞き手の知識レベル・バックグラウンドを把握する</p>
+</div>
+<div class="example-card bg-white p-4 rounded shadow">
+<div class="flex items-center mb-2">
+<i class="fas fa-exchange-alt text-blue-600 mr-2"></i>
+<h4 class="font-bold text-gray-700">言葉を置き換える</h4>
+</div>
+<p class="text-gray-600 text-sm">専門用語を日常的な言葉や比喩に変換して説明する</p>
+</div>
+<div class="example-card bg-white p-4 rounded shadow">
+<div class="flex items-center mb-2">
+<i class="fas fa-comment-dots text-blue-600 mr-2"></i>
+<h4 class="font-bold text-gray-700">反応を確認する</h4>
+</div>
+<p class="text-gray-600 text-sm">説明中に聞き手の反応を見て、理解度に合わせて言葉を調整する</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            37 / 50
+        </div>
+</div>
+
+</body></html>

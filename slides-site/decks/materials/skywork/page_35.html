@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>調査結果の説明方法</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1380px; height: 966px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 966px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-box {
+            transition: transform 0.3s ease;
+        }
+        .comparison-box:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .flow-arrow {
+            position: relative;
+            height: 2px;
+            background-color: #0047AB;
+            margin: 0 10px;
+        }
+        .flow-arrow:after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #0047AB;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        .technique-card {
+            border-top: 3px solid #0047AB;
+            transition: transform 0.3s ease;
+        }
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -left-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -right-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">調査結果の説明方法</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex space-x-6 mb-10">
+<!-- Second-class approach -->
+<div class="w-1/2 comparison-box second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-chart-line text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：調査結果を考察する</h3>
+</div>
+<!-- Flow diagram for second-class -->
+<div class="flex items-center justify-between mb-6">
+<div class="text-center p-2 bg-orange-100 rounded-lg w-1/4">
+<i class="fas fa-database text-orange-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">データ収集</p>
+</div>
+<div class="flow-arrow w-1/6"></div>
+<div class="text-center p-2 bg-orange-100 rounded-lg w-1/4">
+<i class="fas fa-search text-orange-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">分析</p>
+</div>
+<div class="flow-arrow w-1/6"></div>
+<div class="text-center p-2 bg-orange-100 rounded-lg w-1/4">
+<i class="fas fa-comment text-orange-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">考察</p>
+</div>
+</div>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>データの分析結果を詳細に説明する</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>学術的な考察に重点を置く</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>「分かった」で終わる説明</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2 w-5"></i>
+<span>次のアクションが明確でない</span>
+</li>
+</ul>
+</div>
+<!-- First-class approach -->
+<div class="w-1/2 comparison-box first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-rocket text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：調査結果から行動を起こす</h3>
+</div>
+<!-- Flow diagram for first-class -->
+<div class="flex items-center justify-between mb-6">
+<div class="text-center p-2 bg-green-100 rounded-lg w-1/5">
+<i class="fas fa-database text-green-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">データ</p>
+</div>
+<div class="flow-arrow w-1/10"></div>
+<div class="text-center p-2 bg-green-100 rounded-lg w-1/5">
+<i class="fas fa-search text-green-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">分析</p>
+</div>
+<div class="flow-arrow w-1/10"></div>
+<div class="text-center p-2 bg-green-100 rounded-lg w-1/5">
+<i class="fas fa-lightbulb text-green-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">洞察</p>
+</div>
+<div class="flow-arrow w-1/10"></div>
+<div class="text-center p-2 bg-green-100 rounded-lg w-1/5">
+<i class="fas fa-play-circle text-green-500 text-lg mb-1"></i>
+<p class="text-sm font-medium">行動</p>
+</div>
+</div>
+<ul class="space-y-2 text-gray-600">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>データから得られた洞察を明確に示す</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>具体的な行動提案を含める</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>「だから何をするべきか」を明確にする</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2 w-5"></i>
+<span>行動のメリットを示して動機づける</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Action-oriented presentation techniques -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-bullhorn text-blue-800 mr-2"></i>行動喚起型プレゼンの技術
+                </h2>
+<div class="grid grid-cols-3 gap-6">
+<!-- Technique 1 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-flag text-white"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-800">明確な行動目標</h4>
+</div>
+<p class="text-gray-600 text-sm">
+                            プレゼンの冒頭で「このプレゼン後に皆さんに○○していただきたい」と明示し、聞き手の注意を行動に向ける
+                        </p>
+</div>
+<!-- Technique 2 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-link text-white"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-800">データと行動の紐付け</h4>
+</div>
+<p class="text-gray-600 text-sm">
+                            「このデータが示すのは〜だから、私たちは〜するべきです」という形で、データと行動を明確に紐付ける
+                        </p>
+</div>
+<!-- Technique 3 -->
+<div class="technique-card bg-gray-50 p-5 rounded-lg shadow-md">
+<div class="flex items-center mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center mr-3">
+<i class="fas fa-balance-scale text-white"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-800">リスクと利益の提示</h4>
+</div>
+<p class="text-gray-600 text-sm">
+                            「行動した場合の利益」と「行動しなかった場合のリスク」を対比させて、行動の必要性を強調する
+                        </p>
+</div>
+</div>
+</div>
+<!-- Key point -->
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6 rounded-r">
+<p class="text-blue-800 font-medium">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>
+                    一流の説明者は調査結果を「知識」で終わらせず、「行動」につなげます
+                </p>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            35 / 50
+        </div>
+</div>
+
+</body></html>

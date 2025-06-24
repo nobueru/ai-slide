@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI生成スライド検証報告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .slide-container.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .overview-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .overview-card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .ai-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .ai-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .ai-card.excellent {
+            border-left-color: #2ecc71;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+        }
+
+        .ai-card.good {
+            border-left-color: #3498db;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+        }
+
+        .ai-card.average {
+            border-left-color: #f39c12;
+            background: linear-gradient(135deg, #ffffff 0%, #fffbf0 100%);
+        }
+
+        .ai-card.poor {
+            border-left-color: #e74c3c;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+        }
+
+        .ai-card.error {
+            border-left-color: #8e44ad;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f0ff 100%);
+        }
+
+        .ai-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .rating-score {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: white;
+        }
+
+        .rating-5 { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .rating-4 { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .rating-3 { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .rating-2 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .rating-1 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .rating-0 { background: linear-gradient(135deg, #8e44ad, #7d3c98); }
+
+        .rating-label {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .ai-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .ai-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .ai-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .results-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .results-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .results-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .results-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: top;
+        }
+
+        .results-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.2);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .summary-card h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .book-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-details h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .book-details p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .book-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide-container active">
+        <div class="slide-content">
+            <h1>AI生成スライド検証報告</h1>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>検証目的</h3>
+                    <p>各AIプラットフォームのスライド生成能力を比較し、業務での実用性を評価</p>
+                </div>
+                <div class="overview-card">
+                    <h3>検証対象</h3>
+                    <p>6つのAIモデル・プラットフォームによる一枚スライドと学習用資料集の生成</p>
+                </div>
+            </div>
+            <div class="book-info">
+                <img src="https://m.media-amazon.com/images/I/41ujTcN8qML._SY445_SX342_.jpg" alt="説明の一流、二流、三流" class="book-cover">
+                <div class="book-details">
+                    <h3><a href="https://amzn.asia/d/h7GMDr2" class="book-link">説明の一流、二流、三流</a></h3>
+                    <p><strong>著者:</strong> 桐生 稔（きりゅう みのる）</p>
+                    <p><strong>検証テーマ:</strong> 本書の内容をスライド化する際の各AIの特徴と品質差</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: 検証概要 -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2>検証概要</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>一枚スライド検証</h3>
+                    <p>書籍の魅力を1枚にまとめる<br>
+                    タイトル、表紙、著者、チャプター、具体例を含む総合的なプレゼンテーション</p>
+                </div>
+                <div class="overview-card">
+                    <h3>学習用資料集検証</h3>
+                    <p>書籍内容の詳細な理解促進<br>
+                    CSVデータを活用した包括的な学習資料の生成</p>
+                </div>
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4>評価基準</h4>
+                    <p>5段階評価（卓越・優秀・良好・弱い・不適・エラー）</p>
+                </div>
+                <div class="summary-card">
+                    <h4>重要指標</h4>
+                    <p>要件充足度、デザイン性、実用性</p>
+                </div>
+                <div class="summary-card">
+                    <h4>対象AI</h4>
+                    <p>ChatGPT、Claude、Gemini、Manus、Genspark、skywork</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 一枚スライド検証結果 -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2>一枚スライド検証結果</h2>
+            <div class="ai-comparison-grid">
+                <div class="ai-card excellent">
+                    <div class="ai-name">Manus</div>
+                    <div class="rating">
+                        <div class="rating-score rating-5">5</div>
+                        <div class="rating-label">卓越</div>
+                    </div>
+                    <div class="ai-description">
+                        • 要件を完全に満たしている<br>
+                        • JavaScriptで動的なイケてるデザイン<br>
+                        • 見やすさと機能性を両立
+                    </div>
+                    <a href="https://manus.im/share/IdIVMoYWXQRlAriDIDFu1E?replay=1" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card good">
+                    <div class="ai-name">Genspark</div>
+                    <div class="rating">
+                        <div class="rating-score rating-4">4</div>
+                        <div class="rating-label">優秀</div>
+                    </div>
+                    <div class="ai-description">
+                        • 要件を満たしている<br>
+                        • シンプルだが非常に見やすいデザイン<br>
+                        • 実用的で完成度が高い
+                    </div>
+                    <a href="https://www.genspark.ai/agents?id=e235d75f-9a34-49f0-9427-66ee27dd4e34" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card average">
+                    <div class="ai-name">Claude</div>
+                    <div class="rating">
+                        <div class="rating-score rating-3">3</div>
+                        <div class="rating-label">良好</div>
+                    </div>
+                    <div class="ai-description">
+                        • 最低限の要件を満たす<br>
+                        • いい感じのデザイン<br>
+                        • 標準的な品質
+                    </div>
+                    <a href="https://claude.ai/public/artifacts/758f466c-162d-4fa9-8289-7444575378b5" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card average">
+                    <div class="ai-name">Gemini</div>
+                    <div class="rating">
+                        <div class="rating-score rating-3">3</div>
+                        <div class="rating-label">良好</div>
+                    </div>
+                    <div class="ai-description">
+                        • 最低限の要件を満たす<br>
+                        • シンプルなデザイン<br>
+                        • 基本的な機能は問題なし
+                    </div>
+                    <span class="ai-link" style="opacity: 0.6;">リンクなし</span>
+                </div>
+                
+                <div class="ai-card poor">
+                    <div class="ai-name">ChatGPT o4-mini-high</div>
+                    <div class="rating">
+                        <div class="rating-score rating-2">2</div>
+                        <div class="rating-label">弱い</div>
+                    </div>
+                    <div class="ai-description">
+                        • 最低限の要件は満たした<br>
+                        • デザイン性に乏しい<br>
+                        • 改善が必要
+                    </div>
+                    <a href="https://chatgpt.com/share/68592c37-d42c-8002-b610-3caa8fff6b56" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card poor">
+                    <div class="ai-name">ChatGPT o3</div>
+                    <div class="rating">
+                        <div class="rating-score rating-1">1</div>
+                        <div class="rating-label">不適</div>
+                    </div>
+                    <div class="ai-description">
+                        • 一部バグがあった<br>
+                        • UIもひどい<br>
+                        • 実用性に問題あり
+                    </div>
+                    <a href="https://chatgpt.com/share/68592b67-2618-8002-9bed-1c220a90fe9b" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 学習用資料集検証結果 -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2>学習用資料集検証結果</h2>
+            <div class="ai-comparison-grid">
+                <div class="ai-card good">
+                    <div class="ai-name">skywork</div>
+                    <div class="rating">
+                        <div class="rating-score rating-4">4</div>
+                        <div class="rating-label">優秀</div>
+                    </div>
+                    <div class="ai-description">
+                        • 良くも悪くも情報を勝手に付け足してくれた<br>
+                        • デザインはシンプルだが非常に見やすい<br>
+                        • 実用的な仕上がり
+                    </div>
+                    <a href="https://skywork.ai/share/project/1937022545708371968?sid=-O2NeHJNU6&t=" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card average">
+                    <div class="ai-name">Manus</div>
+                    <div class="rating">
+                        <div class="rating-score rating-3">3</div>
+                        <div class="rating-label">良好</div>
+                    </div>
+                    <div class="ai-description">
+                        • 最低限の要件を満たす<br>
+                        • デザインがシンプルすぎる<br>
+                        • プロンプトが原因ではある
+                    </div>
+                    <a href="https://manus.im/share/a3beLVb6TRB5Q9bso3PSdR?replay=1" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card poor">
+                    <div class="ai-name">Claude</div>
+                    <div class="rating">
+                        <div class="rating-score rating-2">2</div>
+                        <div class="rating-label">弱い</div>
+                    </div>
+                    <div class="ai-description">
+                        • 要件を満たさない<br>
+                        • 勝手に編集された（複数生成の影響？）<br>
+                        • デザインはかなり良さそう
+                    </div>
+                    <a href="https://claude.ai/share/d24db98d-8d6a-4d27-bdfe-18eb8adb9487" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card poor">
+                    <div class="ai-name">ChatGPT o4-mini-high</div>
+                    <div class="rating">
+                        <div class="rating-score rating-1">1</div>
+                        <div class="rating-label">不適</div>
+                    </div>
+                    <div class="ai-description">
+                        • 要件を満たさない<br>
+                        • スライド作成枚数に限界（6枚程度）<br>
+                        • デザインも悪い
+                    </div>
+                    <a href="https://chatgpt.com/share/68593a50-ee44-8002-8ef3-63abb62a128c" class="ai-link" target="_blank">結果を見る</a>
+                </div>
+                
+                <div class="ai-card error">
+                    <div class="ai-name">Gemini</div>
+                    <div class="rating">
+                        <div class="rating-score rating-0">0</div>
+                        <div class="rating-label">エラー</div>
+                    </div>
+                    <div class="ai-description">
+                        • 生成エラーが起きる<br>
+                        • 実行できない状態<br>
+                        • 検証不可能
+                    </div>
+                    <span class="ai-link" style="opacity: 0.6;">リンクなし</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 総合まとめ -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2>総合まとめ・業務活用指針</h2>
+            <div class="results-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>AI プラットフォーム</th>
+                            <th>特徴・活用場面</th>
+                            <th>推奨度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Manus</strong></td>
+                            <td>要件をしっかり満たし、デザインも優秀。<br><strong>→ 重要なプレゼンテーション、クライアント向け資料</strong></td>
+                            <td style="color: #2ecc71; font-weight: bold;">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Genspark</strong></td>
+                            <td>要件を満たし、シンプルで見やすいデザイン。<br><strong>→ 社内資料、標準的なプレゼンテーション</strong></td>
+                            <td style="color: #3498db; font-weight: bold;">★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>skywork</strong></td>
+                            <td>付加情報を追加してくれる、シンプル系デザイン。<br><strong>→ 学習資料、詳細な説明資料</strong></td>
+                            <td style="color: #3498db; font-weight: bold;">★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude</strong></td>
+                            <td>出力が長くなると要件を満たしにくい、デザインは良い。<br><strong>→ 短いコンテンツ、デザイン重視の場合</strong></td>
+                            <td style="color: #f39c12; font-weight: bold;">★★★☆☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini</strong></td>
+                            <td>最低限の資料は作成可能。<br><strong>→ 簡単な資料、プロトタイプ作成</strong></td>
+                            <td style="color: #f39c12; font-weight: bold;">★★★☆☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ChatGPT系</strong></td>
+                            <td>スライド作成には向いていない。<br><strong>→ 非推奨</strong></td>
+                            <td style="color: #e74c3c; font-weight: bold;">★☆☆☆☆</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4>最優秀</h4>
+                    <p><strong>Manus</strong><br>高品質なプレゼンテーション資料の作成に最適</p>
+                </div>
+                <div class="summary-card">
+                    <h4>実用的</h4>
+                    <p><strong>Genspark・skywork</strong><br>日常業務での資料作成に活用可能</p>
+                </div>
+                <div class="summary-card">
+                    <h4>条件付き活用</h4>
+                    <p><strong>Claude・Gemini</strong><br>用途を限定すれば利用価値あり</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="previousSlide()">前へ</button>
+        <button class="nav-button" onclick="nextSlide()">次へ</button>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="slide-indicator">
+        <div class="indicator-dot active" onclick="currentSlide(1)"></div>
+        <div class="indicator-dot" onclick="currentSlide(2)"></div>
+        <div class="indicator-dot" onclick="currentSlide(3)"></div>
+        <div class="indicator-dot" onclick="currentSlide(4)"></div>
+        <div class="indicator-dot" onclick="currentSlide(5)"></div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        const totalSlides = 5;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide-container');
+            const indicators = document.querySelectorAll('.indicator-dot');
+            
+            if (n > totalSlides) slideIndex = 1;
+            if (n < 1) slideIndex = totalSlides;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[slideIndex - 1].classList.add('active');
+            indicators[slideIndex - 1].classList.add('active');
+            
+            // Update navigation buttons
+            const prevBtn = document.querySelector('.nav-button');
+            const nextBtn = document.querySelector('.nav-button:last-child');
+            
+            prevBtn.disabled = slideIndex === 1;
+            nextBtn.disabled = slideIndex === totalSlides;
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function previousSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') nextSlide();
+            if (event.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Initialize
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

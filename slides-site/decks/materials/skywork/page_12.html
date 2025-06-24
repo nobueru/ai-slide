@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>手順説明のテクニック</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 922px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 922px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .comparison-card {
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-left: 4px solid #FF6B35;
+        }
+        .first-class {
+            border-left: 4px solid #4CAF50;
+        }
+        .process-step {
+            position: relative;
+            padding-bottom: 16px;
+        }
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: 28px;
+            bottom: 0;
+            width: 2px;
+            background-color: #0047AB;
+        }
+        .diagram-example {
+            height: 180px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">手順説明のテクニック</h1>
+<div class="ml-auto bg-white bg-opacity-20 rounded-full px-4 py-1 text-white text-sm">
+<i class="fas fa-star mr-1"></i>重要度：○○○○○
+            </div>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison section -->
+<div class="flex mb-8 space-x-6">
+<!-- Second class technique -->
+<div class="w-1/2 comparison-card second-class bg-gray-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-file-alt text-white text-lg"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">二流：分厚い資料で説明する</h3>
+</div>
+<ul class="space-y-3 text-gray-600 mb-4">
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>詳細な情報が多すぎて要点が埋もれる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>文字ばかりで視覚的理解が難しい</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times text-orange-500 mt-1 mr-2"></i>
+<span>全体の流れが把握しづらい</span>
+</li>
+</ul>
+<div class="diagram-example bg-gray-200 rounded p-3">
+<div class="text-center mb-2 text-sm font-medium text-gray-700">文字ベースの説明例</div>
+<div class="bg-white p-3 rounded text-xs text-gray-600 h-32 overflow-hidden">
+<p class="mb-1">1. まず、Aボタンを押します。</p>
+<p class="mb-1">2. 次に、表示された画面でBを選択します。</p>
+<p class="mb-1">3. 続いて、Cメニューから「設定」を選びます。</p>
+<p class="mb-1">4. 「設定」画面が表示されたら、Dタブをクリックします。</p>
+<p class="mb-1">5. Eオプションを有効にします。</p>
+<p class="mb-1">6. 最後に、保存ボタンを押して完了です。</p>
+<p>※ 詳細な説明はさらに続きます...</p>
+</div>
+</div>
+</div>
+<!-- First class technique -->
+<div class="w-1/2 comparison-card first-class bg-gray-50 p-6 shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-project-diagram text-white text-lg"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800">一流：図解で説明する</h3>
+</div>
+<ul class="space-y-3 text-gray-600 mb-4">
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>全体の流れが一目で把握できる</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>視覚的に理解しやすく記憶に残る</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+<span>複雑な手順も単純化して伝えられる</span>
+</li>
+</ul>
+<div class="diagram-example bg-gray-200 rounded p-3" id="flow-diagram">
+<div class="text-center mb-2 text-sm font-medium text-gray-700">図解による説明例</div>
+<div class="bg-white p-3 rounded h-32 relative">
+<!-- Flow diagram will be generated here using D3.js -->
+</div>
+</div>
+</div>
+</div>
+<!-- Effective diagram creation tips -->
+<div class="bg-blue-50 p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+<h3 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-lightbulb text-blue-600 mr-2"></i>効果的な図解作成のポイント
+                </h3>
+<div class="grid grid-cols-3 gap-4">
+<div class="flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-compress-arrows-alt text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-700 mb-1">シンプルに保つ</h4>
+<p class="text-sm text-gray-600">必要最小限の情報だけを含め、複雑さを排除する</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-arrows-alt-h text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-700 mb-1">フローを明確に</h4>
+<p class="text-sm text-gray-600">手順の流れが直感的に理解できるよう矢印などを活用する</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-palette text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-700 mb-1">色とアイコンを活用</h4>
+<p class="text-sm text-gray-600">視覚的な区別がつくよう色分けやアイコンを効果的に使う</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            12 / 50
+        </div>
+</div>
+<script>
+        // Simple D3.js flow diagram
+        document.addEventListener('DOMContentLoaded', function() {
+            const width = 270;
+            const height = 120;
+            
+            const svg = d3.select("#flow-diagram div")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+                
+            // Define the steps
+            const steps = [
+                { id: 1, name: "スタート", x: 30, y: 60 },
+                { id: 2, name: "手順A", x: 110, y: 60 },
+                { id: 3, name: "手順B", x: 190, y: 60 },
+                { id: 4, name: "完了", x: 270, y: 60 }
+            ];
+            
+            // Define the connections
+            const links = [
+                { source: 0, target: 1 },
+                { source: 1, target: 2 },
+                { source: 2, target: 3 }
+            ];
+            
+            // Create the arrows
+            svg.append("defs").append("marker")
+                .attr("id", "arrowhead")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 8)
+                .attr("refY", 0)
+                .attr("orient", "auto")
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#0047AB");
+                
+            // Draw the links
+            svg.selectAll(".link")
+                .data(links)
+                .enter()
+                .append("line")
+                .attr("x1", d => steps[d.source].x)
+                .attr("y1", d => steps[d.source].y)
+                .attr("x2", d => steps[d.target].x)
+                .attr("y2", d => steps[d.target].y)
+                .attr("stroke", "#0047AB")
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrowhead)");
+                
+            // Draw the nodes
+            const nodes = svg.selectAll(".node")
+                .data(steps)
+                .enter()
+                .append("g")
+                .attr("transform", d => `translate(${d.x - 30},${d.y - 15})`);
+                
+            nodes.append("rect")
+                .attr("width", 60)
+                .attr("height", 30)
+                .attr("rx", 5)
+                .attr("fill", (d, i) => i === 0 ? "#4CAF50" : i === steps.length - 1 ? "#0047AB" : "#FF6B35");
+                
+            nodes.append("text")
+                .attr("x", 30)
+                .attr("y", 18)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "10px")
+                .text(d => d.name);
+        });
+    </script>
+
+</body></html>

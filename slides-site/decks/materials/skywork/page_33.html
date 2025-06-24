@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>話し始めの重要性</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><style>
+        body {width: 1430px; height: 946px; font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;}
+        .slide-container {
+            width: 1280px;
+            min-height: 946px;
+            position: relative;
+            
+            background-color: white;
+        }
+        .geometric-shape {
+            position: absolute;
+            background-color: rgba(0, 71, 171, 0.05);
+            border-radius: 50%;
+        }
+        .title-bar {
+            background: linear-gradient(90deg, #0047AB, #2C75FF);
+        }
+        .approach-card {
+            border-left: 4px solid;
+            transition: transform 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+        .second-class {
+            border-color: #FF6B35;
+        }
+        .first-class {
+            border-color: #4CAF50;
+        }
+        .technique-item {
+            transition: all 0.3s ease;
+        }
+        .technique-item:hover {
+            background-color: rgba(0, 71, 171, 0.05);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container shadow-xl mx-auto">
+<!-- Geometric background shapes -->
+<div class="geometric-shape w-[400px] h-[400px] -right-[150px] -bottom-[150px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] -left-[100px] -top-[100px]"></div>
+<!-- Header section -->
+<div class="title-bar h-20 flex items-center pl-16 pr-10">
+<h1 class="text-3xl font-bold text-white">話し始めの重要性</h1>
+</div>
+<!-- Main content -->
+<div class="p-16 pt-10">
+<!-- Comparison Section -->
+<div class="flex space-x-8 mb-10">
+<!-- Second Class Approach -->
+<div class="w-1/2 approach-card second-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-down text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">二流：いきなり説明しはじめる</h2>
+</div>
+<div class="space-y-4 text-gray-600">
+<div class="flex items-start">
+<i class="fas fa-exclamation-circle text-orange-500 mt-1 mr-3"></i>
+<p>聞き手の状態を確認せずに一方的に話し始める</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-exclamation-circle text-orange-500 mt-1 mr-3"></i>
+<p>話の目的や重要性を伝えないまま本題に入る</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-exclamation-circle text-orange-500 mt-1 mr-3"></i>
+<p>聞き手の関心を引くことなく情報を流し続ける</p>
+</div>
+<div class="mt-4 p-3 bg-orange-50 rounded-md">
+<p class="text-orange-700"><i class="fas fa-arrow-right mr-2"></i>情報が頭に入らず、理解度が低下する</p>
+</div>
+</div>
+</div>
+<!-- First Class Approach -->
+<div class="w-1/2 approach-card first-class bg-gray-50 p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+<i class="fas fa-thumbs-up text-white"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800">一流：聞いてもらう態勢を作る</h2>
+</div>
+<div class="space-y-4 text-gray-600">
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<p>聞き手の状況や心理状態を確認してから話し始める</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<p>話の目的と重要性を最初に明確に伝える</p>
+</div>
+<div class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+<p>聞き手の興味を引く導入から始める</p>
+</div>
+<div class="mt-4 p-3 bg-green-50 rounded-md">
+<p class="text-green-700"><i class="fas fa-arrow-right mr-2"></i>情報が効果的に伝わり、理解度と記憶定着度が向上する</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Effective Introduction Techniques -->
+<div>
+<h2 class="text-2xl font-bold text-gray-800 mb-5">
+<i class="fas fa-lightbulb text-blue-800 mr-2"></i>効果的な導入テクニック
+                </h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Technique 1 -->
+<div class="technique-item flex items-start p-4 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-question text-white"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">質問から始める</h3>
+<p class="text-gray-600">聞き手に関連する質問を投げかけ、主体的な参加を促す。「このような状況に直面したことはありますか？」など。</p>
+</div>
+</div>
+<!-- Technique 2 -->
+<div class="technique-item flex items-start p-4 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-bullseye text-white"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">目的を明確にする</h3>
+<p class="text-gray-600">「今日の話を聞くことで、○○ができるようになります」と具体的なメリットを最初に伝える。</p>
+</div>
+</div>
+<!-- Technique 3 -->
+<div class="technique-item flex items-start p-4 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-clock text-white"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">所要時間を伝える</h3>
+<p class="text-gray-600">「この説明は約○分かかります」と伝えることで、聞き手の心理的負担を軽減する。</p>
+</div>
+</div>
+<!-- Technique 4 -->
+<div class="technique-item flex items-start p-4 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4 flex-shrink-0">
+<i class="fas fa-chart-line text-white"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">印象的な事実や数字</h3>
+<p class="text-gray-600">驚きのある事実や数字から話を始めることで、聞き手の注意を引きつける。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Page number -->
+<div class="absolute bottom-4 right-6 text-gray-400">
+            33 / 50
+        </div>
+</div>
+
+</body></html>
